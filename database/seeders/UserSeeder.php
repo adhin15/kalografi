@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         $today = Carbon::today();
         DB::table('users')->insert([
             [
-                'name' => 'Fajar Pratama',
-                'email' => 'fajar@mail.com',
+                'name' => 'Administrator',
+                'email' => 'admin@mail.com',
                 'email_verified_at' => null,
                 'password' => Hash::make($password),
                 'remember_token' => null,
