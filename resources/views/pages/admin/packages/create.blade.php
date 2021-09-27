@@ -17,12 +17,14 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="namapaket">Package Name</label>
-                                            <input type="text" class="form-control text-secondary @error('namapaket') is-invalid @enderror" name="namapaket" id="namapaket">
+                                            <input type="text"
+                                                class="form-control text-secondary @error('namapaket') is-invalid @enderror"
+                                                name="namapaket" id="namapaket">
 
                                             @error('namapaket')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -30,23 +32,39 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="kategori">Category</label>
-                                            <select name="kategori" id="kategori" class="form-control text-secondary small">
+                                            <select name="kategori" id="kategori"
+                                                class="form-control text-secondary small @error('kategori') is-invalid @enderror">
+                                                <option value="">--Select One--</option>
                                                 <option value="Wedding Package">Wedding Package</option>
                                                 <option value="Pre-Wedding Package">Pre-Wedding Package</option>
                                                 <option value="Engagement Package">Engagement Package</option>
                                             </select>
+
+                                            @error('kategori')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="workhours">Working Hour</label>
-                                            <input type="text" class="form-control text-secondary @error('workhours') is-invalid @enderror" name="workhours" id="workhours">
+                                            <label for="workhour_id">Working Hour</label>
+                                            <select name="workhour_id" id="workhour_id"
+                                                class="form-control text-secondary small @error('workhour_id') is-invalid @enderror">
+                                                <option value="">--Select One--</option>
+                                                @foreach ($workHours as $item)
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->amount . ' Hours' }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
 
-                                            @error('workhours')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                            @error('workhour_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -54,11 +72,19 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="day">Day</label>
-                                            <select name="day" id="day" class="form-control text-secondary small">
+                                            <select name="day" id="day"
+                                                class="form-control text-secondary small @error('day') is-invalid @enderror">
+                                                <option value="">--Select One--</option>
                                                 <option value="Full Day">Full Day</option>
                                                 <option value="Half Day">Half Day</option>
                                                 <option value="-">-</option>
                                             </select>
+
+                                            @error('day')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -66,40 +92,70 @@
                                 <div class="col-md-6">
                                     <div class="row mb-3">
                                         <div class="col-md-11">
-                                            <label for="photographers">Photographer</label>
-                                            <select name="photographers" id="photographers" class="form-control text-secondary small">
-                                                <option value="1">1 Photographer</option>
-                                                <option value="2">2 Photographer</option>
-                                                <option value="3">3 Photographer</option>
+                                            <label for="photographer_id">Photographer</label>
+                                            <select name="photographer_id" id="photographer_id"
+                                                class="form-control text-secondary small @error('photographer_id') is-invalid @enderror">
+                                                <option value="">--Select One--</option>
+                                                @foreach ($photoGraphers as $item)
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->amount . ' Photographers' }}
+                                                    </option>
+                                                @endforeach
                                             </select>
+
+                                            @error('photographer_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col-md-11">
-                                            <label for="videographers">Videographer</label>
-                                            <select name="videographers" id="videographers" class="form-control text-secondary small">
-                                                <option value="1">1 Videographer</option>
-                                                <option value="2">2 Videographer</option>
-                                                <option value="3">3 Videographer</option>
+                                            <label for="videographer_id">Videographer</label>
+                                            <select name="videographer_id" id="videographer_id"
+                                                class="form-control text-secondary small @error('videographer_id')is-invalid @enderror">
+                                                <option value="">--Select One--</option>
+                                                @foreach ($videoGraphers as $item)
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->amount . ' Videographers' }}
+                                                    </option>
+                                                @endforeach
                                             </select>
+
+                                            @error('videographer_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col-md-11">
                                             <label for="flashdisk">Flashdisk</label>
-                                            <select name="flashdisk" id="flashdisk" class="form-control text-secondary small">
+                                            <select name="flashdisk" id="flashdisk"
+                                                class="form-control text-secondary small @error('flashdisk')is-invalid @enderror">
+                                                <option value="">--Select One--</option>
                                                 <option value="0">No Flashdisk</option>
                                                 <option value="1">1 Flashdisk</option>
                                             </select>
+
+                                            @error('flashdisk')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col-md-11">
                                             <label for="edited">Edited Photos</label>
-                                            <select name="edited" id="edited" class="form-control text-secondary small">
+                                            <select name="edited" id="edited"
+                                                class="form-control text-secondary small @error('edited')is-invalid @enderror">
+                                                <option value="">--Select One--</option>
                                                 <option value="50">50 Edited Photos</option>
                                                 <option value="100">100 Edited Photos</option>
                                                 <option value="125">125 Edited Photos</option>
@@ -110,6 +166,12 @@
                                                 <option value="500">500 Edited Photos</option>
                                                 <option value="all">All Edited Photos</option>
                                             </select>
+
+                                            @error('edited')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -127,12 +189,14 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="image_one" class="form-label">Choose 1st Photo</label>
-                                            <input name="image_one" class="form-control form-control @error('image_one') is-invalid @enderror" id="image_one" type="file">
+                                            <input name="image_one"
+                                                class="form-control form-control @error('image_one') is-invalid @enderror"
+                                                id="image_one" type="file">
 
                                             @error('image_one')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -142,12 +206,14 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="image_two" class="form-label">Choose 2nd Photo</label>
-                                            <input name="image_two" class="form-control form-control @error('image_two') is-invalid @enderror" id="image_two" type="file">
+                                            <input name="image_two"
+                                                class="form-control form-control @error('image_two') is-invalid @enderror"
+                                                id="image_two" type="file">
 
                                             @error('image_two')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -157,12 +223,14 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="image_three" class="form-label">Choose 3rd Photo</label>
-                                            <input name="image_three" class="form-control form-control @error('image_three') is-invalid @enderror" id="image_three" type="file">
+                                            <input name="image_three"
+                                                class="form-control form-control @error('image_three') is-invalid @enderror"
+                                                id="image_three" type="file">
 
                                             @error('image_three')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -181,12 +249,14 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="price">Package Price</label>
-                                            <input type="text" class="form-control text-secondary @error('price') is-invalid @enderror" name="price" id="price">
+                                            <input type="text"
+                                                class="form-control text-secondary @error('price') is-invalid @enderror"
+                                                name="price" id="price">
 
                                             @error('price')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>

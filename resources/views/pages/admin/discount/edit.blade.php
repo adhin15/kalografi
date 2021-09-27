@@ -45,11 +45,18 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <div class="col text-right">
+                                        <div class="col">
                                             <button class="btn btn-danger" type="button" data-bs-toggle="modal"
                                                     data-bs-target="#deleteDiscountModal">
                                                 Delete Discount
                                             </button>
+                                        </div>
+
+                                        <div class="col text-right">
+                                            <a class="btn btn-outline-secondary"
+                                               href="{{ route('admin.discount.index') }}">
+                                                Back
+                                            </a>
 
                                             <button class="btn btn-kalografi" type="submit">
                                                 Save Changes

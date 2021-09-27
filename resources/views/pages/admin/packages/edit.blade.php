@@ -8,7 +8,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
 
-                    @if(session()->has('message'))
+                    @if (session()->has('message'))
                         <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                             <strong>{{ session('message') || session('danger') }}</strong>
                             <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"
@@ -38,8 +38,8 @@
 
                                             @error('namapaket')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -49,16 +49,16 @@
                                             <label for="kategori">Category</label>
                                             <select name="kategori" id="kategori"
                                                     class="form-control text-secondary small">
-                                                <option
-                                                    value="Wedding Package" {{ 'Wedding Package' === $paket->kategori ? 'selected' : '' }}>
+                                                <option value="Wedding Package"
+                                                    {{ 'Wedding Package' === $paket->kategori ? 'selected' : '' }}>
                                                     Wedding Package
                                                 </option>
-                                                <option
-                                                    value="Pre-Wedding Package" {{ 'Pre-Wedding Package' === $paket->kategori ? 'selected' : '' }}>
+                                                <option value="Pre-Wedding Package"
+                                                    {{ 'Pre-Wedding Package' === $paket->kategori ? 'selected' : '' }}>
                                                     Pre-Wedding Package
                                                 </option>
-                                                <option
-                                                    value="Engagement Package" {{ 'Engagement Package' === $paket->kategori ? 'selected' : '' }}>
+                                                <option value="Engagement Package"
+                                                    {{ 'Engagement Package' === $paket->kategori ? 'selected' : '' }}>
                                                     Engagement Package
                                                 </option>
                                             </select>
@@ -67,15 +67,22 @@
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="workhours">Working Hour</label>
-                                            <input type="text"
-                                                   class="form-control text-secondary @error('workhours') is-invalid @enderror"
-                                                   name="workhours" id="workhours" value="{{ $paket->workhours }}">
+                                            <label for="workhour_id">Working Hour</label>
+                                            <select name="workhour_id" id="workhour_id"
+                                                    class="form-control text-secondary small">
+                                                <option value="">-</option>
+                                                @foreach ($workHours as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $item->id === $paket->workhour->id ? 'selected' : '' }}>
+                                                        {{ $item->amount . ' Hours' }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
 
                                             @error('workhours')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
@@ -84,12 +91,12 @@
                                         <div class="col">
                                             <label for="day">Day</label>
                                             <select name="day" id="day" class="form-control text-secondary small">
-                                                <option
-                                                    value="Full Day" {{ 'Full Day' === $paket->day ? 'selected' : '' }}>
+                                                <option value="Full Day"
+                                                    {{ 'Full Day' === $paket->day ? 'selected' : '' }}>
                                                     Full Day
                                                 </option>
-                                                <option
-                                                    value="Half Day" {{ 'Half Day' === $paket->day ? 'selected' : '' }}>
+                                                <option value="Half Day"
+                                                    {{ 'Half Day' === $paket->day ? 'selected' : '' }}>
                                                     Half Day
                                                 </option>
                                                 <option value="-" {{ '-' === $paket->day ? 'selected' : '' }}>
@@ -103,36 +110,30 @@
                                 <div class="col-md-6">
                                     <div class="row mb-3">
                                         <div class="col-md-11">
-                                            <label for="photographers">Photographer</label>
-                                            <select name="photographers" id="photographers"
+                                            <label for="photographer_id">Photographer</label>
+                                            <select name="photographer_id" id="photographer_id"
                                                     class="form-control text-secondary small">
-                                                <option value="1" {{ 1 === $paket->photographers ? 'selected' : '' }}>
-                                                    1 Photographer
-                                                </option>
-                                                <option value="2" {{ 2 === $paket->photographers ? 'selected' : '' }}>
-                                                    2 Photographer
-                                                </option>
-                                                <option value="3" {{ 3 === $paket->photographers ? 'selected' : '' }}>
-                                                    3 Photographer
-                                                </option>
+                                                @foreach ($photoGraphers as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $item->id === $paket->photographer->id ? 'selected' : '' }}>
+                                                        {{ $item->amount . ' Photographers' }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col-md-11">
-                                            <label for="videographers">Videographer</label>
-                                            <select name="videographers" id="videographers"
+                                            <label for="videographer_id">Videographer</label>
+                                            <select name="videographer_id" id="videographer_id"
                                                     class="form-control text-secondary small">
-                                                <option value="1" {{ 1 === $paket->photographers ? 'selected' : '' }}>
-                                                    1 Videographer
-                                                </option>
-                                                <option value="2" {{ 2 === $paket->photographers ? 'selected' : '' }}>
-                                                    2 Videographer
-                                                </option>
-                                                <option value="3" {{ 3 === $paket->photographers ? 'selected' : '' }}>
-                                                    3 Videographer
-                                                </option>
+                                                @foreach ($videoGraphers as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $item->id === $paket->videographer->id ? 'selected' : '' }}>
+                                                        {{ $item->amount . ' Videographers' }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -205,7 +206,7 @@
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_one" class="form-label">Choose 1st Photo</label>
                                             <input name="image_one" class="form-control form-control" id="image_one"
-                                                   type="file">
+                                                   type="file" value="{{ $paket->galeris->image_one }}">
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +219,7 @@
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_two" class="form-label">Choose 2nd Photo</label>
                                             <input name="image_two" class="form-control form-control" id="image_two"
-                                                   type="file">
+                                                   type="file" value="{{ $paket->galeris->image_two }}">
                                         </div>
                                     </div>
                                 </div>
@@ -231,7 +232,7 @@
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_three" class="form-label">Choose 3rd Photo</label>
                                             <input name="image_three" class="form-control form-control" id="image_three"
-                                                   type="file">
+                                                   type="file" value="{{ $paket->galeris->image_three }}">
                                         </div>
                                     </div>
                                 </div>
@@ -255,15 +256,16 @@
 
                                             @error('price')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                             </span>
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                             @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePackageModal">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#deletePackageModal">
                                                 Delete Package
                                             </button>
                                         </div>
@@ -291,7 +293,7 @@
     <!-- Delete Modal-->
     <div class="modal fade" id="deletePackageModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" >
+            <div class="modal-content">
                 <div class="modal-body">
                     <p class="modal-title text-danger">
                         Are you sure want to delete this package?
@@ -309,7 +311,8 @@
     </div>
     <!-- End Delete Modal-->
 
-    <form id="deletePackageForm" action="{{ route('admin.paket.destroy', $paket->id) }}" method="POST" class="d-none">
+    <form id="deletePackageForm" action="{{ route('admin.paket.destroy', $paket->id) }}" method="POST"
+          class="d-none">
         @csrf
         @method('DELETE')
     </form>
