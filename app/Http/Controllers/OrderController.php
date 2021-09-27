@@ -48,16 +48,9 @@ class OrderController extends Controller
     //URL: /pricelist/postorder
     public function postCreateStep1(Request $request)
     {
-        $additionals = $request->input('additionals');
-        $additionalsjson = json_encode($additionals);
-        $additionalPrice = 0;
+        $additionalsjson = null;
 
-        foreach ($additionals as $item) {
-            $additionalData = additionals::query()->where('id', $item)->value('price');
-            $additionalPrice += $additionalData;
-        }
-
-        $validatedData = $request->validate([
+        $request->validate([
             'paket_id' => 'required',
             'bookdate' => 'required',
             'printedphoto_id' => 'required',
@@ -78,31 +71,45 @@ class OrderController extends Controller
                 ->where('id', $request->photobook_id)
                 ->value('price') * $request->pbqty;
 
-        $totalprice = $packageprice + $printedphotoprice + $photobookprice + $additionalPrice;
+        $totalprice = $packageprice + $printedphotoprice + $photobookprice;
+
+        if (!empty($request->additionals)) {
+            $additionals = $request->additionals;
+            $additionalsjson = json_encode($additionals);
+            $additionalPrice = 0;
+
+            foreach ($additionals as $item) {
+                $additionalData = additionals::query()->where('id', $item)->value('price');
+                $additionalPrice += $additionalData;
+            }
+
+            $totalprice = $packageprice + $printedphotoprice + $photobookprice + $additionalPrice;
+        }
 
         if (empty($request->session()->get('booking'))) {
             $booking = new Booking();
             $booking->additionals = $additionalsjson;
             $booking->fill([
-                'paket_id' => $validatedData['paket_id'],
-                'bookdate' => $validatedData['bookdate'],
-                'printedphoto_id' => $validatedData['printedphoto_id'],
-                'ppqty' => $validatedData['ppqty'],
-                'photobook_id' => $validatedData['photobook_id'],
-                'pbqty' => $validatedData['pbqty'],
+                'paket_id' => $request->paket_id,
+                'bookdate' => $request->bookdate,
+                'printedphoto_id' => $request->printedphoto_id,
+                'ppqty' => $request->ppqty,
+                'photobook_id' => $request->photobook_id,
+                'pbqty' => $request->pbqty,
                 'totalprice' => $totalprice
             ]);
             $request->session()->put('booking', $booking);
+
         } else {
             $booking = $request->session()->get('booking');
             $booking->additionals = $additionalsjson;
             $booking->fill([
-                'paket_id' => $validatedData['paket_id'],
-                'bookdate' => $validatedData['bookdate'],
-                'printedphoto_id' => $validatedData['printedphoto_id'],
-                'ppqty' => $validatedData['ppqty'],
-                'photobook_id' => $validatedData['photobook_id'],
-                'pbqty' => $validatedData['pbqty'],
+                'paket_id' => $request->paket_id,
+                'bookdate' => $request->bookdate,
+                'printedphoto_id' => $request->printedphoto_id,
+                'ppqty' => $request->ppqty,
+                'photobook_id' => $request->photobook_id,
+                'pbqty' => $request->pbqty,
                 'totalprice' => $totalprice
             ]);
             $request->session()->put('booking', $booking);
@@ -116,9 +123,12 @@ class OrderController extends Controller
     //URL: /pricelist/order/details
     public function order(Request $request)
     {
-        $additionals = additionals::query()
-            ->whereIn('id', json_decode(session('booking')->additionals))
-            ->get();
+        $additionals = null;
+        if (session('booking')->additionals !== null) {
+            $additionals = additionals::query()
+                ->whereIn('id', json_decode(session('booking')->additionals))
+                ->get();
+        }
 
         if (session()->has('booking')) {
             $booking = $request->session()->get('booking');
@@ -167,9 +177,12 @@ class OrderController extends Controller
     //URL: /pricelist/order/checkout
     public function checkout(Request $request)
     {
-        $additionals = additionals::query()
-            ->whereIn('id', json_decode(session('booking')->additionals))
-            ->get();
+        $additionals = null;
+        if (session('booking')->additionals !== null) {
+            $additionals = additionals::query()
+                ->whereIn('id', json_decode(session('booking')->additionals))
+                ->get();
+        }
 
         if (session()->has('booking')) {
             $discount = discount::all();
@@ -245,9 +258,13 @@ class OrderController extends Controller
     public function payment($id)
     {
         $booking = Booking::query()->findOrFail($id);
-        $additionals = additionals::query()
-            ->whereIn('id', json_decode($booking->additionals))
-            ->get();
+
+        $additionals = null;
+        if ($booking->additionals !== null) {
+            $additionals = additionals::query()
+                ->whereIn('id', json_decode($booking->additionals))
+                ->get();
+        }
 
         return view('pages.pricelist.order.payment', compact('booking', 'additionals'));
     }
@@ -259,9 +276,12 @@ class OrderController extends Controller
 
         $grossAmount = $booking->totalprice;
 
-        $additionalServices = additionals::query()
-            ->whereIn('id', json_decode($booking->additionals))
-            ->get();
+        $additionalServices = null;
+        if (session('booking')->additionals !== null) {
+            $additionalServices = additionals::query()
+                ->whereIn('id', json_decode($booking->additionals))
+                ->get();
+        }
 
         if ($booking->paket_id) {
             $packageId = $booking->pakets->id;
@@ -414,9 +434,7 @@ class OrderController extends Controller
     //CREATE BOOKING FOR CUSTOM PACKAGE
     public function postcustom(Request $request)
     {
-        $additionals = $request->additionals;
-        $additionalJson = json_encode($additionals);
-        $additionalPrice = 0;
+        $additionalJson = null;
 
         $photographerPrice = photographers::query()
             ->where('id', $request->photographer_id)
@@ -441,17 +459,23 @@ class OrderController extends Controller
         $printedPhotoQty = $request->ppqty;
         $photobookQty = $request->pbqty;
 
-        foreach ($additionals as $additional) {
-            $additionalData = additionals::query()
-                ->where('id', $additional)
-                ->value('price');
-            $additionalPrice += $additionalData;
-        }
-
         $printedPhotoTotal = $printedPhotoPrice * $printedPhotoQty;
         $photobookTotal = $photobookPrice * $photobookQty;
         $packagePrice = $photographerPrice + $videographerPrice + $workhourPrice;
-        $totalPrice = $packagePrice + $printedPhotoTotal + $photobookTotal + $additionalPrice;
+        $totalPrice = $packagePrice + $printedPhotoTotal + $photobookTotal;
+
+        if (!empty($request->additionals)) {
+            $additionals = $request->additionals;
+            $additionalJson = json_encode($additionals);
+            $additionalPrice = 0;
+
+            foreach ($additionals as $additional) {
+                $additionalData = additionals::query()->where('id', $additional)->value('price');
+                $additionalPrice += $additionalData;
+            }
+
+            $totalPrice = $packagePrice + $printedPhotoTotal + $photobookTotal + $additionalPrice;
+        }
 
         $validatedDataCustom = $request->validate([
             'photographer_id' => 'required',
@@ -486,6 +510,7 @@ class OrderController extends Controller
             $booking->additionals = $additionalJson;
             $booking->totalprice = $totalPrice;
             $request->session()->put('booking', $booking);
+
         } else {
             $booking = $request->session()->get('booking');
             $booking->fill($validatedData);

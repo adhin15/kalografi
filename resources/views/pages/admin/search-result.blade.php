@@ -1,15 +1,15 @@
 @extends('pages.admin.layouts.master')
 @section('content')
     <div class="container-fluid py-3" style="background-color: #FAFBFA">
-        @if(session()->has('message'))
-            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-                <strong>{{ session('message') }}</strong>
-                <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-
-        <div class="row justify-content-center">
+        <div class="row justify-content-evenly">
             <div class="col-md-5">
+
+                @if(session()->has('message'))
+                    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                        <strong>{{ session('message') }}</strong>
+                        <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
 
                 @if($booking->paymentStatus === 'CREATED' || $booking->paymentStatus === 'DOWN_PAYMENT_PAID')
                     <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">

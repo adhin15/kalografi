@@ -24,9 +24,12 @@ class PaymentController extends Controller
     {
         $this->midtransService->initPaymentGateway();
 
-        $additionalServices = additionals::query()
-            ->whereIn('id', json_decode($booking->additionals))
-            ->get();
+        $additionalServices = null;
+        if ($booking->additionals !== null) {
+            $additionalServices = additionals::query()
+                ->whereIn('id', json_decode($booking->additionals))
+                ->get();
+        }
 
         if ($booking->paket_id) {
             $packageId = $booking->pakets->id;

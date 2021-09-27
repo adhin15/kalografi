@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\additionals;
 use App\Models\Booking;
 use App\Models\Paket;
 use App\Models\status;
@@ -22,11 +23,22 @@ class AdminController extends Controller
 
     public function searchResult(Request $request)
     {
-        $booking = Booking::query()->findOrFail($request->order_id);
-        $status = status::query()->where('booking_id', $booking->id)->first();
-        $package = Paket::all();
+        $booking = Booking::query()
+            ->where('order_id', $request->order_id)
+            ->firstOrFail();
 
-        return view('pages.admin.search-result', compact('booking', 'status', 'package'));
+        $status = status::query()
+            ->where('booking_id', $booking->id)
+            ->first();
+
+        $additionals = null;
+        if ($booking->additionals !== null) {
+            $additionals = additionals::query()
+                ->whereIn('id', json_decode($booking->additionals))
+                ->get();
+        }
+
+        return view('pages.admin.search-result', compact('booking', 'status', 'additionals'));
     }
 
     public function update(Request $request)

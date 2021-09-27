@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row text-center">
                 <h3 class="fs-3 fw-bold text-kalografi mb-3">
-                    @if ($booking->paket_id == 0)
+                    @if ($booking->paket_id === null)
                         Custom Package
                     @else
                         {{ $booking->pakets->namapaket }}
@@ -13,11 +13,9 @@
                 </h3>
             </div>
 
-            @if ($booking->id !== null)
-                <div class="row text-center">
-                    <p class="text-secondary fs-6">Order ID : <strong>{{ $booking->id }}</strong></p>
-                </div>
-            @endif
+            <div class="row text-center">
+                <p class="text-secondary fs-6">Order ID : <strong>{{ $booking->order_id }}</strong></p>
+            </div>
 
             <div class="row text-center">
                 <p class="text-secondary">
@@ -91,7 +89,7 @@
 
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0">
-                        @if ($booking->paket_id == 0)
+                        @if ($booking->paket_id === null)
                             Custom Package
                         @else
                             {{ $booking->pakets->namapaket }}
