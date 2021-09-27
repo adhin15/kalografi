@@ -199,6 +199,8 @@ class PaymentController extends Controller
         $booking = Booking::query()
             ->where('order_id', $bookingOrderId)
             ->firstOrFail();
+        $alertType = 'danger';
+        $alertMessage = 'Something is wrong...';
 
         if ($booking->paymentStatus === 'FULL_PAYMENT_PENDING') {
             $alertType = 'danger';
@@ -259,6 +261,10 @@ class PaymentController extends Controller
     public function completed(Request $request)
     {
         $this->midtransService->initPaymentGateway();
+
+        $alertType = 'danger';
+        $alertMessage = 'Something is wrong...';
+
         if ($request->query('id')) {
             $transaction = Transaction::status($request->query('id'));
             $order_id = $transaction->order_id;
