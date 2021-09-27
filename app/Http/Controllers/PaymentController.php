@@ -238,7 +238,7 @@ class PaymentController extends Controller
             $alertMessage = 'Installment Paid! Payment Complete!';
         }
 
-        return redirect('/search?order_id=' . $booking->id)->with($alertType, $alertMessage);
+        return redirect('/search?order_id=' . $booking->order_id)->with($alertType, $alertMessage);
     }
 
     public function snapUnfinished(Request $request)
@@ -248,7 +248,7 @@ class PaymentController extends Controller
             ->where('order_id', $bookingOrderId)
             ->firstOrFail();
 
-        return redirect('/search?order_id=' . $booking->id)->with('message', 'Payment Not Complete!');
+        return redirect('/search?order_id=' . $booking->order_id)->with('message', 'Payment Not Complete!');
     }
 
     public function snapFailed(Request $request)
@@ -258,7 +258,7 @@ class PaymentController extends Controller
             ->where('order_id', $bookingOrderId)
             ->firstOrFail();
 
-        return redirect('/search?order_id=' . $booking->id)->with('message', 'We are having difficulties to process your payment. Please create your booking again!');
+        return redirect('/search?order_id=' . $booking->order_id)->with('message', 'We are having difficulties to process your payment. Please create your booking again!');
     }
 
     public function completed(Request $request)
@@ -338,7 +338,7 @@ class PaymentController extends Controller
             }
         }
 
-        return redirect('/search?order_id=' . $booking->id)->with($alertType, $alertMessage);
+        return redirect('/search?order_id=' . $booking->order_id)->with($alertType, $alertMessage);
     }
 
     public function unfinished(Request $request)
@@ -357,7 +357,7 @@ class PaymentController extends Controller
             ->where('order_id', $order_id)
             ->firstOrFail();
 
-        return redirect('/search?order_id=' . $booking->id)->with('message', 'Payment Not Complete!');
+        return redirect('/search?order_id=' . $booking->order_id)->with('message', 'Payment Not Complete!');
     }
 
     public function failed(Request $request)
@@ -376,6 +376,6 @@ class PaymentController extends Controller
             ->where('order_id', $order_id)
             ->firstOrFail();
 
-        return redirect('/search?order_id=' . $booking->id)->with('message', 'We are having difficulties to process your payment. Please create your booking again!');
+        return redirect('/search?order_id=' . $booking->order_id)->with('message', 'We are having difficulties to process your payment. Please create your booking again!');
     }
 }
