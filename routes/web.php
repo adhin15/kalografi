@@ -28,6 +28,10 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
 Route::get('/', [BookingController::class, 'home'])->name('landing');
 
 Route::get('/portfolio', function () {
