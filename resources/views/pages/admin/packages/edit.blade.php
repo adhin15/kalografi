@@ -113,12 +113,20 @@
                                             <label for="photographer_id">Photographer</label>
                                             <select name="photographer_id" id="photographer_id"
                                                     class="form-control text-secondary small">
-                                                @foreach ($photoGraphers as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        {{ $item->id === $package->photographer->id ? 'selected' : '' }}>
-                                                        {{ $item->amount . ' Photographers' }}
-                                                    </option>
-                                                @endforeach
+                                                @if($package->photographer)
+                                                    @foreach ($photoGraphers as $item)
+                                                        <option value="{{ $item->id }}"
+                                                            {{ $item->id === $package->photographer->id ? 'selected' : '' }}>
+                                                            {{ $item->amount . ' Photographers' }}
+                                                        </option>
+                                                    @endforeach
+                                                @else
+                                                    @foreach ($photoGraphers as $item)
+                                                        <option value="{{ $item->id }}">
+                                                            {{ $item->amount . ' Photographers' }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
@@ -128,12 +136,20 @@
                                             <label for="videographer_id">Videographer</label>
                                             <select name="videographer_id" id="videographer_id"
                                                     class="form-control text-secondary small">
-                                                @foreach ($videoGraphers as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        {{ $item->id === $package->videographer->id ? 'selected' : '' }}>
-                                                        {{ $item->amount . ' Videographers' }}
-                                                    </option>
-                                                @endforeach
+                                                @if($package->videographer)
+                                                    @foreach ($videoGraphers as $item)
+                                                        <option value="{{ $item->id }}"
+                                                            {{ $item->id === $package->videographer->id ? 'selected' : '' }}>
+                                                            {{ $item->amount . ' Videographers' }}
+                                                        </option>
+                                                    @endforeach
+                                                @else
+                                                    @foreach ($videoGraphers as $item)
+                                                        <option value="{{ $item->id }}">
+                                                            {{ $item->amount . ' Videographers' }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
@@ -195,6 +211,7 @@
                     <div class="card shadow-sm mb-5">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-kalografi">Update Photos</h6>
+
                         </div>
                         <div class="card-body p-4">
                             <div class="form-group row justify-content-evenly mb-3">
@@ -202,11 +219,10 @@
                                     <div class="row mb-3">
                                         <div class="col text-center">
                                             <img
-                                                src="{{ asset('storage/assets/product/' . $package->image->image_one) }}"
+                                                src="{{ $package->image->image_one_secure_url }}"
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_one" class="form-label">Choose 1st Photo</label>
-                                            <input name="image_one" class="form-control form-control" id="image_one"
-                                                   type="file" value="{{ $package->image->image_one }}">
+                                            <input name="image_one" class="form-control form-control-sm" id="image_one" type="file">
                                         </div>
                                     </div>
                                 </div>
@@ -215,11 +231,10 @@
                                     <div class="row mb-3">
                                         <div class="col text-center">
                                             <img
-                                                src="{{ asset('storage/assets/product/' . $package->image->image_two) }}"
+                                                src="{{ $package->image->image_two_secure_url }}"
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_two" class="form-label">Choose 2nd Photo</label>
-                                            <input name="image_two" class="form-control form-control" id="image_two"
-                                                   type="file" value="{{ $package->image->image_two }}">
+                                            <input name="image_two" class="form-control form-control-sm" id="image_two" type="file">
                                         </div>
                                     </div>
                                 </div>
@@ -228,11 +243,10 @@
                                     <div class="row mb-3">
                                         <div class="col text-center">
                                             <img
-                                                src="{{ asset('storage/assets/product/' . $package->image->image_three) }}"
+                                                src="{{ $package->image->image_three_secure_url }}"
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_three" class="form-label">Choose 3rd Photo</label>
-                                            <input name="image_three" class="form-control form-control" id="image_three"
-                                                   type="file" value="{{ $package->image->image_three }}">
+                                            <input name="image_three" class="form-control form-control-sm" id="image_three" type="file">
                                         </div>
                                     </div>
                                 </div>

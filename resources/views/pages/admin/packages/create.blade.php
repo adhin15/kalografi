@@ -187,10 +187,10 @@
                             <div class="form-group row justify-content-evenly mb-3">
                                 <div class="col-md-3">
                                     <div class="row mb-3">
-                                        <div class="col">
+                                        <div class="col text-center">
                                             <label for="image_one" class="form-label">Choose 1st Photo</label>
                                             <input name="image_one"
-                                                class="form-control form-control @error('image_one') is-invalid @enderror"
+                                                class="form-control form-control-sm @error('image_one') is-invalid @enderror"
                                                 id="image_one" type="file">
 
                                             @error('image_one')
@@ -204,10 +204,10 @@
 
                                 <div class="col-md-3">
                                     <div class="row mb-3">
-                                        <div class="col">
+                                        <div class="col text-center">
                                             <label for="image_two" class="form-label">Choose 2nd Photo</label>
                                             <input name="image_two"
-                                                class="form-control form-control @error('image_two') is-invalid @enderror"
+                                                class="form-control form-control-sm @error('image_two') is-invalid @enderror"
                                                 id="image_two" type="file">
 
                                             @error('image_two')
@@ -221,10 +221,10 @@
 
                                 <div class="col-md-3">
                                     <div class="row mb-3">
-                                        <div class="col">
+                                        <div class="col text-center">
                                             <label for="image_three" class="form-label">Choose 3rd Photo</label>
                                             <input name="image_three"
-                                                class="form-control form-control @error('image_three') is-invalid @enderror"
+                                                class="form-control form-control-sm @error('image_three') is-invalid @enderror"
                                                 id="image_three" type="file">
 
                                             @error('image_three')

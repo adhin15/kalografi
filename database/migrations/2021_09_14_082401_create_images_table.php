@@ -16,9 +16,12 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
 
-            $table->string('image_one');
-            $table->string('image_two');
-            $table->string('image_three');
+            $table->string('image_one_secure_url');
+            $table->string('image_one_public_id');
+            $table->string('image_two_secure_url');
+            $table->string('image_two_public_id');
+            $table->string('image_three_secure_url');
+            $table->string('image_three_public_id');
 
             $table->timestamps();
         });

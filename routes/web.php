@@ -54,7 +54,7 @@ Route::get('pricelist/pre-wedding', [BookingController::class, 'prewedding'])
 Route::get('pricelist/engagement', [BookingController::class, 'engagement'])
     ->name('pricelist.engagement.index');
 
-Route::post('pricelist/post', [BookingController::class, 'orderfirststep']);
+Route::post('pricelist/post', [BookingController::class, 'orderfirststep'])->name('pricelist.select-package');
 
 Route::get('/custom', [OrderController::class, 'custom'])->name('custom_package');
 Route::post('/postcustom', [OrderController::class, 'postcustom'])->name('post-custom');

@@ -16,16 +16,16 @@
                         </div>
                         <div class="carousel-inner" style="border-radius: 20px">
                             <div class="carousel-item active">
-                                <img src="{{ asset('storage/assets/product/' . $image->image_one) }}"
+                                <img src="{{ $image->image_one_secure_url }}"
                                      class="d-block" alt="..." style="width: 719px; height:632px; object-fit:cover">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('storage/assets/product/' . $image->image_two) }}"
+                                <img src="{{ $image->image_two_secure_url }}"
                                      class="d-block w-100" alt="..."
                                      style="width: 719px; height:632px; object-fit:cover">
                             </div>
                             <div class="carousel-item">
-                                <img src="{{ asset('storage/assets/product/' . $image->image_three) }}"
+                                <img src="{{ $image->image_three_secure_url }}"
                                      class="d-block w-100" alt="..."
                                      style="width: 719px; height:632px; object-fit:cover">
                             </div>

@@ -8,6 +8,7 @@ use App\Models\Package;
 use App\Models\Photographer;
 use App\Models\Videographer;
 use App\Models\Workhour;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -44,18 +45,34 @@ class PackageController extends Controller
             'image_three' => 'required|image',
         ]);
 
-        $name_one = $request->file('image_one')->getClientOriginalName();
-        $name_two = $request->file('image_two')->getClientOriginalName();
-        $name_three = $request->file('image_three')->getClientOriginalName();
+        //GET REQUESTED FILE
+        $image_one = $request->file('image_one');
+        $image_two = $request->file('image_two');
+        $image_three = $request->file('image_three');
+        //PROCESS FILE NAME
+        $name_one = $this->processFileName($request)['name_one'];
+        $name_two = $this->processFileName($request)['name_two'];
+        $name_three = $this->processFileName($request)['name_three'];
+        $package_name = $this->processFileName($request)['package_name'];
 
-        $request->file('image_one')->storeAs('public/assets/product', $name_one);
-        $request->file('image_two')->storeAs('public/assets/product', $name_two);
-        $request->file('image_three')->storeAs('public/assets/product', $name_three);
+        //UPLOAD IMAGE TO CLOUDINARY
+        $cloudinaryImageOne = $image_one->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_one);
+        $imageOneSecureUrl = $cloudinaryImageOne->getSecurePath();
+        $imageOnePublicId = $cloudinaryImageOne->getPublicId();
+        $cloudinaryImageTwo = $image_two->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_two);
+        $imageTwoSecureUrl = $cloudinaryImageTwo->getSecurePath();
+        $imageTwoPublicId = $cloudinaryImageTwo->getPublicId();
+        $cloudinaryImageThree = $image_three->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_three);
+        $imageThreeSecureUrl = $cloudinaryImageThree->getSecurePath();
+        $imageThreePublicId = $cloudinaryImageThree->getPublicId();
 
         $image = Image::query()->create([
-            'image_one' => $name_one,
-            'image_two' => $name_two,
-            'image_three' => $name_three
+            'image_one_secure_url' => $imageOneSecureUrl,
+            'image_one_public_id' => $imageOnePublicId,
+            'image_two_secure_url' => $imageTwoSecureUrl,
+            'image_two_public_id' => $imageTwoPublicId,
+            'image_three_secure_url' => $imageThreeSecureUrl,
+            'image_three_public_id' => $imageThreePublicId,
         ]);
 
         Package::query()->create([
@@ -99,30 +116,66 @@ class PackageController extends Controller
         $image = Image::query()->findOrFail($package->image_id);
 
         if ($request->hasFile('image_one')) {
-            $name_one = $request->file('image_one')->getClientOriginalName();
-            $request->file('image_one')->storeAs('public/assets/product', $name_one);
+            //GET FILE
+            $image_one = $request->file('image_one');
+            //PROCESS FILE NAME
+            $name_one = $this->processFileName($request)['name_one'];
+            $package_name = $this->processFileName($request)['package_name'];
+            //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
+            Cloudinary::destroy($image->image_one_public_id);
+            //UPLOAD TO CLOUDINARY
+            $cloudinaryImageOne = $image_one->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_one);
+            $imageOneSecureUrl = $cloudinaryImageOne->getSecurePath();
+            $imageOnePublicId = $cloudinaryImageOne->getPublicId();
+
         } else {
-            $name_one = $image->image_one;
+            $imageOneSecureUrl = $image->image_one_secure_url;
+            $imageOnePublicId = $image->image_one_public_id;
         }
 
         if ($request->hasFile('image_two')) {
-            $name_two = $request->file('image_two')->getClientOriginalName();
-            $request->file('image_two')->storeAs('public/assets/product', $name_two);
+            //GET FILE
+            $image_two = $request->file('image_two');
+            //PROCESS FILE NAME
+            $name_two = $this->processFileName($request)['name_two'];
+            $package_name = $this->processFileName($request)['package_name'];
+            //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
+            Cloudinary::destroy($image->image_two_public_id);
+            //UPLOAD TO CLOUDINARY
+            $cloudinaryImageTwo = $image_two->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_two);
+            $imageTwoSecureUrl = $cloudinaryImageTwo->getSecurePath();
+            $imageTwoPublicId = $cloudinaryImageTwo->getPublicId();
+
         } else {
-            $name_two = $image->image_two;
+            $imageTwoSecureUrl = $image->image_two_secure_url;
+            $imageTwoPublicId = $image->image_two_public_id;
         }
 
         if ($request->hasFile('image_three')) {
-            $name_three = $request->file('image_three')->getClientOriginalName();
-            $request->file('image_three')->storeAs('public/assets/product', $name_three);
+            //GET FILE
+            $image_three = $request->file('image_three');
+            //PROCESS FILE NAME
+            $name_three = $this->processFileName($request)['name_three'];
+            $package_name = $this->processFileName($request)['package_name'];
+            //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
+            Cloudinary::destroy($image->image_three_public_id);
+            //UPLOAD TO CLOUDINARY
+            $cloudinaryImageThree = $image_three->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_three);
+            $imageThreeSecureUrl = $cloudinaryImageThree->getSecurePath();
+            $imageThreePublicId = $cloudinaryImageThree->getPublicId();
+
         } else {
-            $name_three = $image->image_three;
+            $imageThreeSecureUrl = $image->image_three_secure_url;
+            $imageThreePublicId = $image->image_three_public_id;
         }
 
-        Image::query()->findOrFail($package->image_id)->update([
-            'image_one' => $name_one,
-            'image_two' => $name_two,
-            'image_three' => $name_three
+        $image->update([
+            'image_one_secure_url' => $imageOneSecureUrl,
+            'image_one_public_id' => $imageOnePublicId,
+            'image_two_secure_url' => $imageTwoSecureUrl,
+            'image_two_public_id' => $imageTwoPublicId,
+            'image_three_secure_url' => $imageThreeSecureUrl,
+            'image_three_public_id' => $imageThreePublicId,
         ]);
 
         $package->update([
@@ -143,12 +196,34 @@ class PackageController extends Controller
     public function destroy(Package $package)
     {
         $image = Image::query()->findOrFail($package->image_id);
-        File::delete('storage/assets/product/' . $image->image_one);
-        File::delete('storage/assets/product/' . $image->image_two);
-        File::delete('storage/assets/product/' . $image->image_three);
+        //DELETE IMAGE USING ITS PUBLIC ID FROM CLOUDINARY
+        Cloudinary::destroy($image->image_one_public_id);
+        Cloudinary::destroy($image->image_two_public_id);
+        Cloudinary::destroy($image->image_three_public_id);
         $image->delete();
         $package->delete();
 
         return redirect()->route('admin.package.index')->with('danger', 'Package Deleted!');
+    }
+
+    public function processFileName(Request $request): array
+    {
+        //SET FILENAME
+        $package_name = $request->name;
+        $lowerCaseString = strtolower($package_name);
+        $titleCaseString = ucwords($lowerCaseString);
+        $stripFromSpace = str_replace(' ', '', $titleCaseString);
+        $camelCaseString = lcfirst($stripFromSpace);
+
+        $name_one = $camelCaseString . '1_' . bin2hex(random_bytes(3));
+        $name_two = $camelCaseString . '2_' . bin2hex(random_bytes(3));
+        $name_three = $camelCaseString . '3_' . bin2hex(random_bytes(3));
+
+        return [
+            'name_one' => $name_one,
+            'name_two' => $name_two,
+            'name_three' => $name_three,
+            'package_name' => $package_name
+        ];
     }
 }
