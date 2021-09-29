@@ -34,6 +34,11 @@
         color: white;
     }
 
+    a.footer-link:hover {
+        font-size: 14px;
+        color: white;
+    }
+
     .fa-stack {
         font-size: 12px;
     }

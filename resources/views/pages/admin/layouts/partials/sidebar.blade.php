@@ -66,9 +66,9 @@
     </div>
 
     <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
+    {{-- <div class="sidebar-card d-none d-lg-flex">
         <p class="text-center mb-2"><strong>din mau roko :(</strong> </p>
         <a class="btn btn-success btn-sm" href="#">very sad button</a>
-    </div>
+    </div> --}}
 
 </div>

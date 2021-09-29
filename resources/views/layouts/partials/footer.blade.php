@@ -12,7 +12,7 @@
                     <a href="{{ route('pricelist.pre-wedding.index') }}" class="fs-7 footer-link fw-light mb-1">
                         Pre-Wedding
                     </a>
-                    <a href="#" class="fs-7 footer-link fw-light mb-1">
+                    <a href="{{ route('pricelist.engagement.index') }}" class="fs-7 footer-link fw-light mb-1">
                         Engagement
                     </a>
                 </div>
@@ -39,27 +39,38 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span class="fa-stack" style="vertical-align: top;">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-instagram fa-stack-1x" style="color: #8F9C69"></i>
-                        </span>
-                        <span class="fa-stack" style="vertical-align: top;">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-twitter fa-stack-1x" style="color: #8F9C69"></i>
-                        </span>
-                        <span class="fa-stack" style="vertical-align: top;">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-youtube fa-stack-1x" style="color: #8F9C69"></i>
-                        </span>
+                        <a href="{{ URL::to('https://www.instagram.com/kalografi/') }}" class="fs-7 fw-light mb-1">
+                            <span class="fa-stack" style="vertical-align: top; color: white;">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-instagram fa-stack-1x" style="color: #8F9C69"></i>
+                            </span>
+                        </a>
+                        <a href="#" class="fs-7 fw-light mb-1">
+                            <span class="fa-stack" style="vertical-align: top; color: white;">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x" style="color: #8F9C69"></i>
+                            </span>
+                        </a>
+                        <a href="{{ URL::to('https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}"
+                            class="fs-7 fw-light mb-1">
+                            <span class="fa-stack" style="vertical-align: top; color: white;">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-youtube fa-stack-1x" style="color: #8F9C69"></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 ms-auto text-end">
                 <div class="row justify-content-end">
-                    <img src="{{ asset('placeholders/kalografi.png') }}" class="w-50 mb-1" alt="kalografi-footer">
+                    <a href="{{ route('landing') }}">
+                        <img src="{{ asset('placeholders/kalografi.png') }}" class="w-50 mb-1"
+                            alt="kalografi-footer">
+                    </a>
                 </div>
                 <div class="row">
-                    <p class="small">Copyright 2021 {{ ucfirst(config('app.name')) }}. All Rights Reserved.</p>
+                    <p class="small">Copyright 2021 {{ ucfirst(config('app.name')) }}. All Rights Reserved.
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-md-2 offset-md-10">
