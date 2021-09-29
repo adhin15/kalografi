@@ -27,7 +27,7 @@
 
     <!-- Nav Item - Packages -->
     <div class="nav-item">
-        <a class="nav-link" href="{{ route('admin.paket.index') }}">
+        <a class="nav-link" href="{{ route('admin.package.index') }}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Packages</span></a>
     </div>
@@ -44,7 +44,7 @@
                 {{--<h6 class="collapse-header">Login Screens:</h6>--}}
                 <a class="collapse-item" href="{{ route('admin.photobook.index') }}">Photobook</a>
                 <a class="collapse-item" href="{{ route('admin.printedphoto.index') }}">Printed Photo</a>
-                <a class="collapse-item" href="{{ route('admin.additionals.index') }}">Additional Services</a>
+                <a class="collapse-item" href="{{ route('admin.additional.index') }}">Additional Services</a>
                 <div class="collapse-divider"></div>
             </div>
         </div>

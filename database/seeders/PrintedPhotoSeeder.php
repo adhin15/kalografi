@@ -18,7 +18,7 @@ class PrintedPhotoSeeder extends Seeder
         $today = Carbon::today();
         DB::table('printedphotos')->insert([
             [
-                'printedphoto' => 'Printed Photo 16R On Canvas + Frame',
+                'name' => 'Printed Photo 16R On Canvas + Frame',
                 'price' => 300000,
                 'created_at' => date($today),
                 'updated_at' => date($today),

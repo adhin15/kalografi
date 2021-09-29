@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\photobook;
+use App\Models\Photobook;
 use Illuminate\Http\Request;
 
 class PhotobookController extends Controller
 {
     public function index()
     {
-        $photobooks = photobook::query()->orderBy('created_at', 'DESC')->get();
+        $photobooks = Photobook::query()->orderBy('created_at', 'DESC')->get();
         return view('pages.admin.features.photo_book.index', compact('photobooks'));
     }
 
@@ -22,26 +22,26 @@ class PhotobookController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'photobook' => 'required',
+            'name' => 'required',
             'price' => 'required|numeric'
         ]);
 
-        $photobook = new photobook();
+        $photobook = new Photobook();
         $photobook->fill($validateData);
         $photobook->save();
 
         return redirect()->route('admin.photobook.index')->with('message', 'Photobook Added!');
     }
 
-    public function edit(photobook $photobook)
+    public function edit(Photobook $photobook)
     {
         return view('pages.admin.features.photo_book.edit', compact('photobook'));
     }
 
-    public function update(Request $request, photobook $photobook)
+    public function update(Request $request, Photobook $photobook)
     {
         $validateData = $request->validate([
-            'photobook' => 'required',
+            'name' => 'required',
             'price' => 'required|numeric'
         ]);
 
@@ -51,7 +51,7 @@ class PhotobookController extends Controller
         return redirect()->route('admin.photobook.index')->with('message', 'Photobook Updated!');
     }
 
-    public function destroy(photobook $photobook)
+    public function destroy(Photobook $photobook)
     {
         $photobook->delete();
         return redirect()->route('admin.photobook.index')->with('danger', 'Photobook Deleted!');

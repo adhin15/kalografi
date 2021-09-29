@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
-use App\Models\galeri;
-use App\Models\photobook;
-use App\Models\printedphoto;
-use App\Models\Paket;
+use App\Models\Image;
+use App\Models\Photobook;
+use App\Models\Printedphoto;
+use App\Models\Package;
 use Illuminate\Support\Facades\DB;
 
 class WeddingController extends Controller
@@ -16,7 +16,7 @@ class WeddingController extends Controller
     {
 
         $booking = $request->session()->get('booking');
-        $package = Paket::all();
+        $package = Package::all();
         return view('pages.pricelist.wedding.index', compact('package', 'booking'));
     }
 }

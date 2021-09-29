@@ -74,17 +74,17 @@
                             <div class="row ps-4" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">
                                 <p class="text-secondary px-0 mb-2 semi-bold">Wedding Style</p>
                                 <div class="form-check form-check-inline mb-3 px-0">
-                                    <input type="radio" class="btn-check" name="weddingstyle" id="international"
+                                    <input type="radio" class="btn-check" name="wedding_style" id="international"
                                         checked onchange="changeweddingstylevalue()" value="International">
                                     <label class="btn btn-check-kalografi mb-1" for="international"
                                         style="width: 9rem;">International</label>
 
-                                    <input type="radio" class="btn-check" name="weddingstyle" id="traditional"
+                                    <input type="radio" class="btn-check" name="wedding_style" id="traditional"
                                         onchange="changeweddingstylevalue()" value="Traditional">
                                     <label class="btn btn-check-kalografi mb-1" for="traditional"
                                         style="width: 9rem;">Traditional</label>
 
-                                    <input type="radio" class="btn-check" name="weddingstyle" id="islamic"
+                                    <input type="radio" class="btn-check" name="wedding_style" id="islamic"
                                         onchange="changeweddingstylevalue()" value="Islamic">
                                     <label class="btn btn-check-kalografi mb-1" for="islamic"
                                         style="width: 9rem;">Islamic</label>
@@ -97,8 +97,8 @@
                             <div class="col ps-4">
 
                                 <div class="form-group mb-3">
-                                    <label for="name" class="mb-1 text-secondary small">Full Name</label>
-                                    <input type="text" class="form-control" name="fullname" id="fullname" required>
+                                    <label for="full_name" class="mb-1 text-secondary small">Full Name</label>
+                                    <input type="text" class="form-control" name="full_name" id="full_name" required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="email" class="mb-1 text-secondary small">Email</label>
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="phone_number" class="mb-1 text-secondary small">Phone Number</label>
-                                    <input type="text" class="form-control" name="phonenumber" id="phone_number" required>
+                                    <input type="text" class="form-control" name="phone_number" id="phone_number" required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="customer_address" class="mb-1 text-secondary small">Address</label>
@@ -127,7 +127,7 @@
 
 
     <script>
-        var textinput = document.getElementById('fullname');
+        var textinput = document.getElementById('full_name');
         textinput.onkeyup = textinput.onkeypress = function() {
             document.getElementById('previewnama').innerHTML = this.value;
         }
@@ -155,7 +155,7 @@
         var selectedtone = Array.from(radiostone).find(radio => radio.checked);
         document.getElementById('previewtone').innerHTML = selectedtone.value;
 
-        var radiosweddingstyle = document.getElementsByName("weddingstyle");
+        var radiosweddingstyle = document.getElementsByName("wedding_style");
         var selectedweddingstyle = Array.from(radiosweddingstyle).find(radio => radio.checked);
         document.getElementById('previewweddingstyle').innerHTML = selectedweddingstyle.value;
 

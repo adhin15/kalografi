@@ -23,7 +23,7 @@
                         <h3 class="fs-1 fw-bold text-secondary">Your Post-Production Progress</h3>
                     </div>
 
-                    @if ($booking->paymentStatus === 'CREATED' || $booking->paymentStatus === 'FULL_PAYMENT_PENDING' || $booking->paymentStatus === 'DOWN_PAYMENT_PAID' || $booking->paymentStatus === 'DOWN_PAYMENT_PENDING' || $booking->paymentStatus === 'INSTALLMENT_PENDING')
+                    @if ($booking->payment_status === 'CREATED' || $booking->payment_status === 'FULL_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'DOWN_PAYMENT_PENDING' || $booking->payment_status === 'INSTALLMENT_PENDING')
                         <div class="alert alert-danger" style="max-width: 28rem;">
                             <strong>Please complete your payment to see your order's progress</strong>
                         </div>

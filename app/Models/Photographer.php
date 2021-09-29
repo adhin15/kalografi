@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class photographers extends Model
+class Photographer extends Model
 {
     use HasFactory;
     protected $table = 'photographers';
 
-    public function paket()
+    public function package()
     {
-        return $this->hasMany(Paket::class, 'photographer_id');
+        return $this->hasMany(Package::class);
     }
 
     public function custom()
     {
-        return $this->hasMany(custom::class, 'photographer_id');
+        return $this->hasMany(Custom::class, 'photographer_id');
     }
 }

@@ -18,14 +18,14 @@ class DiscountSeeder extends Seeder
         $today = Carbon::today();
         DB::table('discounts')->insert([
             [
-                'nama' => 'diskon',
-                'jumlah' => 25,
+                'name' => 'diskon',
+                'amount' => 25,
                 'created_at' => date($today),
                 'updated_at' => date($today)
             ],
             [
-                'nama' => 'Grand Opening',
-                'jumlah' => 20,
+                'name' => 'Grand Opening',
+                'amount' => 20,
                 'created_at' => date($today),
                 'updated_at' => date($today)
             ],

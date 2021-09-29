@@ -16,8 +16,8 @@ class CreateDiscountsTable extends Migration
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nama')->nullable();
-            $table->integer('jumlah')->nullable();
+            $table->string('name')->nullable();
+            $table->integer('amount')->nullable();
 
             $table->timestamps();
         });

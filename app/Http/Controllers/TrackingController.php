@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\additionals;
+use App\Models\Additional;
 use App\Models\Booking;
-use App\Models\status;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
-class trackingcontroller extends Controller
+class TrackingController extends Controller
 {
 
     public function index()
@@ -23,12 +23,12 @@ class trackingcontroller extends Controller
 
         $additionals = null;
         if ($booking->additionals !== null) {
-            $additionals = additionals::query()
+            $additionals = Additional::query()
                 ->whereIn('id', json_decode($booking->additionals))
                 ->get();
         }
 
-        $status = status::query()
+        $status = Status::query()
             ->where('booking_id', $booking->id)
             ->first();
 

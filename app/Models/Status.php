@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class printedphoto extends Model
+class Status extends Model
 {
     use HasFactory;
-    protected $table = 'printedphotos';
     protected $guarded = [];
+    protected $table = 'status';
 
     public function booking()
     {
-        return $this->hasMany(Booking::class, 'printedphoto_id');
+        return $this->hasMany(Booking::class, 'booking_id');
     }
 }

@@ -56,7 +56,7 @@
                                 @foreach($printedphotos as $printedphoto)
                                     <tr>
                                         <th scope="row">{{ $loop->index + 1 }}</th>
-                                        <td>{{ $printedphoto->printedphoto }}</td>
+                                        <td>{{ $printedphoto->name }}</td>
                                         <td>{{ 'Rp. ' . number_format($printedphoto->price) }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('admin.printedphoto.edit', $printedphoto->id) }}" class="btn btn-sm btn-secondary btn-icon-split">

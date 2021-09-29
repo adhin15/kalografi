@@ -16,14 +16,14 @@ class PackageSeeder extends Seeder
     public function run()
     {
         $today = Carbon::today();
-        DB::table('pakets')->insert([
+        DB::table('packages')->insert([
             [
-                'idgaleri' => 1,
+                'image_id' => 1,
                 'photographer_id' => 2,
                 'videographer_id' => 1,
                 'workhour_id' => 2,
-                'namapaket' => 'Mahesa',
-                'kategori' => 'Wedding Package',
+                'name' => 'Mahesa',
+                'category' => 'Wedding Package',
                 'day' => 'Half Day',
                 'flashdisk' => 1,
                 'edited' => '300',
@@ -32,12 +32,12 @@ class PackageSeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'idgaleri' => 2,
+                'image_id' => 2,
                 'photographer_id' => 2,
                 'videographer_id' => 1,
                 'workhour_id' => 7,
-                'namapaket' => 'Manendra',
-                'kategori' => 'Wedding Package',
+                'name' => 'Manendra',
+                'category' => 'Wedding Package',
                 'day' => 'Full Day',
                 'flashdisk' => 1,
                 'edited' => '500',
@@ -46,12 +46,12 @@ class PackageSeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'idgaleri' => 3,
+                'image_id' => 3,
                 'photographer_id' => 2,
                 'videographer_id' => 2,
                 'workhour_id' => 7,
-                'namapaket' => 'Mahawira',
-                'kategori' => 'Wedding Package',
+                'name' => 'Mahawira',
+                'category' => 'Wedding Package',
                 'day' => 'Full Day',
                 'flashdisk' => 1,
                 'edited' => 'all',
@@ -60,12 +60,12 @@ class PackageSeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'idgaleri' => 4,
+                'image_id' => 4,
                 'photographer_id' => 1,
                 'videographer_id' => 1,
                 'workhour_id' => 2,
-                'namapaket' => 'Renjana',
-                'kategori' => 'Pre-Wedding Package',
+                'name' => 'Renjana',
+                'category' => 'Pre-Wedding Package',
                 'day' => '-',
                 'flashdisk' => 1,
                 'edited' => '300',
@@ -74,12 +74,12 @@ class PackageSeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'idgaleri' => 5,
+                'image_id' => 5,
                 'photographer_id' => 2,
                 'videographer_id' => 1,
                 'workhour_id' => 2,
-                'namapaket' => 'Sekala',
-                'kategori' => 'Pre-Wedding Package',
+                'name' => 'Sekala',
+                'category' => 'Pre-Wedding Package',
                 'day' => '-',
                 'flashdisk' => 1,
                 'edited' => '125',
@@ -88,12 +88,12 @@ class PackageSeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'idgaleri' => 6,
+                'image_id' => 6,
                 'photographer_id' => 2,
                 'videographer_id' => 1,
                 'workhour_id' => 2,
-                'namapaket' => 'Asmaraloka',
-                'kategori' => 'Pre-Wedding Package',
+                'name' => 'Asmaraloka',
+                'category' => 'Pre-Wedding Package',
                 'day' => '-',
                 'flashdisk' => 1,
                 'edited' => '200',
@@ -102,12 +102,12 @@ class PackageSeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'idgaleri' => 7,
+                'image_id' => 7,
                 'photographer_id' => 1,
                 'videographer_id' => null,
                 'workhour_id' => 2,
-                'namapaket' => 'Amerta',
-                'kategori' => 'Engagement Package',
+                'name' => 'Amerta',
+                'category' => 'Engagement Package',
                 'day' => '-',
                 'flashdisk' => 0,
                 'edited' => '50',
@@ -116,12 +116,12 @@ class PackageSeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'idgaleri' => 8,
+                'image_id' => 8,
                 'photographer_id' => 1,
                 'videographer_id' => 1,
                 'workhour_id' => 3,
-                'namapaket' => 'Arunika',
-                'kategori' => 'Engagement Package',
+                'name' => 'Arunika',
+                'category' => 'Engagement Package',
                 'day' => '-',
                 'flashdisk' => 0,
                 'edited' => '100',

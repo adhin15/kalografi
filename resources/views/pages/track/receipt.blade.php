@@ -3,12 +3,12 @@
         <div class="card-body">
             <div class="row text-center">
                 <h3 class="fs-3 fw-bold text-kalografi mb-3">
-                    @if ($booking->paket_id === null)
+                    @if ($booking->package_id === null)
                         Custom Package
                     @else
-                        {{ $booking->pakets->namapaket }}
+                        {{ $booking->package->name }}
                         <br>
-                        {{ $booking->pakets->kategori }}
+                        {{ $booking->package->category }}
                     @endif
                 </h3>
             </div>
@@ -19,7 +19,7 @@
 
             <div class="row text-center">
                 <p class="text-secondary">
-                    Booking Date <strong>{{ date_format(date_create($booking->bookdate), 'd F Y') }}</strong>
+                    Booking Date <strong>{{ date_format(date_create($booking->book_date), 'd F Y') }}</strong>
                 </p>
             </div>
 
@@ -33,7 +33,7 @@
                         <p class="text-secondary mb-2">Name</p>
                     </div>
                     <div class="col-md-6 pe-0">
-                        <p class="text-secondary mb-2" id="previewnama">{{ $booking->fullname }}</p>
+                        <p class="text-secondary mb-2" id="previewnama">{{ $booking->full_name }}</p>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                         <p class="text-secondary mb-2">Phone Number</p>
                     </div>
                     <div class="col-md-6 pe-0">
-                        <p class="text-secondary mb-2" id="previewnomor">{{ $booking->phonenumber }}</p>
+                        <p class="text-secondary mb-2" id="previewnomor">{{ $booking->phone_number }}</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 <div class="col-md-4">
                     <button id="previewweddingstyle" disabled class="btn btn-sm semi-bold fs-7 btn-outline-kalografi"
                             style="width: 100%">
-                        {{ $booking->weddingstyle }}
+                        {{ $booking->wedding_style }}
                     </button>
                 </div>
             </div>
@@ -89,21 +89,21 @@
 
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0">
-                        @if ($booking->paket_id === null)
+                        @if ($booking->package_id === null)
                             Custom Package
                         @else
-                            {{ $booking->pakets->namapaket }}
+                            {{ $booking->package->name }}
 
-                            {{ $booking->pakets->kategori }}
+                            {{ $booking->package->category }}
                         @endif
                     </p>
                 </div>
                 <div class="col-md-4">
                     <p id="pricepackage" class="semi-bold text-secondary mb-0 text-end">
-                        @if ($booking->paket_id == 0)
+                        @if ($booking->package_id == 0)
                             Rp. {{ number_format($booking->custom->price) }}
                         @else
-                            Rp. {{ number_format($booking->pakets->price) }}
+                            Rp. {{ number_format($booking->package->price) }}
                         @endif
                     </p>
                 </div>
@@ -112,19 +112,19 @@
             <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
                 <div class="col-md-2">
                     <input type="text" class="form-control form-control-sm text-center" name="print_quantity"
-                           id="print_quantity" value="{{ $booking->ppqty }}" aria-label="print_quantity"
+                           id="print_quantity" value="{{ $booking->printedphoto_qty }}" aria-label="print_quantity"
                            style="width: 40px;" disabled>
                 </div>
 
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0">
-                        {{ $booking->printedphotos->printedphoto }}
+                        {{ $booking->printedphoto->name }}
                     </p>
                 </div>
 
                 <div class="col-md-4">
                     <p id="priceprintedphoto" class="semi-bold text-secondary mb-0 text-end">
-                        Rp. {{ number_format($booking->printedphotos->price * $booking->ppqty) }}
+                        Rp. {{ number_format($booking->printedphoto->price * $booking->printedphoto_qty) }}
                     </p>
                 </div>
             </div>
@@ -132,19 +132,19 @@
             <div class="row mb-4 justify-content-between align-items-center" style="font-size: 14px">
                 <div class="col-md-2">
                     <input type="text" class="form-control form-control-sm text-center" name="photobook_quantity"
-                           id="photobook_quantity" value="{{ $booking->pbqty }}" aria-label="photobook_quantity"
+                           id="photobook_quantity" value="{{ $booking->photobook_qty }}" aria-label="photobook_quantity"
                            style="width: 40px;" disabled>
                 </div>
 
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0">
-                        {{ $booking->photobooks->photobook }}
+                        {{ $booking->photobook->name }}
                     </p>
                 </div>
 
                 <div class="col-md-4">
                     <p id="pricephotobook" class="semi-bold text-secondary mb-0 text-end">
-                        Rp. {{ number_format($booking->photobooks->price * $booking->pbqty) }}
+                        Rp. {{ number_format($booking->photobook->price * $booking->photobook_qty) }}
                     </p>
                 </div>
             </div>
@@ -183,12 +183,12 @@
             <div class="row mb-2 justify-content-between align-items-center" style="font-size: 14px;">
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0 ps-3" id="discountText">
-                        {{ 'Discount ' . $booking->discount->jumlah . ' %' }}
+                        {{ 'Discount ' . $booking->discount->amount . ' %' }}
                     </p>
                 </div>
                 <div class="col-md-4">
                     <p class="semi-bold text-secondary mb-0 text-end" id="discountPrice">
-                        {{ '-Rp. ' . number_format(($booking->totalprice * (100 / (100 - $booking->discount->jumlah)) * $booking->discount->jumlah) / 100) }}
+                        {{ '-Rp. ' . number_format(($booking->total_price * (100 / (100 - $booking->discount->amount)) * $booking->discount->amount) / 100) }}
                     </p>
                 </div>
             </div>
@@ -196,7 +196,7 @@
             <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
 
             @if($booking->payment_termination == 2)
-                @if($booking->paymentStatus === 'CREATED' || $booking->paymentStatus === 'DOWN_PAYMENT_PENDING' || $booking->paymentStatus === 'DOWN_PAYMENT_PAID' || $booking->paymentStatus === 'INSTALLMENT_PENDING')
+                @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
 
                     <div class="row mt-4">
                         <div class="col-md-6"></div>
@@ -208,15 +208,15 @@
 
                             <div class="row">
                                 <p id="total" class="semi-bold fs-5 text-secondary mb-0 text-end">
-                                    Rp. {{ number_format($booking->totalprice) }}
+                                    Rp. {{ number_format($booking->total_price) }}
                                 </p>
                             </div>
 
                             <div class="row" style="font-size: 14px;">
                                 <p class="small text-secondary mb-0 text-end">
-                                    @if($booking->paymentStatus === 'CREATED' || $booking->paymentStatus === 'DOWN_PAYMENT_PENDING')
+                                    @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING')
                                         2x Payment Left
-                                    @elseif($booking->paymentStatus === 'DOWN_PAYMENT_PAID' || $booking->paymentStatus === 'INSTALLMENT_PENDING')
+                                    @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
                                         1x Payment Left
                                     @endif
                                 </p>
@@ -234,17 +234,17 @@
 
                 <div class="col-md-6">
                     @if($booking->payment_termination == 2)
-                        @if($booking->paymentStatus === 'CREATED' || $booking->paymentStatus === 'DOWN_PAYMENT_PENDING')
+                        @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING')
                             <div class="row">
                                 <p class="semi-bold text-secondary text-end mb-0">Down Payment</p>
                             </div>
 
                             <div class="row">
                                 <p id="total" class="semi-bold fs-5 text-secondary mb-0 text-end">
-                                    Rp. {{ number_format($booking->downPayment) }}
+                                    Rp. {{ number_format($booking->down_payment) }}
                                 </p>
                             </div>
-                        @elseif($booking->paymentStatus === 'DOWN_PAYMENT_PAID'|| $booking->paymentStatus === 'INSTALLMENT_PENDING')
+                        @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID'|| $booking->payment_status === 'INSTALLMENT_PENDING')
                             <div class="row">
                                 <p class="semi-bold text-secondary text-end mb-0">Installment</p>
                             </div>
@@ -261,7 +261,7 @@
 
                             <div class="row">
                                 <p id="total" class="semi-bold fs-5 text-secondary mb-0 text-end">
-                                    Rp. {{ number_format($booking->totalprice) }}
+                                    Rp. {{ number_format($booking->total_price) }}
                                 </p>
                             </div>
                         @endif
@@ -272,14 +272,14 @@
 
                         <div class="row">
                             <p id="total" class="semi-bold fs-5 text-secondary mb-0 text-end">
-                                Rp. {{ number_format($booking->totalprice) }}
+                                Rp. {{ number_format($booking->total_price) }}
                             </p>
                         </div>
                     @endif
                 </div>
             </div>
 
-            @if($booking->paymentStatus === 'CREATED')
+            @if($booking->payment_status === 'CREATED')
                 <div class="row">
                     <button type="submit" class="btn btn-lg btn-kalografi semi-bold btn-block" id="pay-button">
                         @if($booking->payment_termination === 1)
@@ -289,19 +289,19 @@
                         @endif
                     </button>
                 </div>
-            @elseif($booking->paymentStatus === 'FULL_PAYMENT_PENDING')
+            @elseif($booking->payment_status === 'FULL_PAYMENT_PENDING')
                 <div class="row">
                     <button type="submit" class="btn btn-lg btn-kalografi semi-bold btn-block" id="pay-button">
                         Pay Now
                     </button>
                 </div>
-            @elseif($booking->paymentStatus === 'DOWN_PAYMENT_PENDING')
+            @elseif($booking->payment_status === 'DOWN_PAYMENT_PENDING')
                 <div class="row">
                     <button type="submit" class="btn btn-lg btn-kalografi semi-bold btn-block" id="pay-button">
                         Pay Down Payment
                     </button>
                 </div>
-            @elseif($booking->paymentStatus === 'DOWN_PAYMENT_PAID' || $booking->paymentStatus === 'INSTALLMENT_PENDING')
+            @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
                 <div class="row">
                     <button type="submit" class="btn btn-lg btn-kalografi semi-bold btn-block" id="pay-button">
                         Pay Installment
@@ -317,6 +317,6 @@
 <script type="text/javascript">
     document.getElementById('pay-button').onclick = function () {
         // SnapToken acquired from previous step
-        snap.pay('{{ $booking->paymentToken }}');
+        snap.pay('{{ $booking->payment_token }}');
     }
 </script>

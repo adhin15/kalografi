@@ -1,7 +1,7 @@
 @extends('pages.admin.layouts.master')
 @section('content')
     <div class="container-fluid py-3">
-        <form action="{{ route('admin.paket.update', $paket->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.package.update', $package->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -31,12 +31,12 @@
                                 <div class="col-md-6">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="namapaket">Package Name</label>
+                                            <label for="name">Package Name</label>
                                             <input type="text"
-                                                   class="form-control text-secondary @error('namapaket') is-invalid @enderror"
-                                                   name="namapaket" id="namapaket" value="{{ $paket->namapaket }}">
+                                                   class="form-control text-secondary @error('name') is-invalid @enderror"
+                                                   name="name" id="name" value="{{ $package->name }}">
 
-                                            @error('namapaket')
+                                            @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -46,19 +46,19 @@
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="kategori">Category</label>
-                                            <select name="kategori" id="kategori"
+                                            <label for="category">Category</label>
+                                            <select name="category" id="category"
                                                     class="form-control text-secondary small">
                                                 <option value="Wedding Package"
-                                                    {{ 'Wedding Package' === $paket->kategori ? 'selected' : '' }}>
+                                                    {{ 'Wedding Package' === $package->category ? 'selected' : '' }}>
                                                     Wedding Package
                                                 </option>
                                                 <option value="Pre-Wedding Package"
-                                                    {{ 'Pre-Wedding Package' === $paket->kategori ? 'selected' : '' }}>
+                                                    {{ 'Pre-Wedding Package' === $package->category ? 'selected' : '' }}>
                                                     Pre-Wedding Package
                                                 </option>
                                                 <option value="Engagement Package"
-                                                    {{ 'Engagement Package' === $paket->kategori ? 'selected' : '' }}>
+                                                    {{ 'Engagement Package' === $package->category ? 'selected' : '' }}>
                                                     Engagement Package
                                                 </option>
                                             </select>
@@ -73,13 +73,13 @@
                                                 <option value="">-</option>
                                                 @foreach ($workHours as $item)
                                                     <option value="{{ $item->id }}"
-                                                        {{ $item->id === $paket->workhour->id ? 'selected' : '' }}>
+                                                        {{ $item->id === $package->workhour->id ? 'selected' : '' }}>
                                                         {{ $item->amount . ' Hours' }}
                                                     </option>
                                                 @endforeach
                                             </select>
 
-                                            @error('workhours')
+                                            @error('workhour')
                                             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -92,14 +92,14 @@
                                             <label for="day">Day</label>
                                             <select name="day" id="day" class="form-control text-secondary small">
                                                 <option value="Full Day"
-                                                    {{ 'Full Day' === $paket->day ? 'selected' : '' }}>
+                                                    {{ 'Full Day' === $package->day ? 'selected' : '' }}>
                                                     Full Day
                                                 </option>
                                                 <option value="Half Day"
-                                                    {{ 'Half Day' === $paket->day ? 'selected' : '' }}>
+                                                    {{ 'Half Day' === $package->day ? 'selected' : '' }}>
                                                     Half Day
                                                 </option>
-                                                <option value="-" {{ '-' === $paket->day ? 'selected' : '' }}>
+                                                <option value="-" {{ '-' === $package->day ? 'selected' : '' }}>
                                                     -
                                                 </option>
                                             </select>
@@ -115,7 +115,7 @@
                                                     class="form-control text-secondary small">
                                                 @foreach ($photoGraphers as $item)
                                                     <option value="{{ $item->id }}"
-                                                        {{ $item->id === $paket->photographer->id ? 'selected' : '' }}>
+                                                        {{ $item->id === $package->photographer->id ? 'selected' : '' }}>
                                                         {{ $item->amount . ' Photographers' }}
                                                     </option>
                                                 @endforeach
@@ -130,7 +130,7 @@
                                                     class="form-control text-secondary small">
                                                 @foreach ($videoGraphers as $item)
                                                     <option value="{{ $item->id }}"
-                                                        {{ $item->id === $paket->videographer->id ? 'selected' : '' }}>
+                                                        {{ $item->id === $package->videographer->id ? 'selected' : '' }}>
                                                         {{ $item->amount . ' Videographers' }}
                                                     </option>
                                                 @endforeach
@@ -143,10 +143,10 @@
                                             <label for="flashdisk">Flashdisk</label>
                                             <select name="flashdisk" id="flashdisk"
                                                     class="form-control text-secondary small">
-                                                <option value="0" {{ 0 === $paket->flashdisk ? 'selected' : '' }}>
+                                                <option value="0" {{ 0 === $package->flashdisk ? 'selected' : '' }}>
                                                     No Flashdisk
                                                 </option>
-                                                <option value="1" {{ 1 === $paket->flashdisk ? 'selected' : '' }}>
+                                                <option value="1" {{ 1 === $package->flashdisk ? 'selected' : '' }}>
                                                     1 Flashdisk
                                                 </option>
                                             </select>
@@ -157,31 +157,31 @@
                                         <div class="col-md-11">
                                             <label for="edited">Edited Photos</label>
                                             <select name="edited" id="edited" class="form-control text-secondary small">
-                                                <option value="50" {{ '50' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="50" {{ '50' === $package->edited ? 'selected' : '' }}>
                                                     50 Edited Photos
                                                 </option>
-                                                <option value="100" {{ '100' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="100" {{ '100' === $package->edited ? 'selected' : '' }}>
                                                     100 Edited Photos
                                                 </option>
-                                                <option value="125" {{ '125' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="125" {{ '125' === $package->edited ? 'selected' : '' }}>
                                                     125 Edited Photos
                                                 </option>
-                                                <option value="150" {{ '150' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="150" {{ '150' === $package->edited ? 'selected' : '' }}>
                                                     150 Edited Photos
                                                 </option>
-                                                <option value="200" {{ '200' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="200" {{ '200' === $package->edited ? 'selected' : '' }}>
                                                     200 Edited Photos
                                                 </option>
-                                                <option value="250" {{ '250' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="250" {{ '250' === $package->edited ? 'selected' : '' }}>
                                                     250 Edited Photos
                                                 </option>
-                                                <option value="300" {{ '300' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="300" {{ '300' === $package->edited ? 'selected' : '' }}>
                                                     300 Edited Photos
                                                 </option>
-                                                <option value="500" {{ '500' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="500" {{ '500' === $package->edited ? 'selected' : '' }}>
                                                     500 Edited Photos
                                                 </option>
-                                                <option value="all" {{ 'all' === $paket->edited ? 'selected' : '' }}>
+                                                <option value="all" {{ 'all' === $package->edited ? 'selected' : '' }}>
                                                     All Edited Photos
                                                 </option>
                                             </select>
@@ -202,11 +202,11 @@
                                     <div class="row mb-3">
                                         <div class="col text-center">
                                             <img
-                                                src="{{ asset('storage/assets/product/' . $paket->galeris->image_one) }}"
+                                                src="{{ asset('storage/assets/product/' . $package->image->image_one) }}"
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_one" class="form-label">Choose 1st Photo</label>
                                             <input name="image_one" class="form-control form-control" id="image_one"
-                                                   type="file" value="{{ $paket->galeris->image_one }}">
+                                                   type="file" value="{{ $package->image->image_one }}">
                                         </div>
                                     </div>
                                 </div>
@@ -215,11 +215,11 @@
                                     <div class="row mb-3">
                                         <div class="col text-center">
                                             <img
-                                                src="{{ asset('storage/assets/product/' . $paket->galeris->image_two) }}"
+                                                src="{{ asset('storage/assets/product/' . $package->image->image_two) }}"
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_two" class="form-label">Choose 2nd Photo</label>
                                             <input name="image_two" class="form-control form-control" id="image_two"
-                                                   type="file" value="{{ $paket->galeris->image_two }}">
+                                                   type="file" value="{{ $package->image->image_two }}">
                                         </div>
                                     </div>
                                 </div>
@@ -228,11 +228,11 @@
                                     <div class="row mb-3">
                                         <div class="col text-center">
                                             <img
-                                                src="{{ asset('storage/assets/product/' . $paket->galeris->image_three) }}"
+                                                src="{{ asset('storage/assets/product/' . $package->image->image_three) }}"
                                                 class="rounded mb-2" alt="..." style="max-width: 200px; height: auto;">
                                             <label for="image_three" class="form-label">Choose 3rd Photo</label>
                                             <input name="image_three" class="form-control form-control" id="image_three"
-                                                   type="file" value="{{ $paket->galeris->image_three }}">
+                                                   type="file" value="{{ $package->image->image_three }}">
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
                                             <label for="price">Package Price</label>
                                             <input type="text"
                                                    class="form-control text-secondary @error('price') is-invalid @enderror"
-                                                   name="price" id="price" value="{{ $paket->price }}">
+                                                   name="price" id="price" value="{{ $package->price }}">
 
                                             @error('price')
                                             <span class="invalid-feedback" role="alert">
@@ -272,7 +272,7 @@
 
                                         <div class="col text-right">
                                             <a class="btn btn-outline-secondary"
-                                               href="{{ route('admin.paket.index') }}">
+                                               href="{{ route('admin.package.index') }}">
                                                 Back
                                             </a>
 
@@ -301,7 +301,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="btn btn-sm btn btn-danger" href="{{ route('admin.paket.destroy', $paket->id) }}"
+                    <a class="btn btn-sm btn btn-danger" href="{{ route('admin.package.destroy', $package->id) }}"
                        onclick="event.preventDefault(); document.getElementById('deletePackageForm').submit();">
                         Yes, delete this package
                     </a>
@@ -311,7 +311,7 @@
     </div>
     <!-- End Delete Modal-->
 
-    <form id="deletePackageForm" action="{{ route('admin.paket.destroy', $paket->id) }}" method="POST"
+    <form id="deletePackageForm" action="{{ route('admin.package.destroy', $package->id) }}" method="POST"
           class="d-none">
         @csrf
         @method('DELETE')

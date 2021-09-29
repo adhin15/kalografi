@@ -16,7 +16,7 @@ class GallerySeeder extends Seeder
     public function run()
     {
         $today = Carbon::today();
-        DB::table('galeris')->insert([
+        DB::table('images')->insert([
             [
                 'image_one' => 'mahesa1.png',
                 'image_two' => 'mahesa2.png',

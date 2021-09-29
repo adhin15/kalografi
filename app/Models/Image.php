@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class discount extends Model
+class Image extends Model
 {
     use HasFactory;
 
-    protected $table = 'discounts';
+    protected $table = 'images';
     protected $guarded = [];
 
-    public function bookings()
+    public function package()
     {
-        return $this->hasMany(Booking::class, 'discount_id');
+        return $this->hasMany(Package::class);
     }
 }

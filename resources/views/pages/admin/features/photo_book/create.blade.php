@@ -16,10 +16,10 @@
                                 <div class="col-md-10">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="photobook">Photobook Name</label>
-                                            <input type="text" class="form-control text-secondary @error('photobook') is-invalid @enderror" name="photobook" id="photobook">
+                                            <label for="name">Photobook Name</label>
+                                            <input type="text" class="form-control text-secondary @error('name') is-invalid @enderror" name="name" id="name">
 
-                                            @error('photobook')
+                                            @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                              </span>
@@ -42,7 +42,7 @@
 
                                     <div class="row mb-3">
                                         <div class="col text-right">
-                                            <a class="btn btn-outline-secondary" href="{{ route('admin.paket.index') }}">
+                                            <a class="btn btn-outline-secondary" href="{{ route('admin.package.index') }}">
                                                 Back
                                             </a>
 

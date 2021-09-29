@@ -16,12 +16,12 @@
                                 <div class="col-md-10">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="photobook">Photobook Name</label>
+                                            <label for="name">Photobook Name</label>
                                             <input type="text"
-                                                   class="form-control text-secondary @error('photobook') is-invalid @enderror"
-                                                   name="photobook" id="photobook" value="{{ $photobook->photobook }}">
+                                                   class="form-control text-secondary @error('name') is-invalid @enderror"
+                                                   name="name" id="name" value="{{ $photobook->name }}">
 
-                                            @error('photobook')
+                                            @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                              </span>

@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class galeri extends Model
+class Printedphoto extends Model
 {
     use HasFactory;
-
-    protected $table = 'galeris';
+    protected $table = 'printedphotos';
     protected $guarded = [];
 
-    public function paket()
+    public function booking()
     {
-        return $this->hasMany(Paket::class, 'idgaleri');
+        return $this->hasMany(Booking::class, 'printedphoto_id');
     }
 }

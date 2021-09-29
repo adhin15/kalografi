@@ -56,8 +56,8 @@
                                 @foreach($discounts as $discount)
                                     <tr>
                                         <th scope="row">{{ $loop->index + 1 }}</th>
-                                        <td>{{ strtoupper($discount->nama) }}</td>
-                                        <td>{{ $discount->jumlah . ' %' }}</td>
+                                        <td>{{ strtoupper($discount->name) }}</td>
+                                        <td>{{ $discount->amount . ' %' }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('admin.discount.edit', $discount->id) }}" class="btn btn-sm btn-secondary btn-icon-split">
                                                 <div class="icon text-white-50">

@@ -25,7 +25,7 @@
         <div class="row mb-4">
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                <a href="{{ route('admin.paket.create') }}" class="btn btn-kalografi btn-icon-split">
+                <a href="{{ route('admin.package.create') }}" class="btn btn-kalografi btn-icon-split">
                     <div class="icon text-white-50">
                         <i class="fas fa-plus"></i>
                     </div>
@@ -61,13 +61,13 @@
                                 @foreach($packages as $package)
                                     <tr>
                                         <th scope="row">{{ $loop->index + 1 }}</th>
-                                        <td>{{ $package->namapaket }}</td>
-                                        <td>{{ $package->kategori }}</td>
-                                        <td>{{ $package->workhours . ' Hours' }}</td>
+                                        <td>{{ $package->name }}</td>
+                                        <td>{{ $package->category }}</td>
+                                        <td>{{ $package->workhour->amount . ' Hours' }}</td>
                                         <td>{{ $package->day }}</td>
                                         <td>{{ 'Rp. ' . number_format($package->price) }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('admin.paket.edit', $package->id) }}" class="btn btn-sm btn-secondary btn-icon-split">
+                                            <a href="{{ route('admin.package.edit', $package->id) }}" class="btn btn-sm btn-secondary btn-icon-split">
                                                 <div class="icon text-white-50">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </div>

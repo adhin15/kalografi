@@ -3,34 +3,35 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\galeri;
-use App\Models\Paket;
-use App\Models\photographers;
-use App\Models\videographers;
-use App\Models\workhours;
+use App\Models\Image;
+use App\Models\Package;
+use App\Models\Photographer;
+use App\Models\Videographer;
+use App\Models\Workhour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PackageController extends Controller
 {
     public function index()
     {
-        $packages = Paket::query()->orderBy('created_at', 'DESC')->get();
+        $packages = Package::query()->orderBy('created_at', 'DESC')->get();
         return view('pages.admin.packages.index', compact('packages'));
     }
 
     public function create()
     {
-        $workHours = workhours::all();
-        $photoGraphers = photographers::all();
-        $videoGraphers = videographers::all();
+        $workHours = Workhour::all();
+        $photoGraphers = Photographer::all();
+        $videoGraphers = Videographer::all();
         return view('pages.admin.packages.create', compact('workHours', 'photoGraphers', 'videoGraphers'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'namapaket' => 'required',
-            'kategori' => 'required',
+            'name' => 'required',
+            'category' => 'required',
             'workhour_id' => 'required',
             'day' => 'required',
             'photographer_id' => 'required',
@@ -51,41 +52,41 @@ class PackageController extends Controller
         $request->file('image_two')->storeAs('public/assets/product', $name_two);
         $request->file('image_three')->storeAs('public/assets/product', $name_three);
 
-        $galeri = galeri::query()->create([
+        $image = Image::query()->create([
             'image_one' => $name_one,
             'image_two' => $name_two,
             'image_three' => $name_three
         ]);
 
-        Paket::query()->create([
-            'idgaleri' => $galeri->id,
+        Package::query()->create([
+            'image_id' => $image->id,
             'photographer_id' => $request->photographer_id,
             'videographer_id' => $request->videographer_id,
             'workhour_id' => $request->workhour_id,
-            'namapaket' => $request->namapaket,
-            'kategori' => $request->kategori,
+            'name' => $request->name,
+            'category' => $request->category,
             'day' => $request->day,
             'flashdisk' => $request->flashdisk,
             'edited' => $request->edited,
             'price' => $request->price
         ]);
 
-        return redirect()->route('admin.paket.index')->with('message', 'Package Added!');
+        return redirect()->route('admin.package.index')->with('message', 'Package Added!');
     }
 
-    public function edit(Paket $paket)
+    public function edit(Package $package)
     {
-        $workHours = workhours::all();
-        $photoGraphers = photographers::all();
-        $videoGraphers = videographers::all();
-        return view('pages.admin.packages.edit', compact('paket', 'workHours', 'photoGraphers', 'videoGraphers'));
+        $workHours = Workhour::all();
+        $photoGraphers = Photographer::all();
+        $videoGraphers = Videographer::all();
+        return view('pages.admin.packages.edit', compact('package', 'workHours', 'photoGraphers', 'videoGraphers'));
     }
 
-    public function update(Request $request, Paket $paket)
+    public function update(Request $request, Package $package)
     {
         $request->validate([
-            'namapaket' => 'required',
-            'kategori' => 'required',
+            'name' => 'required',
+            'category' => 'required',
             'workhour_id' => 'required',
             'day' => 'required',
             'photographer_id' => 'required',
@@ -95,53 +96,59 @@ class PackageController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        $galeri = galeri::query()->findOrFail($paket->idgaleri);
+        $image = Image::query()->findOrFail($package->image_id);
 
         if ($request->hasFile('image_one')) {
             $name_one = $request->file('image_one')->getClientOriginalName();
             $request->file('image_one')->storeAs('public/assets/product', $name_one);
         } else {
-            $name_one = $galeri->image_one;
+            $name_one = $image->image_one;
         }
 
         if ($request->hasFile('image_two')) {
             $name_two = $request->file('image_two')->getClientOriginalName();
             $request->file('image_two')->storeAs('public/assets/product', $name_two);
         } else {
-            $name_two = $galeri->image_two;
+            $name_two = $image->image_two;
         }
 
         if ($request->hasFile('image_three')) {
             $name_three = $request->file('image_three')->getClientOriginalName();
             $request->file('image_three')->storeAs('public/assets/product', $name_three);
         } else {
-            $name_three = $galeri->image_three;
+            $name_three = $image->image_three;
         }
 
-        galeri::query()->findOrFail($paket->idgaleri)->update([
+        Image::query()->findOrFail($package->image_id)->update([
             'image_one' => $name_one,
             'image_two' => $name_two,
             'image_three' => $name_three
         ]);
 
-        $paket->update([
+        $package->update([
             'photographer_id' => $request->photographer_id,
             'videographer_id' => $request->videographer_id,
             'workhour_id' => $request->workhour_id,
-            'namapaket' => $request->namapaket,
-            'kategori' => $request->kategori,
+            'name' => $request->name,
+            'category' => $request->category,
             'day' => $request->day,
             'flashdisk' => $request->flashdisk,
             'edited' => $request->edited,
             'price' => $request->price
         ]);
 
-        return redirect()->route('admin.paket.index')->with('message', 'Package Updated!');
+        return redirect()->route('admin.package.index')->with('message', 'Package Updated!');
     }
 
-    public function destroy(Paket $paket)
+    public function destroy(Package $package)
     {
-        $paket->delete();
-        return redirect()->route('admin.paket.index')->with('danger', 'Package Deleted!');
+        $image = Image::query()->findOrFail($package->image_id);
+        File::delete('storage/assets/product/' . $image->image_one);
+        File::delete('storage/assets/product/' . $image->image_two);
+        File::delete('storage/assets/product/' . $image->image_three);
+        $image->delete();
+        $package->delete();
+
+        return redirect()->route('admin.package.index')->with('danger', 'Package Deleted!');
     }
 }

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\additionals;
+use App\Models\Additional;
 use Illuminate\Http\Request;
 
 class AdditionalController extends Controller
 {
     public function index()
     {
-        $additionals = additionals::query()->orderBy('created_at', 'DESC')->get();
+        $additionals = Additional::query()->orderBy('created_at', 'DESC')->get();
         return view('pages.admin.features.additionals.index', compact('additionals'));
     }
 
@@ -26,19 +26,19 @@ class AdditionalController extends Controller
             'price' => 'required|numeric'
         ]);
 
-        $additionals = new additionals();
+        $additionals = new Additional();
         $additionals->fill($validateData);
         $additionals->save();
 
-        return redirect()->route('admin.additionals.index')->with('message', 'Additional Service Added!');
+        return redirect()->route('admin.additional.index')->with('message', 'Additional Service Added!');
     }
 
-    public function edit(additionals $additional)
+    public function edit(Additional $additional)
     {
         return view('pages.admin.features.additionals.edit', compact('additional'));
     }
 
-    public function update(Request $request, additionals $additional)
+    public function update(Request $request, Additional $additional)
     {
         $validateData = $request->validate([
             'name' => 'required',
@@ -48,12 +48,12 @@ class AdditionalController extends Controller
         $additional->fill($validateData);
         $additional->update();
 
-        return redirect()->route('admin.additionals.index')->with('message', 'Additional Service Updated!');
+        return redirect()->route('admin.additional.index')->with('message', 'Additional Service Updated!');
     }
 
-    public function destroy(additionals $additional)
+    public function destroy(Additional $additional)
     {
         $additional->delete();
-        return redirect()->route('admin.additionals.index')->with('danger', 'Additional Service Deleted!');
+        return redirect()->route('admin.additional.index')->with('danger', 'Additional Service Deleted!');
     }
 }

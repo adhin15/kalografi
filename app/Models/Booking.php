@@ -40,33 +40,33 @@ class Booking extends Model
     public const PAYMENT_CODE = 'PAY';
 
 
-    public function pakets()
+    public function package()
     {
-        return $this->belongsTo(Paket::class, 'paket_id');
+        return $this->belongsTo(Package::class, 'package_id');
     }
 
     public function custom()
     {
-        return $this->belongsTo(custom::class, 'custom_id');
+        return $this->belongsTo(Custom::class, 'custom_id');
     }
 
     public function discount()
     {
-        return $this->belongsTo(discount::class, 'discount_id');
+        return $this->belongsTo(Discount::class, 'discount_id');
     }
 
-    public function printedphotos()
+    public function printedphoto()
     {
-        return $this->belongsTo(printedphoto::class, 'printedphoto_id');
+        return $this->belongsTo(Printedphoto::class, 'printedphoto_id');
     }
 
-    public function photobooks()
+    public function photobook()
     {
-        return $this->belongsTo(photobook::class, 'photobook_id');
+        return $this->belongsTo(Photobook::class, 'photobook_id');
     }
 
     public function status()
     {
-        return $this->hasMany(status::class, 'booking_id');
+        return $this->hasMany(Status::class, 'booking_id');
     }
 }

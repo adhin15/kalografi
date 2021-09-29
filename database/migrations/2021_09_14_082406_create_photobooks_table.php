@@ -16,7 +16,7 @@ class CreatePhotobooksTable extends Migration
         Schema::create('photobooks', function (Blueprint $table) {
             $table->id();
 
-            $table->string('photobook')->nullable();
+            $table->string('name')->nullable();
             $table->integer('price')->nullable();
 
             $table->timestamps();

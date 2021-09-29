@@ -16,7 +16,7 @@ class CreatePrintedphotosTable extends Migration
         Schema::create('printedphotos', function (Blueprint $table) {
             $table->id();
 
-            $table->string('printedphoto')->nullable();
+            $table->string('name')->nullable();
             $table->integer('price')->nullable();
 
             $table->timestamps();

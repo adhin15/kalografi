@@ -9,46 +9,44 @@
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 justify-content-center">
-                @foreach ($package as $package)
-                    @if ($package->kategori == 'Engagement Package')
+                @foreach ($package as $item)
+                    @if ($item->category == 'Engagement Package')
                         <form action="/pricelist/post" method="post">
                             {{ csrf_field() }}
                             <div class="colmb-5">
                                 <div class="card border-0 shadow-sm" style="border-radius: 20px;">
-                                    <img src="{{ asset('storage/assets/product/' . $package->galeris->image_one) }}"
+                                    <img src="{{ asset('storage/assets/product/' . $item->image->image_one) }}"
                                         class="card-img-top" alt="..." style="border-radius: 15px; ">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="card-title text-center my-2">
-                                                <input type="hidden" name="paket_id" value="{{ $package->id }}">
+                                                <input type="hidden" name="package_id" value="{{ $item->id }}">
                                                 <h4 class="semi-bold text-secondary" style="letter-spacing: -0.5px">
-                                                    {{ $package->namapaket }} <br>
-                                                    {{ $package->kategori }}
+                                                    {{ $item->name }} <br>
+                                                    {{ $item->category }}
                                                 </h4>
                                             </div>
                                         </div>
 
 
                                         <div class="row text-center mb-3">
-                                            <h5 class="text-bold text-kalografi">IDR {{ number_format($package->price) }}
+                                            <h5 class="text-bold text-kalografi">IDR {{ number_format($item->price) }}
                                             </h5>
                                         </div>
 
                                         <div class="row text-center mb-4">
-                                            <small class="mb-2">{{ $package->workhours }} Work Hours</small>
-                                            <small class="mb-2">{{ $package->photographers }} Photographer
-                                                @if ($package->videographers == 0)
-
-                                                @else
-                                                    + {{ $package->videographers }} Videographer
+                                            <small class="mb-2">{{ $item->workhour->amount }} Spot</small>
+                                            <small class="mb-2">{{ $item->photographer->amount }} Photographer
+                                                @if ($item->videographer !== null)
+                                                    + {{ $item->videographer->amount }} Videographer
                                                 @endif
                                             </small>
-                                            @if ($package->flashdisk == 0)
+                                            @if ($item->flashdisk == 0)
                                                 <small class="mb-2">All Files by Google Drive</small>
                                             @else
                                                 <small class="mb-2">Flashdisk Include All Files</small>
                                             @endif
-                                            <small>{{ $package->edited }} Edited Photos</small>
+                                            <small>{{ $item->edited }} Edited Photos</small>
                                         </div>
 
                                         <div class="row justify-content-center mb-3">

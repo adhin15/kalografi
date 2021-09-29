@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\discount;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 
 class DiscountController extends Controller
@@ -11,7 +11,7 @@ class DiscountController extends Controller
 
     public function index()
     {
-        $discounts = discount::query()->orderBy('created_at', 'DESC')->get();
+        $discounts = Discount::query()->orderBy('created_at', 'DESC')->get();
         return view('pages.admin.discount.index', compact('discounts'));
     }
 
@@ -25,11 +25,11 @@ class DiscountController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'nama' => 'required',
-            'jumlah' => 'required|numeric'
+            'name' => 'required',
+            'amount' => 'required|numeric'
         ]);
 
-        $discount = new discount();
+        $discount = new Discount();
         $discount->fill($validateData);
         $discount->save();
 
@@ -46,8 +46,8 @@ class DiscountController extends Controller
     public function update(Request $request, discount $discount)
     {
         $validateData = $request->validate([
-            'nama' => 'required',
-            'jumlah' => 'required|numeric'
+            'name' => 'required',
+            'amount' => 'required|numeric'
         ]);
 
         $discount->fill($validateData);

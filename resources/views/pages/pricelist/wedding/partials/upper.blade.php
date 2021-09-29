@@ -56,24 +56,24 @@
                         </div>
                         <form action="/pricelist/wedding/mahawira" method="post">
                             {{ csrf_field() }}
-                            <input type="text" name="paket_id" value="1" hidden>
+                            <input type="text" name="package_id" value="1" hidden>
                             <div class="form-group row mb-3">
                                 <div class="col-md-12">
-                                    <label for="printed_photo" class="mb-1 text-secondary small">Book Date</label>
-                                    <input type="date" class="form-control text-secondary small" name="bookdate"
+                                    <label for="book_date" class="mb-1 text-secondary small">Book Date</label>
+                                    <input type="date" class="form-control text-secondary small" name="book_date"
                                         required>
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
                                 <div class="col-md-10">
-                                    <label for="printed_photo" class="mb-1 text-secondary small">Printed
+                                    <label for="name" class="mb-1 text-secondary small">Printed
                                         Photo</label>
-                                    <select class="form-control text-secondary small" name="printedphoto"
-                                        id="printed_photo">
+                                    <select class="form-control text-secondary small" name="name"
+                                        id="name">
 
-                                        @foreach ($printedphoto as $printedphoto)
-                                            <option value="{{ $printedphoto->id }}">
-                                                {{ $printedphoto->printedphoto }}
+                                        @foreach ($printedphoto as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -81,7 +81,7 @@
 
                                 <div class="col-md-2 text-center">
                                     <label for="print_quantity" class="mb-1 text-secondary small" name>Qty</label>
-                                    <input type="text" class="form-control" name="ppqty" id="print_quantity" value=""
+                                    <input type="text" class="form-control" name="printedphoto_qty" id="print_quantity" value=""
                                         required>
                                 </div>
                             </div>
@@ -90,8 +90,8 @@
                                 <div class="col-md-10">
                                     <label for="photobook" class="mb-1 text-secondary small">Photobook</label>
                                     <select class="form-control text-secondary small" name="photobook" id="photobook">
-                                        @foreach ($photobook as $photobook)
-                                            <option value="{{ $photobook->id }}">{{ $photobook->photobook }}
+                                        @foreach ($photobook as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}
                                             </option>
                                         @endforeach
 
@@ -100,7 +100,7 @@
 
                                 <div class="col-md-2 text-center">
                                     <label for="photobook_quantity" class="mb-1 text-secondary small">Qty</label>
-                                    <input type="text" class="form-control" name="pbqty" id="photobook_quantity"
+                                    <input type="text" class="form-control" name="photobook_qty" id="photobook_quantity"
                                         value="" required>
                                 </div>
                             </div>

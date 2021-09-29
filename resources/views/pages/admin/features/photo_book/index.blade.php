@@ -56,7 +56,7 @@
                                 @foreach($photobooks as $photobook)
                                     <tr>
                                         <th scope="row">{{ $loop->index + 1 }}</th>
-                                        <td>{{ $photobook->photobook }}</td>
+                                        <td>{{ $photobook->name }}</td>
                                         <td>{{ 'Rp. ' . number_format($photobook->price) }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('admin.photobook.edit', $photobook->id) }}" class="btn btn-sm btn-secondary btn-icon-split">

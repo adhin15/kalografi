@@ -1,7 +1,7 @@
 @extends('pages.admin.layouts.master')
 @section('content')
     <div class="container-fluid py-3">
-        <form action="{{ route('admin.paket.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.package.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
 
@@ -16,12 +16,12 @@
                                 <div class="col-md-6">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="namapaket">Package Name</label>
+                                            <label for="name">Package Name</label>
                                             <input type="text"
-                                                class="form-control text-secondary @error('namapaket') is-invalid @enderror"
-                                                name="namapaket" id="namapaket">
+                                                class="form-control text-secondary @error('name') is-invalid @enderror"
+                                                name="name" id="name">
 
-                                            @error('namapaket')
+                                            @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -31,16 +31,16 @@
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="kategori">Category</label>
-                                            <select name="kategori" id="kategori"
-                                                class="form-control text-secondary small @error('kategori') is-invalid @enderror">
+                                            <label for="category">Category</label>
+                                            <select name="category" id="category"
+                                                class="form-control text-secondary small @error('category') is-invalid @enderror">
                                                 <option value="">--Select One--</option>
                                                 <option value="Wedding Package">Wedding Package</option>
                                                 <option value="Pre-Wedding Package">Pre-Wedding Package</option>
                                                 <option value="Engagement Package">Engagement Package</option>
                                             </select>
 
-                                            @error('kategori')
+                                            @error('category')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -263,7 +263,7 @@
 
                                     <div class="row mb-3">
                                         <div class="col text-right">
-                                            <a class="btn btn-outline-secondary" href="{{ route('admin.paket.index') }}">
+                                            <a class="btn btn-outline-secondary" href="{{ route('admin.package.index') }}">
                                                 Back
                                             </a>
 

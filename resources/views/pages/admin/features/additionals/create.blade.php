@@ -1,7 +1,7 @@
 @extends('pages.admin.layouts.master')
 @section('content')
     <div class="container-fluid py-3">
-        <form action="{{ route('admin.additionals.store') }}" method="POST">
+        <form action="{{ route('admin.additional.store') }}" method="POST">
             @csrf
             @method('POST')
 
@@ -42,7 +42,7 @@
 
                                     <div class="row mb-3">
                                         <div class="col text-right">
-                                            <a class="btn btn-outline-secondary" href="{{ route('admin.additionals.index') }}">
+                                            <a class="btn btn-outline-secondary" href="{{ route('admin.additional.index') }}">
                                                 Back
                                             </a>
 

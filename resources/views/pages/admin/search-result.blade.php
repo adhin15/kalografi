@@ -11,7 +11,7 @@
                     </div>
                 @endif
 
-                @if($booking->paymentStatus === 'CREATED' || $booking->paymentStatus === 'DOWN_PAYMENT_PAID')
+                @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PAID')
                     <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
                         <strong>Payment Not Complete</strong>
                     </div>

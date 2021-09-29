@@ -23,7 +23,7 @@
         <div class="row mb-4">
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                <a href="{{ route('admin.additionals.create') }}" class="btn btn-kalografi btn-icon-split">
+                <a href="{{ route('admin.additional.create') }}" class="btn btn-kalografi btn-icon-split">
                     <div class="icon text-white-50">
                         <i class="fas fa-plus"></i>
                     </div>
@@ -59,7 +59,7 @@
                                         <td>{{ $additional->name }}</td>
                                         <td>{{ 'Rp. ' . number_format($additional->price) }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('admin.additionals.edit', $additional->id) }}" class="btn btn-sm btn-secondary btn-icon-split">
+                                            <a href="{{ route('admin.additional.edit', $additional->id) }}" class="btn btn-sm btn-secondary btn-icon-split">
                                                 <div class="icon text-white-50">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </div>

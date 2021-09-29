@@ -1,7 +1,7 @@
 @extends('pages.admin.layouts.master')
 @section('content')
     <div class="container-fluid py-3">
-        <form action="{{ route('admin.additionals.update', $additional->id) }}" method="POST">
+        <form action="{{ route('admin.additional.update', $additional->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -54,7 +54,7 @@
 
                                         <div class="col text-right">
                                             <a class="btn btn-outline-secondary"
-                                               href="{{ route('admin.additionals.index') }}">
+                                               href="{{ route('admin.additional.index') }}">
                                                 Back
                                             </a>
 
@@ -84,7 +84,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
                     <a class="btn btn-sm btn btn-danger"
-                       href="{{ route('admin.additionals.destroy', $additional->id) }}"
+                       href="{{ route('admin.additional.destroy', $additional->id) }}"
                        onclick="event.preventDefault(); document.getElementById('deleteAdditionalForm').submit();">
                         Yes, delete this additional service
                     </a>
@@ -94,7 +94,7 @@
     </div>
     <!-- End Delete Modal-->
 
-    <form id="deleteAdditionalForm" action="{{ route('admin.additionals.destroy', $additional->id) }}"
+    <form id="deleteAdditionalForm" action="{{ route('admin.additional.destroy', $additional->id) }}"
           method="POST" class="d-none">
         @csrf
         @method('DELETE')

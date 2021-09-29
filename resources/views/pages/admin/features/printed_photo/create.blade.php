@@ -16,10 +16,10 @@
                                 <div class="col-md-10">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="printedphoto">Printed Photo Name</label>
-                                            <input type="text" class="form-control text-secondary @error('printedphoto') is-invalid @enderror" name="printedphoto" id="printedphoto">
+                                            <label for="name">Printed Photo Name</label>
+                                            <input type="text" class="form-control text-secondary @error('name') is-invalid @enderror" name="name" id="name">
 
-                                            @error('printedphoto')
+                                            @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                              </span>

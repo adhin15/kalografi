@@ -18,14 +18,14 @@
                             <div class="row form-group">
                                 <div class="col-md-5" style="margin: 35px">
 
-                                    <input type="hidden" id="idpaket" name="paket_id" value="0">
-                                    <input type="hidden" id="grand_total" name="totalprice" value="0">
+                                    <input type="hidden" id="idpaket" name="package_id" value="0">
+                                    <input type="hidden" id="grand_total" name="total_price" value="0">
 
                                     <div class="row mb-4">
                                         <div class="col">
-                                            <label class="mb-1 text-secondary" for="bookdate">Book Date</label>
-                                            <input type="date" class="form-control text-secondary " name="bookdate"
-                                                id="bookdate" style="height: 70%" required>
+                                            <label class="mb-1 text-secondary" for="book_date">Book Date</label>
+                                            <input type="date" class="form-control text-secondary " name="book_date"
+                                                id="book_date" style="height: 70%" required>
                                         </div>
                                     </div>
 
@@ -80,7 +80,7 @@
                                                     id="printedphoto_id" style="height: 70%">
                                                 @foreach ($printedphoto as $item)
                                                     <option value="{{ $item->id }}" data-bs-harga-pp="{{ $item->price }}">
-                                                        {{ $item->printedphoto }}
+                                                        {{ $item->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -88,7 +88,7 @@
 
                                         <div class="col-md-2 text-center">
                                             <label for="print_quantity" class="mb-1 text-secondary small">Qty</label>
-                                            <input type="text" class="form-control" name="ppqty" id="print_quantity"
+                                            <input type="text" class="form-control" name="printedphoto_qty" id="print_quantity"
                                                 value="" required style="height: 70%">
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                                                 id="photobook_id" style="height: 70%">
                                                 @foreach ($photobook as $item)
                                                     <option value="{{ $item->id }}" data-bs-harga-pb="{{ $item->price }}">
-                                                        {{ $item->photobook }}
+                                                        {{ $item->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -108,7 +108,7 @@
 
                                         <div class="col-md-2 text-center">
                                             <label for="photobook_quantity" class="mb-1 text-secondary small">Qty</label>
-                                            <input type="text" class="form-control" name="pbqty" id="photobook_quantity"
+                                            <input type="text" class="form-control" name="photobook_qty" id="photobook_quantity"
                                                 value="" required style="height: 70%">
                                         </div>
                                     </div>

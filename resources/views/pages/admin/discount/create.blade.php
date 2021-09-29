@@ -16,10 +16,10 @@
                                 <div class="col-md-10">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="nama">Discount Name</label>
-                                            <input type="text" class="form-control text-secondary @error('nama') is-invalid @enderror" name="nama" id="nama">
+                                            <label for="name">Discount Name</label>
+                                            <input type="text" class="form-control text-secondary @error('name') is-invalid @enderror" name="name" id="name">
 
-                                            @error('nama')
+                                            @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                              </span>
@@ -29,10 +29,10 @@
 
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <label for="jumlah">Discount Amount (%)</label>
-                                            <input type="text" class="form-control text-secondary @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah">
+                                            <label for="amount">Discount Amount (%)</label>
+                                            <input type="text" class="form-control text-secondary @error('amount') is-invalid @enderror" name="amount" id="amount">
 
-                                            @error('jumlah')
+                                            @error('amount')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                              </span>

@@ -7,9 +7,10 @@ use App\Http\Controllers\Admin\PhotobookController;
 use App\Http\Controllers\Admin\PrintedPhotoController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\MidtransSnapController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\trackingcontroller;
+use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WeddingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -83,8 +84,8 @@ Route::get('/payment-confirmation/{id}', [OrderController::class, 'payment'])
 
 
 /* searching */
-Route::get('trackingorder', [trackingcontroller::class, 'index'])->name('trackorder');
-Route::get('search', [trackingcontroller::class, 'post'])->name('requestorder');
+Route::get('trackingorder', [TrackingController::class, 'index'])->name('trackorder');
+Route::get('search', [TrackingController::class, 'post'])->name('requestorder');
 
 //ADMIN ROUTES
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
@@ -97,22 +98,18 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::post('/update-status', [AdminController::class, 'update'])->name('update-status');
 
     //ADMIN CRUD PACKAGE ROUTES
-    Route::resource('paket', PackageController::class)->except('show');
+    Route::resource('package', PackageController::class)->except('show');
     //ADMIN CRUD PHOTOBOOK ROUTES
     Route::resource('photobook', PhotobookController::class)->except('show');
     //ADMIN CRUD PRINTED PHOTO ROUTES
     Route::resource('printedphoto', PrintedPhotoController::class)->except('show');
     //ADMIN ADDITIONAL FEATURES CRUD
-    Route::resource('additionals', AdditionalController::class)->except('show');
+    Route::resource('additional', AdditionalController::class)->except('show');
     //ADMIN DISCOUNT CRUD
     Route::resource('discount', DiscountController::class)->except('show');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/postpackage', [BookingController::class, 'index']);
-Route::post('storepackage', [BookingController::class, 'create']);
-
 
 //MIDTRANS ENDPOINT
 Route::post('/payments/notification', [PaymentController::class, 'notification'])
@@ -127,11 +124,11 @@ Route::post('/payments/unfinished', [PaymentController::class, 'unfinished'])
 Route::post('/payments/failed', [PaymentController::class, 'failed'])
     ->name('payment.failed');
 
-Route::get('/payments/snap/finished', [PaymentController::class, 'snapFinish'])
+Route::get('/payments/snap/finished', [MidtransSnapController::class, 'snapFinish'])
     ->name('payment.snap.finished');
 
-Route::get('/payments/snap/unfinished', [PaymentController::class, 'snapUnfinished'])
+Route::get('/payments/snap/unfinished', [MidtransSnapController::class, 'snapUnfinished'])
     ->name('payment.snap.unfinished');
 
-Route::get('/payments/snap/failed', [PaymentController::class, 'snapFailed'])
+Route::get('/payments/snap/failed', [MidtransSnapController::class, 'snapFailed'])
     ->name('payment.snap.failed');

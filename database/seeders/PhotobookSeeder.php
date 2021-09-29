@@ -18,7 +18,7 @@ class PhotobookSeeder extends Seeder
         $today = Carbon::today();
         DB::table('photobooks')->insert([
            [
-               'photobook' => 'Wedding Photobook 20cm x 30cm',
+               'name' => 'Wedding Photobook 20cm x 30cm',
                'price' => 400000,
                'created_at' => date($today),
                'updated_at' => date($today)

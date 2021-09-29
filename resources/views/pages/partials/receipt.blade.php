@@ -3,12 +3,12 @@
         <div class="card-body">
             <div class="row text-center">
                 <h3 class="fs-3 fw-bold text-kalografi mb-3">
-                    @if ($booking->paket_id == 0)
+                    @if ($booking->package_id == 0)
                         Custom Package
                     @else
-                        {{ $booking->pakets->namapaket }}
+                        {{ $package->name }}
                         <br>
-                        {{ $booking->pakets->kategori }}
+                        {{ $package->category }}
                     @endif
                 </h3>
             </div>
@@ -21,7 +21,7 @@
 
             <div class="row text-center">
                 <p class="text-secondary">
-                    Booking Date <strong>{{ date_format(date_create($booking->bookdate), 'd F Y') }}</strong>
+                    Booking Date <strong>{{ date_format(date_create($booking->book_date), 'd F Y') }}</strong>
                 </p>
             </div>
 
@@ -35,7 +35,7 @@
                         <p class="text-secondary mb-2">Name</p>
                     </div>
                     <div class="col-md-6 pe-0">
-                        <p class="text-secondary mb-2" id="previewnama">{{ $booking->fullname }}</p>
+                        <p class="text-secondary mb-2" id="previewnama">{{ $booking->full_name }}</p>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
                         <p class="text-secondary mb-2">Phone Number</p>
                     </div>
                     <div class="col-md-6 pe-0">
-                        <p class="text-secondary mb-2" id="previewnomor">{{ $booking->phonenumber }}</p>
+                        <p class="text-secondary mb-2" id="previewnomor">{{ $booking->phone_number }}</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <div class="col-md-4">
                     <button id="previewweddingstyle" disabled class="btn btn-sm semi-bold fs-7 btn-outline-kalografi"
                         style="width: 100%">
-                        {{ $booking->weddingstyle }}
+                        {{ $booking->wedding_style }}
                     </button>
                 </div>
             </div>
@@ -91,25 +91,25 @@
 
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0">
-                        @if ($booking->paket_id == 0)
+                        @if ($booking->package_id == 0)
                             Custom Package
                         @else
-                            {{ $booking->pakets->namapaket }}
+                            {{ $package->name }}
 
-                            {{ $booking->pakets->kategori }}
+                            {{ $package->category }}
                         @endif
                     </p>
                 </div>
                 <div class="col-md-4">
                     <p id="pricepackage" class="semi-bold text-secondary mb-0 text-end">
-                        @if ($booking->paket_id == 0)
+                        @if ($booking->package_id == 0)
                             @if($additionals)
-                                Rp. {{ number_format(($booking->totalprice - ($pp->price * $booking->ppqty + $pb->price * $booking->pbqty)) - $additionals->sum('price')) }}
+                                Rp. {{ number_format(($booking->total_price - ($pp->price * $booking->printedphoto_qty + $pb->price * $booking->photobook_qty)) - $additionals->sum('price')) }}
                             @else
-                                Rp. {{ number_format($booking->totalprice - ($pp->price * $booking->ppqty + $pb->price * $booking->pbqty)) }}
+                                Rp. {{ number_format($booking->total_price - ($pp->price * $booking->printedphoto_qty + $pb->price * $booking->photobook_qty)) }}
                             @endif
                         @else
-                            Rp. {{ number_format($booking->pakets->price) }}
+                            Rp. {{ number_format($package->price) }}
                         @endif
                     </p>
                 </div>
@@ -118,19 +118,19 @@
             <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
                 <div class="col-md-2">
                     <input type="text" class="form-control form-control-sm text-center" name="print_quantity"
-                        id="print_quantity" value="{{ $booking->ppqty }}" aria-label="print_quantity"
+                        id="print_quantity" value="{{ $booking->printedphoto_qty }}" aria-label="print_quantity"
                         style="width: 40px;" disabled>
                 </div>
 
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0">
-                        {{ $booking->printedphotos->printedphoto }}
+                        {{ $pp->name }}
                     </p>
                 </div>
 
                 <div class="col-md-4">
                     <p id="priceprintedphoto" class="semi-bold text-secondary mb-0 text-end">
-                        Rp. {{ number_format($pp->price * $booking->ppqty) }}
+                        Rp. {{ number_format($pp->price * $booking->printedphoto_qty) }}
                     </p>
                 </div>
             </div>
@@ -138,19 +138,19 @@
             <div class="row mb-4 justify-content-between align-items-center" style="font-size: 14px">
                 <div class="col-md-2">
                     <input type="text" class="form-control form-control-sm text-center" name="photobook_quantity"
-                        id="photobook_quantity" value="{{ $booking->pbqty }}" aria-label="photobook_quantity"
+                        id="photobook_quantity" value="{{ $booking->photobook_qty }}" aria-label="photobook_quantity"
                         style="width: 40px;" disabled>
                 </div>
 
                 <div class="col-md-6 px-0">
                     <p class="text-secondary mb-0">
-                        {{ $booking->photobooks->photobook }}
+                        {{ $pp->name }}
                     </p>
                 </div>
 
                 <div class="col-md-4">
                     <p id="pricephotobook" class="semi-bold text-secondary mb-0 text-end">
-                        Rp. {{ number_format($pb->price * $booking->pbqty) }}
+                        Rp. {{ number_format($pb->price * $booking->photobook_qty) }}
                     </p>
                 </div>
             </div>
@@ -232,9 +232,9 @@
                     </div>
                     <div class="row">
                         <p id="total" class="semi-bold fs-5 text-secondary mb-0 text-end">
-                            Rp. {{ number_format($booking->totalprice) }}
+                            Rp. {{ number_format($booking->total_price) }}
                         </p>
-                        <input type="hidden" id="id_diskon" name="discount_id" value="">
+                        <input type="hidden" id="discount_id" name="discount_id" value="">
                         <input type="hidden" name="booking_id" value="{{ $booking->id }}">
                     </div>
                 </div>

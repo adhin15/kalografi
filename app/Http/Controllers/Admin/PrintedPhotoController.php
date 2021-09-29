@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\printedphoto;
+use App\Models\Printedphoto;
 use Illuminate\Http\Request;
 
 class PrintedPhotoController extends Controller
 {
     public function index()
     {
-        $printedphotos = printedphoto::query()->orderBy('created_at', 'DESC')->get();
+        $printedphotos = Printedphoto::query()->orderBy('created_at', 'DESC')->get();
         return view('pages.admin.features.printed_photo.index', compact('printedphotos'));
     }
 
@@ -22,26 +22,26 @@ class PrintedPhotoController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'printedphoto' => 'required',
+            'name' => 'required',
             'price' => 'required|numeric'
         ]);
 
-        $printedphoto = new printedphoto();
+        $printedphoto = new Printedphoto();
         $printedphoto->fill($validateData);
         $printedphoto->save();
 
         return redirect()->route('admin.printedphoto.index')->with('message', 'Printed Photo Added!');
     }
 
-    public function edit(printedphoto $printedphoto)
+    public function edit(Printedphoto $printedphoto)
     {
         return view('pages.admin.features.printed_photo.edit', compact('printedphoto'));
     }
 
-    public function update(Request $request, printedphoto $printedphoto)
+    public function update(Request $request, Printedphoto $printedphoto)
     {
         $validateData = $request->validate([
-            'printedphoto' => 'required',
+            'name' => 'required',
             'price' => 'required|numeric'
         ]);
 
@@ -51,7 +51,7 @@ class PrintedPhotoController extends Controller
         return redirect()->route('admin.printedphoto.index')->with('message', 'Printed Photo Updated!');
     }
 
-    public function destroy(printedphoto $printedphoto)
+    public function destroy(Printedphoto $printedphoto)
     {
         $printedphoto->delete();
         return redirect()->route('admin.printedphoto.index')->with('danger', 'Printed Photo Deleted!');
