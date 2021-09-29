@@ -101,6 +101,17 @@ class PackageController extends Controller
 
     public function update(Request $request, Package $package)
     {
+        $seederPackageName = [
+            'Mahesa',
+            'Manendra',
+            'Mahawira',
+            'Renjana',
+            'Sekala',
+            'Asmaraloka',
+            'Amerta',
+            'Arunika'
+        ];
+
         $request->validate([
             'name' => 'required',
             'category' => 'required',
@@ -121,8 +132,11 @@ class PackageController extends Controller
             //PROCESS FILE NAME
             $name_one = $this->processFileName($request)['name_one'];
             $package_name = $this->processFileName($request)['package_name'];
-            //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
-            Cloudinary::destroy($image->image_one_public_id);
+            //CHECK IF THE PACKAGE IS SEEDED, IF TRUE DON'T DELETE PLACEHOLDERS PHOTO
+            if (!in_array($package->name, $seederPackageName)) {
+                //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
+                Cloudinary::destroy($image->image_one_public_id);
+            }
             //UPLOAD TO CLOUDINARY
             $cloudinaryImageOne = $image_one->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_one);
             $imageOneSecureUrl = $cloudinaryImageOne->getSecurePath();
@@ -139,8 +153,11 @@ class PackageController extends Controller
             //PROCESS FILE NAME
             $name_two = $this->processFileName($request)['name_two'];
             $package_name = $this->processFileName($request)['package_name'];
-            //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
-            Cloudinary::destroy($image->image_two_public_id);
+            //CHECK IF THE PACKAGE IS SEEDED, IF TRUE DON'T DELETE PLACEHOLDERS PHOTO
+            if (!in_array($package->name, $seederPackageName)) {
+                //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
+                Cloudinary::destroy($image->image_two_public_id);
+            }
             //UPLOAD TO CLOUDINARY
             $cloudinaryImageTwo = $image_two->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_two);
             $imageTwoSecureUrl = $cloudinaryImageTwo->getSecurePath();
@@ -157,9 +174,11 @@ class PackageController extends Controller
             //PROCESS FILE NAME
             $name_three = $this->processFileName($request)['name_three'];
             $package_name = $this->processFileName($request)['package_name'];
-            //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
-            Cloudinary::destroy($image->image_three_public_id);
-            //UPLOAD TO CLOUDINARY
+            //CHECK IF THE PACKAGE IS SEEDED, IF TRUE DON'T DELETE PLACEHOLDERS PHOTO
+            if (!in_array($package->name, $seederPackageName)) {
+                //DELETE PHOTO USING ITS PUBLIC ID FROM CLOUDINARY
+                Cloudinary::destroy($image->image_three_public_id);
+            }
             $cloudinaryImageThree = $image_three->storeOnCloudinaryAs('kalografi/packages/' . $package_name . '/', $name_three);
             $imageThreeSecureUrl = $cloudinaryImageThree->getSecurePath();
             $imageThreePublicId = $cloudinaryImageThree->getPublicId();
@@ -195,11 +214,27 @@ class PackageController extends Controller
 
     public function destroy(Package $package)
     {
+        $seederPackageName = [
+            'Mahesa',
+            'Manendra',
+            'Mahawira',
+            'Renjana',
+            'Sekala',
+            'Asmaraloka',
+            'Amerta',
+            'Arunika'
+        ];
+
         $image = Image::query()->findOrFail($package->image_id);
-        //DELETE IMAGE USING ITS PUBLIC ID FROM CLOUDINARY
-        Cloudinary::destroy($image->image_one_public_id);
-        Cloudinary::destroy($image->image_two_public_id);
-        Cloudinary::destroy($image->image_three_public_id);
+
+        //CHECK IF THE PACKAGE IS SEEDED, IF TRUE DON'T DELETE PLACEHOLDERS PHOTO
+        if (!in_array($package->name, $seederPackageName)) {
+            //DELETE IMAGE USING ITS PUBLIC ID FROM CLOUDINARY
+            Cloudinary::destroy($image->image_one_public_id);
+            Cloudinary::destroy($image->image_two_public_id);
+            Cloudinary::destroy($image->image_three_public_id);;
+        }
+
         $image->delete();
         $package->delete();
 

@@ -28,8 +28,8 @@ class GallerySeeder extends Seeder
                 'updated_at' => date($today)
             ],
             [
-                'image_one_secure_url' => 'https://res.cloudinary.com/ffajarpratama/image/upload/v1632916018/kalografi/placeholders/manendra1_d3rsft.png',
-                'image_one_public_id' => 'kalografi/placeholders/manendra1_d3rsft',
+                'image_one_secure_url' => 'https://res.cloudinary.com/ffajarpratama/image/upload/v1632934398/kalografi/placeholders/manendra1_bymvkj.png',
+                'image_one_public_id' => 'kalografi/placeholders/manendra1_bymvkj',
                 'image_two_secure_url' => 'https://res.cloudinary.com/ffajarpratama/image/upload/v1632916019/kalografi/placeholders/manendra2_bwtgpo.png',
                 'image_two_public_id' => 'kalografi/placeholders/manendra2_bwtgpo',
                 'image_three_secure_url' => 'https://res.cloudinary.com/ffajarpratama/image/upload/v1632916019/kalografi/placeholders/manendra3_m2vfj1.png',
