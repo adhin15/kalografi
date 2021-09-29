@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\additional;
+use App\Models\Additional;
 use App\Models\Booking;
 use App\Models\Package;
 use App\Models\Status;
@@ -33,7 +33,7 @@ class AdminController extends Controller
 
         $additionals = null;
         if ($booking->additionals !== null) {
-            $additionals = additional::query()
+            $additionals = Additional::query()
                 ->whereIn('id', json_decode($booking->additionals))
                 ->get();
         }

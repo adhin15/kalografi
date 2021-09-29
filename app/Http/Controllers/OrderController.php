@@ -289,7 +289,7 @@ class OrderController extends Controller
     {
         $product = $request->session()->get('booking');
         $photographers = Photographer::all();
-        $videographers = videographer::all();
+        $videographers = Videographer::all();
         $workhours = Workhour::all();
         $printedphoto = Printedphoto::all();
         $photobook = Photobook::all();

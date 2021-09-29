@@ -37,13 +37,13 @@ class DiscountController extends Controller
     }
 
 
-    public function edit(discount $discount)
+    public function edit(Discount $discount)
     {
         return view('pages.admin.discount.edit', compact('discount'));
     }
 
 
-    public function update(Request $request, discount $discount)
+    public function update(Request $request, Discount $discount)
     {
         $validateData = $request->validate([
             'name' => 'required',
@@ -57,7 +57,7 @@ class DiscountController extends Controller
     }
 
 
-    public function destroy(discount $discount)
+    public function destroy(Discount $discount)
     {
         $discount->delete();
         return redirect()->route('admin.discount.index')->with('danger', 'Discount Deleted!');
