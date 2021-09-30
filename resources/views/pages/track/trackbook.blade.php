@@ -8,12 +8,14 @@
                     @if (session()->has('message'))
                         <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                             <strong>{{ session('message') }}</strong>
-                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
                         </div>
                     @elseif (session()->has('danger'))
                         <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
                             <strong>{{ session('danger') }}</strong>
-                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
                         </div>
                     @endif
                 </div>
@@ -78,6 +80,34 @@
                                 </ul>
                             </div>
                         </div>
+                    @endif
+
+                    @if ($status->current_status === 5)
+                        <form action="{{ route('postreview') }}" method="post">
+                            @csrf
+                            <div class="row">
+                                <div>
+                                    <div class="row mb-3 text-secondary fs-4">
+                                        <strong> Write Someting About Us</strong>
+                                    </div>
+                                    <div class="row mb-3 text-secondary fs-4">
+                                        <input type="hidden" class="form-control" name="name"
+                                            value="{{ $status->booking->full_name }}">
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div col>
+                                            <textarea name="comment" class="form-control" id="" cols="30"
+                                                rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-kalografi semi-bold">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     @endif
 
                 </div>

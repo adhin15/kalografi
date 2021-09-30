@@ -26,8 +26,15 @@
                             aria-label="Slide 5"></button>
                     </div>
                     <div class="carousel-inner shadow-sm">
-                        <div class="carousel-item active">
+                        @foreach ($review as $review)
+                            @if ($loop->index == 0)
+                                <div class="carousel-item active">
+
+                                @else
+                                    <div class="carousel-item">
+                            @endif
                             <div class="card border-0" style="min-height: 15rem">
+
                                 <div class="card-body">
                                     <div class="row p-2 my-3">
                                         <img src="{{ asset('placeholders/quote.png') }}" alt="..."
@@ -36,124 +43,31 @@
                                     <div class="row mb-5 px-5">
                                         <div class="card-text text-center px-5">
                                             <p class="p-3">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim
-                                                ad minim veniam.
+                                                {{ $review->comment }}
                                             </p>
                                             <figcaption class="blockquote-footer">
-                                                John Doe
+                                                {{ $review->name }}
                                             </figcaption>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card border-0" style="min-height: 15rem">
-                                <div class="card-body">
-                                    <div class="row p-2 my-3">
-                                        <img src="{{ asset('placeholders/quote.png') }}" alt="..."
-                                            class="mx-auto d-flex" style="width: 50px">
-                                    </div>
-                                    <div class="row mb-5 px-5">
-                                        <div class="card-text text-center px-5">
-                                            <p class="p-3">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim
-                                                ad minim veniam.
-                                            </p>
-                                            <figcaption class="blockquote-footer">
-                                                John Doe
-                                            </figcaption>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card border-0" style="min-height: 15rem">
-                                <div class="card-body">
-                                    <div class="row p-2 my-3">
-                                        <img src="{{ asset('placeholders/quote.png') }}" alt="..."
-                                            class="mx-auto d-flex" style="width: 50px">
-                                    </div>
-                                    <div class="row mb-5 px-5">
-                                        <div class="card-text text-center px-5">
-                                            <p class="p-3">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim
-                                                ad minim veniam.
-                                            </p>
-                                            <figcaption class="blockquote-footer">
-                                                John Doe
-                                            </figcaption>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card border-0" style="min-height: 15rem">
-                                <div class="card-body">
-                                    <div class="row p-2 my-3">
-                                        <img src="{{ asset('placeholders/quote.png') }}" alt="..."
-                                            class="mx-auto d-flex" style="width: 50px">
-                                    </div>
-                                    <div class="row mb-5 px-5">
-                                        <div class="card-text text-center px-5">
-                                            <p class="p-3">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim
-                                                ad minim veniam.
-                                            </p>
-                                            <figcaption class="blockquote-footer">
-                                                John Doe
-                                            </figcaption>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card border-0" style="min-height: 15rem">
-                                <div class="card-body">
-                                    <div class="row p-2 my-3">
-                                        <img src="{{ asset('placeholders/quote.png') }}" alt="..."
-                                            class="mx-auto d-flex" style="width: 50px">
-                                    </div>
-                                    <div class="row mb-5 px-5">
-                                        <div class="card-text text-center px-5">
-                                            <p class="p-3">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                enim
-                                                ad minim veniam.
-                                            </p>
-                                            <figcaption class="blockquote-footer">
-                                                John Doe
-                                            </figcaption>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    @endforeach
+
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
     </div>
+</div>
 </div>

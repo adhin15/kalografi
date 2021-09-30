@@ -5,11 +5,16 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PhotobookController;
 use App\Http\Controllers\Admin\PrintedPhotoController;
+use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\PhotographerController;
+use App\Http\Controllers\Admin\VideographerController;
+use App\Http\Controllers\Admin\WorkhourController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\MidtransSnapController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WeddingController;
 use Illuminate\Http\Request;
@@ -86,6 +91,7 @@ Route::get('/payment-confirmation/{id}', [OrderController::class, 'payment'])
 /* searching */
 Route::get('trackingorder', [TrackingController::class, 'index'])->name('trackorder');
 Route::get('search', [TrackingController::class, 'post'])->name('requestorder');
+Route::post('postreview', [TrackingController::class, 'postreview'])->name('postreview');
 
 //ADMIN ROUTES
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
@@ -107,6 +113,14 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('additional', AdditionalController::class)->except('show');
     //ADMIN DISCOUNT CRUD
     Route::resource('discount', DiscountController::class)->except('show');
+    //ADMIN PHOTOGRAPHER CRUD
+    Route::resource('photographer', PhotographerController::class)->except('show');
+    //ADMIN VIDEOGRAPHER CRUD
+    Route::resource('videographer', VideographerController::class)->except('show');
+    //ADMIN WORKHOURS CRUD
+    Route::resource('workhours', WorkhourController::class)->except('show');
+    //ADMIN REVIEW CRUD
+    Route::resource('reviews', ReviewController::class)->except('show');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -63,12 +63,12 @@ class OrderController extends Controller
             ->value('price');
 
         $printedphotoprice = Printedphoto::query()
-                ->where('id', $request->printedphoto_id)
-                ->value('price') * $request->printedphoto_qty;
+            ->where('id', $request->printedphoto_id)
+            ->value('price') * $request->printedphoto_qty;
 
         $photobookprice = Photobook::query()
-                ->where('id', $request->photobook_id)
-                ->value('price') * $request->photobook_qty;
+            ->where('id', $request->photobook_id)
+            ->value('price') * $request->photobook_qty;
 
         $totalprice = $packageprice + $printedphotoprice + $photobookprice;
 
@@ -98,7 +98,6 @@ class OrderController extends Controller
                 'total_price' => $totalprice
             ]);
             $request->session()->put('booking', $booking);
-
         } else {
             $booking = $request->session()->get('booking');
             $booking->additionals = $additionalsjson;
@@ -134,7 +133,6 @@ class OrderController extends Controller
             $package = Package::query()->where('id', $booking->package_id)->first();
             $pp = Printedphoto::query()->where('id', $booking->printedphoto_id)->first();
             $pb = Photobook::query()->where('id', $booking->photobook_id)->first();
-
         } else {
             return redirect('/');
         }
@@ -191,7 +189,6 @@ class OrderController extends Controller
             $pb = Photobook::query()->where('id', $booking->photobook_id)->first();
 
             return view('pages.pricelist.order.checkout', compact('booking', 'package', 'discount', 'pp', 'pb', 'additionals'));
-
         } else {
             return redirect('/');
         }
@@ -295,14 +292,18 @@ class OrderController extends Controller
         $photobook = Photobook::all();
         $additionals = Additional::all();
 
-        return view('pages.custom.customisation',
-            compact('printedphoto',
+        return view(
+            'pages.custom.customisation',
+            compact(
+                'printedphoto',
                 'photobook',
                 'product',
                 'additionals',
                 'photographers',
                 'videographers',
-                'workhours'));
+                'workhours'
+            )
+        );
     }
 
     //CREATE BOOKING FOR CUSTOM PACKAGE
@@ -384,7 +385,6 @@ class OrderController extends Controller
             $booking->additionals = $additionalJson;
             $booking->total_price = $totalPrice;
             $request->session()->put('booking', $booking);
-
         } else {
             $booking = $request->session()->get('booking');
             $booking->fill($validatedData);

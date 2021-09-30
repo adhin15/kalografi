@@ -9,14 +9,15 @@ class Workhour extends Model
 {
     use HasFactory;
     protected $table = 'workhours';
+    protected $guarded = [];
 
     public function package()
     {
-        return $this->hasMany(Package::class, 'photographer_id');
+        return $this->hasMany(Package::class);
     }
 
-    public function custom()
+    public function booking()
     {
-        return $this->hasMany(Custom::class, 'photographer_id');
+        return $this->hasMany(Booking::class, 'workhours_id');
     }
 }

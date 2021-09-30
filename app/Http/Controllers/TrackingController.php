@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Additional;
 use App\Models\Booking;
 use App\Models\Status;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class TrackingController extends Controller
@@ -33,5 +34,19 @@ class TrackingController extends Controller
             ->first();
 
         return view('pages.track.trackbook', compact('booking', 'status', 'additionals'));
+    }
+    public function postreview(Request $request)
+    {
+        $validateData = $request->validate([
+            'name' => 'required',
+            'comment' => 'required'
+        ]);
+
+        $review = new Review();
+        $review->status = 1;
+        $review->fill($validateData);
+        $review->save();
+
+        return redirect()->back()->with('message', 'Review Added!');
     }
 }

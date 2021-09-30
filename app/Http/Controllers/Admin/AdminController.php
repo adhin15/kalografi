@@ -13,7 +13,8 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('pages.admin.dashboard');
+        $booking = Booking::query()->orderBy('created_at', 'DESC')->get();
+        return view('pages.admin.dashboard', compact('booking'));
     }
 
     public function search()

@@ -1,7 +1,8 @@
 <div class="navbar-nav sidebar-dark sidebar accordion" id="accordionSidebar" style="background-color: #8F9C69;">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}" style="background-color:#8F9C69; ">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}"
+        style="background-color:#8F9C69; ">
         <img src="{{ asset('placeholders/kalografi.png') }}" alt="kalografiLogo" style="width: 75%; height: auto;">
     </a>
 
@@ -16,9 +17,10 @@
     </div>
 
     <!-- Divider -->
+
     <hr class="sidebar-divider" style="color: white;">
 
-    <!-- Nav Item - Discounts -->
+    <!-- Nav Item - Search -->
     <div class="nav-item">
         <a class="nav-link" href="{{ route('admin.search') }}">
             <i class="fas fa-fw fa-search"></i>
@@ -32,18 +34,29 @@
             <span>Packages</span></a>
     </div>
 
+    <!-- Nav Item - Reviews -->
+    <div class="nav-item">
+        <a class="nav-link" href="{{ route('admin.reviews.index') }}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Reviews</span></a>
+    </div>
+
     <!-- Nav Item - Pages Collapse Menu -->
     <div class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFeatures"
-           aria-expanded="true" aria-controls="collapsePages">
+            aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Features</span>
         </a>
-        <div id="collapseFeatures" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseFeatures" class="collapse" aria-labelledby="headingPages"
+            data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                {{--<h6 class="collapse-header">Login Screens:</h6>--}}
+                {{-- <h6 class="collapse-header">Login Screens:</h6> --}}
                 <a class="collapse-item" href="{{ route('admin.photobook.index') }}">Photobook</a>
                 <a class="collapse-item" href="{{ route('admin.printedphoto.index') }}">Printed Photo</a>
+                <a class="collapse-item" href="{{ route('admin.photographer.index') }}">Photographers</a>
+                <a class="collapse-item" href="{{ route('admin.videographer.index') }}">Videographer</a>
+                <a class="collapse-item" href="{{ route('admin.workhours.index') }}">Workhours</a>
                 <a class="collapse-item" href="{{ route('admin.additional.index') }}">Additional Services</a>
                 <div class="collapse-divider"></div>
             </div>

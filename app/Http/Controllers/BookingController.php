@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Models\Package;
+use App\Models\Review;
 
 class BookingController extends Controller
 {
     public function home()
     {
         session()->forget('booking');
-        return view('pages.landing.index');
+        $review = Review::latest()->take(5)->where('status', 2)->get();
+        return view('pages.landing.index', compact('review'));
     }
 
     public function prewedding(Request $request)

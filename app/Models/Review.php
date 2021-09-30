@@ -5,14 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Review extends Model
 {
     use HasFactory;
+    protected $table = 'reviews';
     protected $guarded = [];
-    protected $table = 'status';
-
-    public function booking()
-    {
-        return $this->belongsTo(Booking::class, 'booking_id');
-    }
 }

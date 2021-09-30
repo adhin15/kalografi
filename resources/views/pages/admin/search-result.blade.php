@@ -4,14 +4,14 @@
         <div class="row justify-content-evenly">
             <div class="col-md-5">
 
-                @if(session()->has('message'))
+                @if (session()->has('message'))
                     <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                         <strong>{{ session('message') }}</strong>
                         <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
 
-                @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PAID')
+                @if ($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PAID')
                     <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
                         <strong>Payment Not Complete</strong>
                     </div>
@@ -25,8 +25,7 @@
                     <div class="col-md-10">
                         <div class="progress progress-striped active" style="height:8px; margin-top:5px ">
                             <div class="progress-bar" id="progress_bar" role="progressbar" aria-valuenow="73"
-                                 aria-valuemin="0" aria-valuemax="100"
-                                 style=" width: 75% ; background-color: #8F9C69">
+                                aria-valuemin="0" aria-valuemax="100" style=" width: 75% ; background-color: #8F9C69">
                             </div>
                         </div>
                     </div>
@@ -42,7 +41,7 @@
                         </p>
                         <small>
                             Last Updated: <strong>{{ $status->updated_at->diffForHumans() }}</strong>
-                            {{--<strong>{{ \Carbon\Carbon::parse($status->updated_at)->toDayDateTimeString() }}</strong>--}}
+                            {{-- <strong>{{ \Carbon\Carbon::parse($status->updated_at)->toDayDateTimeString() }}</strong> --}}
                         </small>
                     </div>
                 </div>
@@ -69,10 +68,10 @@
                 <div class="row">
                     <form action="{{ route('admin.update-status') }}" method="POST">
                         @csrf
-                        <div class="row">
+                        <div class="row mb-5">
                             <div class="col-md-8">
-                                <input type="hidden" class="form-control form-control-sm text-center"
-                                       name="bookingid" value="{{ $booking->id }}">
+                                <input type="hidden" class="form-control form-control-sm text-center" name="bookingid"
+                                    value="{{ $booking->id }}">
                                 <input type="hidden" name="status_value" value="{{ $status->current_status }} + 1">
                                 <select class="form-control text-secondary small" name="status_value" id="">
                                     <option value="1" {{ 1 === $status->current_status ? 'selected' : '' }}>No
@@ -98,6 +97,12 @@
                             </div>
                         </div>
                     </form>
+
+
+
+
+
+
                 </div>
             </div>
             @include('pages.admin.receipt')
