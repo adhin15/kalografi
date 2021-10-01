@@ -51,8 +51,7 @@
                                 <i class="fab fa-twitter fa-stack-1x" style="color: #8F9C69"></i>
                             </span>
                         </a>
-                        <a href="{{ URL::to('https://www.youtube.com/watch?v=dQw4w9WgXcQ') }}"
-                            class="fs-7 fw-light mb-1">
+                        <a href="#" class="fs-7 fw-light mb-1">
                             <span class="fa-stack" style="vertical-align: top; color: white;">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-youtube fa-stack-1x" style="color: #8F9C69"></i>

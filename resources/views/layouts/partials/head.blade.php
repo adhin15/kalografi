@@ -6,7 +6,8 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <!-- Styles -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -19,10 +20,65 @@
 <style>
     body {
         font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-skeleton-loader:empty {
+        width: 100%;
+        height: 15vw;
+        display: block;
+        background: linear-gradient(to right,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0) 80%),
+            lightgray;
+        background-repeat: repeat-y;
+        background-size: 50px 500px;
+        background-position: 0 0;
+        animation: shine 1s infinite;
+        border-radius: 15px;
+    }
+
+    @keyframes shine {
+        to {
+            background-position: 100% 0;
+        }
+    }
+
+    .order-image-skeleton-loader {
+
+        width: 719px;
+        height: 632px;
+        object-fit: cover;
+
+
+        display: block;
+        background: linear-gradient(to right,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(255, 255, 255, 0) 80%),
+            lightgray;
+        background-repeat: repeat-y;
+        background-size: 50px 500px;
+        background-position: 0 0;
+        animation: shine 1s infinite;
+        border-radius: 15px;
+    }
+
+    .ui-datepicker-current {
+        display: none;
     }
 
     .fs-7 {
         font-size: 12px;
+    }
+
+    footer {
+        margin-top: auto;
+        bottom: 0;
+        position: absolute;
+        width: 100%;
     }
 
     .font-primary {

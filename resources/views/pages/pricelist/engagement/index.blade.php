@@ -15,11 +15,12 @@
                             @csrf
 
                             <div class="col-mb-3" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}"
-                                 data-aos-duration="800">
+                                data-aos-duration="800">
                                 <div class="card border-0 shadow-sm" style="border-radius: 20px;" data-aos="fade-up"
-                                     data-aos-delay="{{ $loop->index * 100 }} " data-aos-duration="800">
+                                    data-aos-delay="{{ $loop->index * 100 }} " data-aos-duration="800">
                                     <img src="{{ $item->image->image_one_secure_url }}"
-                                        class="card-img-top" alt="..." style="border-radius: 15px; width: 100%; height: 15vw; object-fit: cover;">
+                                        class="card-img-top image-skeleton-loader" alt="..."
+                                        style="border-radius: 15px; width: 100%; height: 15vw; object-fit: cover;">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="card-title text-center my-2">

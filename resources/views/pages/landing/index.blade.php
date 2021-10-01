@@ -25,6 +25,7 @@
     {{-- END SIXTH SECTION --}}
 
     {{-- FOOTER --}}
+
     @include('layouts.partials.footer')
     {{-- END FOOTER --}}
 @endsection

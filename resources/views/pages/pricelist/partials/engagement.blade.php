@@ -1,6 +1,6 @@
 <div class="container-fluid pb-5" style="background-color: #FAFBFA">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
             <div class="col-sm-10">
                 <div class="card shadow-sm border-0 pe-3 py-2" style="border-radius: 10px">
                     <div class="card-body">
