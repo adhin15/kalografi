@@ -46,21 +46,17 @@ class PaymentController extends Controller
             if ($booking->payment_status === 'CREATED') {
                 if ($booking->payment_termination == 1) {
                     $booking->payment_status = 'FULLY_PAID';
-
                 } elseif ($booking->payment_termination == 2) {
                     $booking->payment_status = 'DOWN_PAYMENT_PAID';
                     $booking->installment = $booking->down_payment;
                     $booking->down_payment = null;
-
                 }
             } elseif ($booking->payment_status === 'FULL_PAYMENT_PENDING') {
                 $booking->payment_status = 'FULLY_PAID';
-
             } elseif ($booking->payment_status === 'DOWN_PAYMENT_PENDING') {
                 $booking->payment_status = 'DOWN_PAYMENT_PAID';
                 $booking->installment = $booking->down_payment;
                 $booking->down_payment = null;
-
             } elseif ($booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING') {
                 $booking->payment_status = 'INSTALLMENT_PAID';
                 $booking->installment = null;
@@ -69,7 +65,6 @@ class PaymentController extends Controller
             if ($booking->payment_status === 'CREATED') {
                 if ($booking->payment_termination == 1) {
                     $booking->payment_status = 'FULL_PAYMENT_PENDING';
-
                 } elseif ($booking->payment_termination == 2) {
                     $booking->payment_status = 'DOWN_PAYMENT_PENDING';
                 }
@@ -111,11 +106,9 @@ class PaymentController extends Controller
             if ($booking->payment_status === 'FULL_PAYMENT_PENDING') {
                 $paymentCode = 'ALL';
                 $grossAmount = $booking->total_price;
-
             } elseif ($booking->payment_status === 'DOWN_PAYMENT_PENDING') {
                 $paymentCode = 'DP';
                 $grossAmount = $booking->down_payment;
-
             } elseif ($booking->payment_status === 'INSTALLMENT_PENDING') {
                 $paymentCode = 'INS';
                 $grossAmount = $booking->installment;
@@ -126,23 +119,19 @@ class PaymentController extends Controller
             $booking->update();
 
             $this->midtransService->createInstallmentTransaction($booking, $grossAmount);
-
         } else {
             if ($booking->payment_status === 'FULL_PAYMENT_PENDING') {
                 $alertType = 'danger';
                 $alertMessage = 'Please Complete Payment!';
-
             } else if ($booking->payment_status === 'FULLY_PAID') {
                 $alertType = 'message';
                 $alertMessage = 'Payment Complete!';
-
             } else if ($booking->payment_status === 'DOWN_PAYMENT_PENDING') {
                 $alertType = 'danger';
                 $alertMessage = 'Please Complete Down Payment!';
-
             } else if ($booking->payment_status === 'DOWN_PAYMENT_PAID') {
-                $alertType = 'message';
-                $alertMessage = 'Down Payment Paid!';
+                $alertType = 'info';
+                $alertMessage = 'Down Payment Paid! Your Order ID Has Been Updated!';
                 $paymentCode = 'INS';
                 $order_id = $paymentCode . '/' . '000' . random_int(1000, 9999);
                 $grossAmount = $booking->installment;
@@ -150,11 +139,9 @@ class PaymentController extends Controller
                 $booking->update();
 
                 $this->midtransService->createInstallmentTransaction($booking, $grossAmount);
-
             } else if ($booking->payment_status === 'INSTALLMENT_PENDING') {
                 $alertType = 'danger';
                 $alertMessage = 'Please Complete Installment Payment!';
-
             } else if ($booking->payment_status === 'INSTALLMENT_PAID') {
                 $alertType = 'message';
                 $alertMessage = 'Installment Paid! Payment Complete!';
