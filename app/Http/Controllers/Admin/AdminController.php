@@ -45,9 +45,9 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $bookingId = $request->bookingid;
-        $status = Status::query()->findOrFail($bookingId);
+        $status = Status::query()->where('booking_id', $bookingId)->first();
         $status->current_status = $request->status_value;
-        dd($bookingId);
+
         $status->update();
 
 
