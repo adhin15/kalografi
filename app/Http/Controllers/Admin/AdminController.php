@@ -47,7 +47,9 @@ class AdminController extends Controller
         $bookingId = $request->bookingid;
         $status = Status::query()->findOrFail($bookingId);
         $status->current_status = $request->status_value;
+        dd($bookingId);
         $status->update();
+
 
         return redirect()->back()->with('message', 'Booking Status Updated!');
     }
