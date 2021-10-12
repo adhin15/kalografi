@@ -48,7 +48,7 @@
                                     data-aos-duration="500">
                                     <select class="form-control text-secondary small" name="payment_termination"
                                         id="payment_termination" onchange="getPaymentType()">
-                                        <option value="" selected disabled>--Choose One--</option>
+                                        <option value="1" selected disabled>--Choose One--</option>
                                         <option value="1">1x (Complete Payment)</option>
                                         <option value="2">2x (Down Payment & Complete Payment)</option>
                                     </select>
@@ -59,7 +59,7 @@
                                 <label for="redeem_code" class="mb-1 text-secondary small">Redeem Code</label>
                                 <div class="col-md-8" data-aos="fade-right" data-aos-delay="100"
                                     data-aos-duration="500">
-                                    <select class="form-control text-secondary small" name="discount" id="redeem_code"
+                                    <select class="form-control text-secondary small" name="discount_id" id="redeem_code"
                                         onchange="getSelectValue();">
                                         <option value="0" selected disabled>--Choose One--</option>
                                         @foreach ($discount as $item)
@@ -112,8 +112,8 @@
         }
 
         function getSelectValue() {
-            selectedValue = document.forms['form_discount'].elements['discount'].options[document.forms[
-                'form_discount'].elements['discount'].selectedIndex].getAttribute('data-bs-jumlah');
+            selectedValue = document.forms['form_discount'].elements['discount_id'].options[document.forms[
+                'form_discount'].elements['discount_id'].selectedIndex].getAttribute('data-bs-jumlah');
             discountPrice = total * selectedValue / 100;
             totalPrice = total - discountPrice;
             totalPriceInRupiah = numberToRupiah(totalPrice);
@@ -141,16 +141,14 @@
 
         function total_price() {
             getPaymentType()
-            selectedId = document.forms['form_discount'].elements['discount'].options[document.forms[
-                'form_discount'].elements['discount'].selectedIndex].value;
+            selectedId = document.forms['form_discount'].elements['discount_id'].options[document.forms[
+                'form_discount'].elements['discount_id'].selectedIndex].value;
 
             if (selectedValue !== null) {
                 document.getElementById('discountDiv').style.display = "";
                 document.getElementById('discountText').innerHTML = 'Discount ' + selectedValue + '%';
                 document.getElementById('discountPrice').innerHTML = '- Rp. ' + numberToRupiah(discountPrice);
             }
-
-
             document.getElementById("total").innerHTML = "Rp. " + totalPriceInRupiah;
 
         }

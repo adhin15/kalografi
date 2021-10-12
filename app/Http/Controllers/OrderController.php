@@ -121,14 +121,14 @@ class OrderController extends Controller
     //URL: /pricelist/order/details
     public function order(Request $request)
     {
-        $additionals = null;
-        if (session('booking')->additionals !== null) {
-            $additionals = Additional::query()
-                ->whereIn('id', json_decode(session('booking')->additionals))
-                ->get();
-        }
-
         if (session()->has('booking')) {
+            $additionals = null;
+            if (session('booking')->additionals !== null) {
+                $additionals = Additional::query()
+                    ->whereIn('id', json_decode(session('booking')->additionals))
+                    ->get();
+            }
+
             $booking = $request->session()->get('booking');
             $package = Package::query()->where('id', $booking->package_id)->first();
             $pp = Printedphoto::query()->where('id', $booking->printedphoto_id)->first();
@@ -174,14 +174,14 @@ class OrderController extends Controller
     //URL: /pricelist/order/checkout
     public function checkout(Request $request)
     {
-        $additionals = null;
-        if (session('booking')->additionals !== null) {
-            $additionals = Additional::query()
-                ->whereIn('id', json_decode(session('booking')->additionals))
-                ->get();
-        }
-
         if (session()->has('booking')) {
+            $additionals = null;
+            if (session('booking')->additionals !== null) {
+                $additionals = Additional::query()
+                    ->whereIn('id', json_decode(session('booking')->additionals))
+                    ->get();
+            }
+
             $discount = Discount::all();
             $booking = $request->session()->get('booking');
             $package = Package::query()->where('id', $booking->package_id)->first();
@@ -203,9 +203,9 @@ class OrderController extends Controller
         $booking = $request->session()->get('booking');
         $customSession = $request->session()->get('custom');
 
-        if ($request->discount != 0) {
+        if ($request->discount_id != 0) {
             $discount = Discount::query()
-                ->where('id', $request->discount)
+                ->where('id', $request->discount_id)
                 ->value('amount');
             $discountAmountToInt = (int)$discount;
             $discountPrice = $booking->total_price * $discountAmountToInt / 100;

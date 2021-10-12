@@ -27,18 +27,15 @@ class MidtransSnapController extends Controller
         if ($booking->payment_status === 'FULL_PAYMENT_PENDING') {
             $alertType = 'danger';
             $alertMessage = 'Please Complete Payment!';
-
         } else if ($booking->payment_status === 'FULLY_PAID') {
             $alertType = 'message';
             $alertMessage = 'Payment Complete!';
-
         } else if ($booking->payment_status === 'DOWN_PAYMENT_PENDING') {
             $alertType = 'danger';
             $alertMessage = 'Please Complete Down Payment!';
-
         } else if ($booking->payment_status === 'DOWN_PAYMENT_PAID') {
-            $alertType = 'message';
-            $alertMessage = 'Down Payment Paid!';
+            $alertType = 'info';
+            $alertMessage = 'Down Payment Paid! Your Order ID Has Been Updated!';
             $paymentCode = 'INS';
             $order_id = $paymentCode . '/' . '000' . random_int(1000, 9999);
             $grossAmount = $booking->installment;
@@ -46,11 +43,9 @@ class MidtransSnapController extends Controller
             $booking->update();
 
             $this->midtransService->createInstallmentTransaction($booking, $grossAmount);
-
         } else if ($booking->payment_status === 'INSTALLMENT_PENDING') {
             $alertType = 'danger';
             $alertMessage = 'Please Complete Installment Payment!';
-
         } else if ($booking->payment_status === 'INSTALLMENT_PAID') {
             $alertType = 'message';
             $alertMessage = 'Installment Paid! Payment Complete!';
