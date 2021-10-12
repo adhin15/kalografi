@@ -91,64 +91,82 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
                             <div class="card border-0">
-                                <img src="{{ asset('placeholders/1.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop1">
+                                    <img src="{{ asset('placeholders/1.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col" data-aos="fade-up" data-aos-delay="150" data-aos-duration="500">
                             <div class="card border-0">
-                                <img src="{{ asset('placeholders/2.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop2">
+                                    <img src="{{ asset('placeholders/2.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col" data-aos="fade-up" data-aos-delay="200" data-aos-duration="500">
                             <div class="card border-0">
-                                <img src="{{ asset('placeholders/3.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop3">
+                                    <img src="{{ asset('placeholders/3.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col" data-aos="fade-up" data-aos-delay="250" data-aos-duration="500">
                             <div class="card border-0">
-                                <img src="{{ asset('placeholders/4.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop4">
+                                    <img src="{{ asset('placeholders/4.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="card border-0" data-aos="fade-up" data-aos-delay="300" data-aos-duration="500">
-                                <img src="{{ asset('placeholders/5.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop5">
+                                    <img src="{{ asset('placeholders/5.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col">
                             <div class="card border-0" data-aos="fade-up" data-aos-delay="350" data-aos-duration="500">
-                                <img src="{{ asset('placeholders/6.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop6">
+                                    <img src="{{ asset('placeholders/6.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">
                             <div class="card border-0">
-                                <img src="{{ asset('placeholders/7.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop7">
+                                    <img src="{{ asset('placeholders/7.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col" data-aos="fade-up" data-aos-delay="450" data-aos-duration="500">
                             <div class="card border-0">
-                                <img src="{{ asset('placeholders/8.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop8">
+                                    <img src="{{ asset('placeholders/8.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
 
                         <div class="col" data-aos="fade-up" data-aos-delay="500" data-aos-duration="500">
                             <div class="card border-0">
-                                <img src="{{ asset('placeholders/9.jpg') }}" class="card-img-top" alt="..."
-                                    style="border-radius: 10px">
+                                <a href="#" id="pop9">
+                                    <img src="{{ asset('placeholders/9.jpg') }}" class="card-img-top" alt="..."
+                                        style="border-radius: 10px">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -157,6 +175,162 @@
         </div>
     </div>
 
+
+
+    <div class="modal fade" id="imagemodal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/1.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/2.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/3.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/4.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/5.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/6.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/7.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/8.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imagemodal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img src="{{ asset('placeholders/9.jpg') }}" id="imagepreview">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#pop1").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal1').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop2").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal2').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop3").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal3').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop4").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal4').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop5").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal5').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop6").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal6').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop7").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal7').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop8").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal8').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+
+        $("#pop9").on("click", function() {
+            $('#imagepreview').attr('src', $('#imageresource').attr(
+                'src')); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal9').modal(
+                'show'
+            ); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
+    </script>
 
     @include('layouts.partials.footer')
 @endsection

@@ -24,6 +24,8 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="ano
         flex-direction: column;
     }
 
+
+
     .image-skeleton-loader:empty {
         width: 100%;
         height: 15vw;
@@ -72,6 +74,10 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="ano
 
     .fs-7 {
         font-size: 12px;
+    }
+
+    .fs-9 {
+        font-size: 14px;
     }
 
     footer {
