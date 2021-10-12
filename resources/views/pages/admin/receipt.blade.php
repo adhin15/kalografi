@@ -181,20 +181,22 @@
                 <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
             @endif
 
-            <div class="row mb-2 justify-content-between align-items-center" style="font-size: 14px;">
-                <div class="col-md-6 px-0">
-                    <p class="text-secondary mb-0 ps-3" id="discountText">
-                        {{ 'Discount ' . $booking->discount->amount . ' %' }}
-                    </p>
+            @if ($booking->discount)
+                <div class="row mb-2 justify-content-between align-items-center" style="font-size: 14px;">
+                    <div class="col-md-6 px-0">
+                        <p class="text-secondary mb-0 ps-3" id="discountText">
+                            {{ 'Discount ' . $booking->discount->amount . ' %' }}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="semi-bold text-secondary mb-0 text-end" id="discountPrice">
+                            {{ '-Rp. ' . number_format(($booking->total_price * (100 / (100 - $booking->discount->amount)) * $booking->discount->amount) / 100) }}
+                        </p>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <p class="semi-bold text-secondary mb-0 text-end" id="discountPrice">
-                        {{ '-Rp. ' . number_format(($booking->total_price * (100 / (100 - $booking->discount->amount)) * $booking->discount->amount) / 100) }}
-                    </p>
-                </div>
-            </div>
 
-            <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
+                <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
+            @endif
 
             @if ($booking->payment_termination == 2)
                 @if ($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
