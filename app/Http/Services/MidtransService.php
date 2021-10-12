@@ -66,12 +66,21 @@ class MidtransService
             'category' => 'Printed Photo'
         ];
 
-        $initialPrice = $booking->total_price * (100 / (100 - $booking->discount->amount));
-        $discountedPrice = ($initialPrice * $booking->discount->amount) / 100;
+        $discountId = '-';
+        $discountName = 'Discount';
+        $discountedPrice = 0;
+
+        if ($booking->discount) {
+            $discountId = $booking->discount_id;
+            $discountName = strtoupper($booking->discount->name) . ' (Discount)';
+
+            $initialPrice = $booking->total_price * (100 / (100 - $booking->discount->amount));
+            $discountedPrice = ($initialPrice * $booking->discount->amount) / 100;
+        }
 
         $discountDetails = [
-            'id' => $booking->discount_id,
-            'name' => strtoupper($booking->discount->name) . ' (Discount)',
+            'id' => $discountId,
+            'name' => $discountName,
             'price' => -$discountedPrice,
             'quantity' => 1,
             'category' => 'Discount'
@@ -184,12 +193,21 @@ class MidtransService
             'category' => 'Printed Photo'
         ];
 
-        $initialPrice = $booking->total_price * (100 / (100 - $booking->discount->amount));
-        $discountedPrice = ($initialPrice * $booking->discount->amount) / 100;
+        $discountId = '-';
+        $discountName = 'Discount';
+        $discountedPrice = 0;
+
+        if ($booking->discount) {
+            $discountId = $booking->discount_id;
+            $discountName = strtoupper($booking->discount->name) . ' (Discount)';
+
+            $initialPrice = $booking->total_price * (100 / (100 - $booking->discount->amount));
+            $discountedPrice = ($initialPrice * $booking->discount->amount) / 100;
+        }
 
         $discountDetails = [
-            'id' => $booking->discount_id,
-            'name' => strtoupper($booking->discount->name) . ' (Discount)',
+            'id' => $discountId,
+            'name' => $discountName,
             'price' => -$discountedPrice,
             'quantity' => 1,
             'category' => 'Discount'

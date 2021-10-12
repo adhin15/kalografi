@@ -150,9 +150,9 @@
                 document.getElementById('discountPrice').innerHTML = '- Rp. ' + numberToRupiah(discountPrice);
             }
 
-            document.getElementById("discount_id").value = selectedId;
+
             document.getElementById("total").innerHTML = "Rp. " + totalPriceInRupiah;
-            document.getElementById("grand_total").value = totalPrice;
+
         }
     </script>
 @endsection

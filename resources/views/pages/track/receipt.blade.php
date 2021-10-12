@@ -1,5 +1,6 @@
 <div class="col-md-5">
-    <div class="card px-5 py-3" style="border-radius: 20px;" data-aos="fade-left" data-aos-delay="100" data-aos-duration="500">
+    <div class="card px-5 py-3" style="border-radius: 20px;" data-aos="fade-left" data-aos-delay="100"
+        data-aos-duration="500">
         <div class="card-body">
             <div class="row text-center">
                 <h3 class="fs-3 fw-bold text-kalografi mb-3">
@@ -62,20 +63,20 @@
                 <p class="semi-bold text-secondary fs-5">Order Details</p>
                 <div class="col-md-4">
                     <button id="previewvenue" class="btn btn-sm semi-bold fs-7 btn-outline-kalografi" disabled
-                            style="width: 100%">
+                        style="width: 100%">
                         {{ $booking->venue }}
                     </button>
                 </div>
 
                 <div class="col-md-4">
                     <button id="previewtone" class="btn btn-sm semi-bold fs-7 btn-outline-kalografi" disabled
-                            style="width: 100%">
+                        style="width: 100%">
                         {{ $booking->tone }}
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button id="previewweddingstyle" disabled class="btn btn-sm semi-bold fs-7 btn-outline-kalografi"
-                            style="width: 100%">
+                        style="width: 100%">
                         {{ $booking->wedding_style }}
                     </button>
                 </div>
@@ -84,7 +85,7 @@
             <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
                 <div class="col-md-2">
                     <input type="text" class="form-control form-control-sm text-center" name="package_qty"
-                           id="package_qty" value="1" aria-label="package_qty" style="width: 40px;" disabled>
+                        id="package_qty" value="1" aria-label="package_qty" style="width: 40px;" disabled>
                 </div>
 
                 <div class="col-md-6 px-0">
@@ -112,8 +113,8 @@
             <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
                 <div class="col-md-2">
                     <input type="text" class="form-control form-control-sm text-center" name="print_quantity"
-                           id="print_quantity" value="{{ $booking->printedphoto_qty }}" aria-label="print_quantity"
-                           style="width: 40px;" disabled>
+                        id="print_quantity" value="{{ $booking->printedphoto_qty }}" aria-label="print_quantity"
+                        style="width: 40px;" disabled>
                 </div>
 
                 <div class="col-md-6 px-0">
@@ -132,8 +133,8 @@
             <div class="row mb-4 justify-content-between align-items-center" style="font-size: 14px">
                 <div class="col-md-2">
                     <input type="text" class="form-control form-control-sm text-center" name="photobook_quantity"
-                           id="photobook_quantity" value="{{ $booking->photobook_qty }}" aria-label="photobook_quantity"
-                           style="width: 40px;" disabled>
+                        id="photobook_quantity" value="{{ $booking->photobook_qty }}" aria-label="photobook_quantity"
+                        style="width: 40px;" disabled>
                 </div>
 
                 <div class="col-md-6 px-0">
@@ -151,17 +152,17 @@
 
             <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
 
-            @if($additionals)
+            @if ($additionals)
                 <div class="row mt-2 text-center justify-content-center">
                     <p class="semi-bold text-secondary fs-5">Additional Services</p>
                 </div>
 
-                @foreach($additionals as $item)
+                @foreach ($additionals as $item)
                     <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
                         <div class="col-md-2">
-                            <input type="text" class="form-control form-control-sm text-center" name="photobook_quantity"
-                                   id="photobook_quantity" value="1" aria-label="photobook_quantity"
-                                   style="width: 40px;" disabled>
+                            <input type="text" class="form-control form-control-sm text-center"
+                                name="photobook_quantity" id="photobook_quantity" value="1"
+                                aria-label="photobook_quantity" style="width: 40px;" disabled>
                         </div>
 
                         <div class="col-md-6 px-0">
@@ -180,23 +181,25 @@
                 <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
             @endif
 
-            <div class="row mb-2 justify-content-between align-items-center" style="font-size: 14px;">
-                <div class="col-md-6 px-0">
-                    <p class="text-secondary mb-0 ps-3" id="discountText">
-                        {{ 'Discount ' . $booking->discount->amount . ' %' }}
-                    </p>
+            @if ($booking->discount)
+                <div class="row mb-2 justify-content-between align-items-center" style="font-size: 14px;">
+                    <div class="col-md-6 px-0">
+                        <p class="text-secondary mb-0 ps-3" id="discountText">
+                            {{ 'Discount ' . $booking->discount->amount . ' %' }}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="semi-bold text-secondary mb-0 text-end" id="discountPrice">
+                            {{ '-Rp. ' . number_format(($booking->total_price * (100 / (100 - $booking->discount->amount)) * $booking->discount->amount) / 100) }}
+                        </p>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <p class="semi-bold text-secondary mb-0 text-end" id="discountPrice">
-                        {{ '-Rp. ' . number_format(($booking->total_price * (100 / (100 - $booking->discount->amount)) * $booking->discount->amount) / 100) }}
-                    </p>
-                </div>
-            </div>
 
-            <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
+                <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
+            @endif
 
-            @if($booking->payment_termination == 2)
-                @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
+            @if ($booking->payment_termination == 2)
+                @if ($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
 
                     <div class="row mt-4">
                         <div class="col-md-6"></div>
@@ -214,9 +217,10 @@
 
                             <div class="row" style="font-size: 14px;">
                                 <p class="small text-secondary mb-0 text-end">
-                                    @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING')
+                                    @if ($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING')
                                         2x Payment Left
-                                    @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
+                                    @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID' ||
+                                        $booking->payment_status === 'INSTALLMENT_PENDING')
                                         1x Payment Left
                                     @endif
                                 </p>
@@ -233,8 +237,8 @@
                 </div>
 
                 <div class="col-md-6">
-                    @if($booking->payment_termination == 2)
-                        @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING')
+                    @if ($booking->payment_termination == 2)
+                        @if ($booking->payment_status === 'CREATED' || $booking->payment_status === 'DOWN_PAYMENT_PENDING')
                             <div class="row">
                                 <p class="semi-bold text-secondary text-end mb-0">Down Payment</p>
                             </div>
@@ -244,7 +248,8 @@
                                     Rp. {{ number_format($booking->down_payment) }}
                                 </p>
                             </div>
-                        @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID'|| $booking->payment_status === 'INSTALLMENT_PENDING')
+                        @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID'|| $booking->payment_status ===
+                            'INSTALLMENT_PENDING')
                             <div class="row">
                                 <p class="semi-bold text-secondary text-end mb-0">Installment</p>
                             </div>
@@ -279,10 +284,10 @@
                 </div>
             </div>
 
-            @if($booking->payment_status === 'CREATED')
+            @if ($booking->payment_status === 'CREATED')
                 <div class="row">
                     <button type="submit" class="btn btn-lg btn-kalografi semi-bold btn-block" id="pay-button">
-                        @if($booking->payment_termination === 1)
+                        @if ($booking->payment_termination === 1)
                             Pay Now
                         @elseif($booking->payment_termination === 2)
                             Pay Down Payment
@@ -301,7 +306,8 @@
                         Pay Down Payment
                     </button>
                 </div>
-            @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
+            @elseif($booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status ===
+                'INSTALLMENT_PENDING')
                 <div class="row">
                     <button type="submit" class="btn btn-lg btn-kalografi semi-bold btn-block" id="pay-button">
                         Pay Installment
@@ -312,10 +318,11 @@
     </div>
 </div>
 
-{{--Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key"--}}
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('MIDTRANS_CLIENT_KEY') }}"></script>
+{{-- Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" --}}
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('MIDTRANS_CLIENT_KEY') }}">
+</script>
 <script type="text/javascript">
-    document.getElementById('pay-button').onclick = function () {
+    document.getElementById('pay-button').onclick = function() {
         // SnapToken acquired from previous step
         snap.pay('{{ $booking->payment_token }}');
     }
