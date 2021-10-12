@@ -61,10 +61,9 @@
                                     data-aos-duration="500">
                                     <select class="form-control text-secondary small" name="discount" id="redeem_code"
                                         onchange="getSelectValue();">
-                                        <option value="100" selected disabled>--Choose One--</option>
+                                        <option value="0" selected disabled>--Choose One--</option>
                                         @foreach ($discount as $item)
-                                            <option value="{{ $item->id }}"
-                                                data-bs-jumlah="{{ $item->amount }}">
+                                            <option value="{{ $item->id }}" data-bs-jumlah="{{ $item->amount }}">
                                                 {{ strtoupper($item->name) . ' -- ' . $item->amount . '%' }}
                                             </option>
                                         @endforeach

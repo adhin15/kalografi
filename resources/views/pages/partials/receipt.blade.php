@@ -1,5 +1,6 @@
 <div class="col-md-5">
-    <div class="card px-5 py-3" style="border-radius: 20px;" data-aos="fade-left" data-aos-delay="100" data-aos-duration="500">
+    <div class="card px-5 py-3" style="border-radius: 20px;" data-aos="fade-left" data-aos-delay="100"
+        data-aos-duration="500">
         <div class="card-body">
             <div class="row text-center">
                 <h3 class="fs-3 fw-bold text-kalografi mb-3">
@@ -103,10 +104,12 @@
                 <div class="col-md-4">
                     <p id="pricepackage" class="semi-bold text-secondary mb-0 text-end">
                         @if ($booking->package_id == 0)
-                            @if($additionals)
-                                Rp. {{ number_format(($booking->total_price - ($pp->price * $booking->printedphoto_qty + $pb->price * $booking->photobook_qty)) - $additionals->sum('price')) }}
+                            @if ($additionals)
+                                Rp.
+                                {{ number_format($booking->total_price - ($pp->price * $booking->printedphoto_qty + $pb->price * $booking->photobook_qty) - $additionals->sum('price')) }}
                             @else
-                                Rp. {{ number_format($booking->total_price - ($pp->price * $booking->printedphoto_qty + $pb->price * $booking->photobook_qty)) }}
+                                Rp.
+                                {{ number_format($booking->total_price - ($pp->price * $booking->printedphoto_qty + $pb->price * $booking->photobook_qty)) }}
                             @endif
                         @else
                             Rp. {{ number_format($package->price) }}
@@ -157,17 +160,17 @@
 
             <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
 
-            @if($additionals)
+            @if ($additionals)
                 <div class="row mt-2 text-center justify-content-center">
                     <p class="semi-bold text-secondary fs-5">Additional Services</p>
                 </div>
 
-                @foreach($additionals as $item)
+                @foreach ($additionals as $item)
                     <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
                         <div class="col-md-2">
-                            <input type="text" class="form-control form-control-sm text-center" name="photobook_quantity"
-                                   id="photobook_quantity" value="1" aria-label="photobook_quantity"
-                                   style="width: 40px;" disabled>
+                            <input type="text" class="form-control form-control-sm text-center"
+                                name="photobook_quantity" id="photobook_quantity" value="1"
+                                aria-label="photobook_quantity" style="width: 40px;" disabled>
                         </div>
 
                         <div class="col-md-6 px-0">
@@ -234,8 +237,7 @@
                         <p id="total" class="semi-bold fs-5 text-secondary mb-0 text-end">
                             Rp. {{ number_format($booking->total_price) }}
                         </p>
-                        <input type="hidden" id="discount_id" name="discount_id" value="">
-                        <input type="hidden" name="booking_id" value="{{ $booking->id }}">
+
                     </div>
                 </div>
             </div>

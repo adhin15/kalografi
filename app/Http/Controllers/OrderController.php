@@ -199,15 +199,18 @@ class OrderController extends Controller
     //URL: /pricelist/order/checkout/store
     public function store(Request $request)
     {
-        $discount = Discount::query()
-            ->where('id', $request->discount_id)
-            ->value('amount');
-        $discountAmountToInt = (int)$discount;
-
+        $discountPrice = 0;
         $booking = $request->session()->get('booking');
         $customSession = $request->session()->get('custom');
 
-        $discountPrice = $booking->total_price * $discountAmountToInt / 100;
+        if ($request->discount != 0) {
+            $discount = Discount::query()
+                ->where('id', $request->discount)
+                ->value('amount');
+            $discountAmountToInt = (int)$discount;
+            $discountPrice = $booking->total_price * $discountAmountToInt / 100;
+        }
+
         $totalPrice = $booking->total_price - $discountPrice;
 
         $downPayment = null;
