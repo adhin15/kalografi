@@ -7,6 +7,8 @@ use App\Models\Booking;
 use App\Models\Status;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Redirect;
 
 class TrackingController extends Controller
 {
@@ -18,22 +20,26 @@ class TrackingController extends Controller
 
     public function post(Request $request)
     {
-        $booking = Booking::query()
-            ->where('order_id', $request->order_id)
-            ->firstOrFail();
+        try {
+            $booking = Booking::query()
+                ->where('order_id', $request->order_id)
+                ->firstOrFail();
 
-        $additionals = null;
-        if ($booking->additionals !== null) {
-            $additionals = Additional::query()
-                ->whereIn('id', json_decode($booking->additionals))
-                ->get();
+            $additionals = null;
+            if ($booking->additionals !== null) {
+                $additionals = Additional::query()
+                    ->whereIn('id', json_decode($booking->additionals))
+                    ->get();
+            }
+
+            $status = Status::query()
+                ->where('booking_id', $booking->id)
+                ->first();
+
+            return view('pages.track.trackbook', compact('booking', 'status', 'additionals'));
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('message', 'Order Not Found!');
         }
-
-        $status = Status::query()
-            ->where('booking_id', $booking->id)
-            ->first();
-
-        return view('pages.track.trackbook', compact('booking', 'status', 'additionals'));
     }
     public function postreview(Request $request)
     {

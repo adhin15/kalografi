@@ -1,7 +1,16 @@
 @extends('layouts.guest.master')
 @section('content')
+
     <div class="container-fluid py-5 " style="background-color: #FAFBFA">
+        @if (session()->has('message'))
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                <strong>Order Not Found!</strong>
+                <strong>Check Your Order ID!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row text-center" data-aos="fade-down" data-aos-delay="100" data-aos-duration="500">
+
             <p class="text-bold text-secondary fs-1">
                 Track Your Post-Production Progress
             </p>

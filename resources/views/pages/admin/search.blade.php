@@ -18,7 +18,8 @@
             <div class="col-md-5">
                 <form action="{{ route('admin.search-result') }}" method="GET">
                     <div class="row">
-                        <input type="text" name="order_id" class="form-control form-control-sm text-center" autocomplete="off">
+                        <input type="text" name="order_id" class="form-control form-control-sm text-center"
+                            autocomplete="off">
                     </div>
 
                     <div class="row">
