@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Package;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class AdminController extends Controller
 {
@@ -24,22 +25,26 @@ class AdminController extends Controller
 
     public function searchResult(Request $request)
     {
-        $booking = Booking::query()
-            ->where('order_id', $request->order_id)
-            ->firstOrFail();
+        try {
+            $booking = Booking::query()
+                ->where('order_id', $request->order_id)
+                ->firstOrFail();
 
-        $status = Status::query()
-            ->where('booking_id', $booking->id)
-            ->first();
+            $status = Status::query()
+                ->where('booking_id', $booking->id)
+                ->first();
 
-        $additionals = null;
-        if ($booking->additionals !== null) {
-            $additionals = Additional::query()
-                ->whereIn('id', json_decode($booking->additionals))
-                ->get();
+            $additionals = null;
+            if ($booking->additionals !== null) {
+                $additionals = Additional::query()
+                    ->whereIn('id', json_decode($booking->additionals))
+                    ->get();
+            }
+
+            return view('pages.admin.search-result', compact('booking', 'status', 'additionals'));
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('message', 'Order Not Found!');
         }
-
-        return view('pages.admin.search-result', compact('booking', 'status', 'additionals'));
     }
 
     public function update(Request $request)

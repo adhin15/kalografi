@@ -1,7 +1,13 @@
 @extends('pages.admin.layouts.master')
 @section('content')
     <div class="container-fluid py-3">
-
+        @if (session()->has('message'))
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                <strong>Order Not Found!</strong>
+                <strong>Check Your Order ID!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="row text-center">
             <p class="text-bold text-secondary fs-1">
                 Track Your Post-Production Progress
