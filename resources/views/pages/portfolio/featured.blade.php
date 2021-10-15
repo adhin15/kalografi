@@ -41,7 +41,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row justify-content-center mb-4 mx-3">
+                                        <div class="row justify-content-center mb-4 ">
                                             <div class="col-md-4 text-center">
                                                 <a href="#" class="btn btn-sm text-bold btn-tags">Indoor</a>
                                             </div>
@@ -86,7 +86,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row justify-content-center mb-4 mx-3">
+                                        <div class="row justify-content-center mb-4 ">
                                             <div class="col-md-4 text-center">
                                                 <a href="#" class="btn btn-sm text-bold btn-tags">Outdoor</a>
                                             </div>
@@ -131,7 +131,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row justify-content-center mb-4 mx-3">
+                                        <div class="row justify-content-center mb-4 ">
                                             <div class="col-md-4 text-center">
                                                 <a href="#" class="btn btn-sm text-bold btn-tags">Outdoor</a>
                                             </div>

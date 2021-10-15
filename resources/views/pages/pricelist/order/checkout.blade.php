@@ -48,7 +48,6 @@
                                     data-aos-duration="500">
                                     <select class="form-control text-secondary small" name="payment_termination"
                                         id="payment_termination" onchange="getPaymentType()">
-                                        <option value="1" selected disabled>--Choose One--</option>
                                         <option value="1">1x (Complete Payment)</option>
                                         <option value="2">2x (Down Payment & Complete Payment)</option>
                                     </select>

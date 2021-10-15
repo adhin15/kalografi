@@ -1,4 +1,4 @@
-<div class="container-fluid py-5" style="background-color: #FAFBFA" data-aos="fade" data-aos-delay="200">
+<div class="container-sm py-5" style="background-color: #FAFBFA" data-aos="fade" data-aos-delay="200">
     <div class="container">
         <div class="row my-5">
             <div id="carouselExampleCaptions" class="carousel slide aos-init aos-animate" data-aos="zoom-in"

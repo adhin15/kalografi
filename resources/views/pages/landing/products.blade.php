@@ -1,10 +1,10 @@
-<div class="container-fluid py-5">
-    <div class="container" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+<div class="container-sm py-5">
+    <div class="container-sm" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
         <div class="row text-center mb-5">
             <h3 class="fs-1 my-5 semi-bold" style="color: #8F9C69; letter-spacing: -1px;">Our Products</h3>
         </div>
         <div class="row justify-content-center mb-5">
-            <div class="col md-4 text-center">
+            <div class="col md-4 mb-3 text-center">
                 <div class="row justify-content-center mb-5">
                     <img src="{{ asset('placeholders/wedding_documentation.jpg') }}" alt="wedding_documentation"
                         class="rounded-circle" style="width: 75%; height:auto;">
@@ -28,7 +28,7 @@
                 </a>
             </div>
 
-            <div class="col md-4 text-center">
+            <div class="col md-4 mb-3 text-center">
                 <div class="row justify-content-center mb-5">
                     <img src="{{ asset('placeholders/pre-wedding_documentation.jpg') }}"
                         alt="pre_wedding_documentation" class="rounded-circle" style="width: 75%; height:auto;">
@@ -52,7 +52,7 @@
                 </a>
             </div>
 
-            <div class="col md-4 text-center">
+            <div class="col md-4 mb-3 text-center">
                 <div class="row justify-content-center mb-5">
                     <img src="{{ asset('placeholders/engagement_documentation.jpg') }}" alt="engagement_documentation"
                         class="rounded-circle" style="width: 75%; height:auto;">

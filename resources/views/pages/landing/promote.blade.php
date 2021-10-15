@@ -1,7 +1,7 @@
 <div class="container-fluid py-5" style="background-color: #FAFBFA">
     <div class="container my-5" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
         <div class="row">
-            <div class="col-md-5 ms-5">
+            <div class="col-md-5  mb-5">
                 <div style="color: #8F9C69; letter-spacing: -1px;">
                     <h3 class="semi-bold fs-1 mb-0">Why should you</h3>
                     <h3 class="semi-bold fs-1">choose us?</h3>

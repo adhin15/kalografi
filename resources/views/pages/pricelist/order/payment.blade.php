@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid py-5" style="background-color: #FAFBFA">
         <div class="container">
-            @if(session()->has('message'))
+            @if (session()->has('message'))
                 <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
                     <strong>{{ session('message') }}</strong>
                     <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -15,7 +15,7 @@
                         <img src="{{ asset('placeholders/Group 106.png') }}" alt="peeps" class="d-flex mx-auto">
                     </div>
 
-                    @if($booking->payment_status === 'CREATED' || $booking->payment_status === 'FULL_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
+                    @if ($booking->payment_status === 'CREATED' || $booking->payment_status === 'FULL_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PENDING' || $booking->payment_status === 'DOWN_PAYMENT_PAID' || $booking->payment_status === 'INSTALLMENT_PENDING')
                         <div class="row mb-3">
                             <div class="col">
                                 <p class="text-bold text-secondary fs-1">

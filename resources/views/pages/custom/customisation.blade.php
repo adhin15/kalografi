@@ -88,10 +88,10 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-3 text-center">
                                             <label for="print_quantity" class="mb-1 text-secondary small">Qty</label>
-                                            <input type="text" class="form-control" name="printedphoto_qty"
-                                                id="print_quantity" value="" required style="height: 70%">
+                                            <input type="number" class="form-control" name="printedphoto_qty" min="1"
+                                                id="print_quantity" value="1" required style="height: 70%">
                                         </div>
                                     </div>
 
@@ -109,10 +109,10 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-2 text-center">
+                                        <div class="col-md-3 text-center">
                                             <label for="photobook_quantity" class="mb-1 text-secondary small">Qty</label>
-                                            <input type="text" class="form-control" name="photobook_qty"
-                                                id="photobook_quantity" value="" required style="height: 70%">
+                                            <input type="number" class="form-control" name="photobook_qty" min="1"
+                                                id="photobook_quantity" value="1" required style="height: 70%">
                                         </div>
                                     </div>
 

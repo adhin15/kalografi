@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-    <div class="container">
+    <div class="container-sm">
         <a class="navbar-brand" href="{{ route('landing') }}">
             <img src="{{ asset('placeholders/kalografi (1).png') }}" alt="kalografi-header">
         </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav mx-auto" style="--bs-scroll-height: 100px;">
                 <li class="nav-item fs-9 mx-3 mx-3">

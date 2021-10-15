@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-3">
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <label for="printed_photo" class="mb-1 text-secondary small">Printed
                                             Photo</label>
                                         <select class="form-control text-secondary small" name="printedphoto_id"
@@ -86,15 +86,15 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-2 text-center">
+                                    <div class="col-md-3 text-center form-group">
                                         <label for="print_quantity" class="mb-1 text-secondary small">Qty</label>
-                                        <input type="text" class="form-control" name="printedphoto_qty"
-                                            id="print_quantity" value="" required>
+                                        <input type="number" class="form-control" name="printedphoto_qty" min="1"
+                                            id="print_quantity" value="1" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-5">
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <label for="photobook" class="mb-1 text-secondary small">Photobook</label>
                                         <select class="form-control text-secondary small" name="photobook_id"
                                             id="photobook">
@@ -107,10 +107,16 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-2 text-center">
+                                    <div class="col-md-3 text-center">
                                         <label for="photobook_quantity" class="mb-1 text-secondary small">Qty</label>
-                                        <input type="text" class="form-control" name="photobook_qty"
-                                            id="photobook_quantity" value="" required>
+                                        <input type="number" class="form-control" name="photobook_qty" min="1"
+                                            id="photobook_quantity" value="1" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <p class="mb-1 text-secondary">Additional Service</p>
                                     </div>
                                 </div>
                                 <div class="form-group text-secondary row mb-5">
