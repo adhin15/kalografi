@@ -16,8 +16,9 @@
                                 </p>
                                 <p class="text-kalografi">Starts from <strong>IDR 3,500,000</strong></p>
                                 <p class="text-secondary small">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                    From "Yes" to "I do" and every moment in between, let's make every engagement,
+                                    wedding, honeymoon and anniversary truly memorable through beautifully captured
+                                    photos.
                                 </p>
 
                                 <div class="row mt-5">

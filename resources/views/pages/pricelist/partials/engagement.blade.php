@@ -16,8 +16,8 @@
                                 </p>
                                 <p class="text-kalografi">Starts from <strong>IDR 2,000,000</strong></p>
                                 <p class="text-secondary small">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                    Planning to pop the biggest question of your life? Look for inspirations to plan the
+                                    perfect romantic engagements.
                                 </p>
 
                                 <div class="row mt-5">

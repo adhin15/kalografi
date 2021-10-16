@@ -117,7 +117,7 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="ano
     }
 
     .btn-tags {
-        font-size: 10px;
+        font-size: 11px;
         color: #8F9C69;
         border-color: #8F9C69;
         border-radius: 5px;
@@ -128,6 +128,17 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="ano
     .btn-tags:hover {
         color: white;
         background-color: #8F9C69;
+    }
+
+    .atribute-perks {
+        font-size: 11px;
+        color: #8F9C69;
+        border: 1px solid;
+        border-color: #8F9C69;
+        border-radius: 5px;
+        display: block;
+        padding: 4px;
+        width: 100%;
     }
 
     .text-kalografi {
@@ -190,6 +201,12 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="ano
     .btn-check-kalografi:active {
         color: #FFFFFF;
         background-color: #8F9C69;
+    }
+
+    .btn:disabled {
+        color: #8F9C69;
+        background-color: #FFFFFF;
+        opacity: 100%;
     }
 
     .text-light {

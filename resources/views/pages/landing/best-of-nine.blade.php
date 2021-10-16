@@ -77,10 +77,10 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row py-5 mb-5">
             <div class="col-md-4 offset-md-4 text-center">
-                <a href="{{ route('portfolio') }}" class="btn text-white btn-sm px-3"
-                    style="background-color: #8F9C69">
+                <a href="{{ route('portfolio') }}" class="btn text-bold text-white btn-sm px-3"
+                    style="background-color: #8F9C69;width:31%;font-size:11px; padding-top:11px;padding-bottom:11px;">
                     See All Portfolio
                 </a>
             </div>

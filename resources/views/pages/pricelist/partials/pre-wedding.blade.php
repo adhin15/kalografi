@@ -16,8 +16,9 @@
                                 </p>
                                 <p class="text-kalografi">Starts from <strong>IDR 1,500,000</strong></p>
                                 <p class="text-secondary small">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                    We truly believe that couples in love have a distinct glow on them! Before you walk
+                                    down the aisle to begin your new life together, cherish the moments in this season
+                                    of waiting.
                                 </p>
 
                                 <div class="row mt-5">

@@ -26,12 +26,12 @@
             <div class="carousel-inner mt-4">
                 <div class="carousel-item active">
                     <div class="container">
-                        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5 mx-4">
+                        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
                             <div class="col" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
                                 <div class="card border-0">
                                     <img src="{{ asset('placeholders/3.jpg') }}" class="rounded" alt="...">
                                     <div class="card-body" style="background-color: #FAFBFA">
-                                        <div class="row mb-4">
+                                        <div class="row mb-2">
                                             <div class="card-title text-center my-2">
                                                 <h6 class="mb-0 semi-bold text-secondary"
                                                     style="letter-spacing: -0.5px">
@@ -41,29 +41,34 @@
                                             </div>
                                         </div>
 
-                                        <div class="row justify-content-center mb-4 ">
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Indoor</a>
+                                        <div class="row justify-content-center mb-4 px-4" style="">
+                                            <div class="col-md-3 text-center"
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div href="#" class=" text-bold atribute-perks" disabled>Indoor</div>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Elegant</a>
+                                            <div class="col-md-3 text-center "
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div href=" #" class=" text-bold atribute-perks" disabled>Elegant
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Bright</a>
+                                            <div class="col-md-3 text-center"
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div class="text-bold atribute-perks" disabled>Bright</div>
                                             </div>
                                         </div>
 
-                                        <div class="row text-center px-4 mb-3">
+                                        <div class="row text-center px-4 mb-3" style="max-height: 70px">
                                             <p class="fs-7">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                ad minim veniam.
+                                                Yogyakarta really is a special place for the couples who have been move
+                                                and live here for recent years. Rani and Edy held their modern wedding
+                                                in Yogyakarta peacefully.
                                             </p>
                                         </div>
 
                                         <div class="row text-center">
                                             <div class="col">
-                                                <a href="#" class="btn btn-sm btn-kalografi fs-7">
+                                                <a href="#" class="btn text-bold text-white btn-sm px-3"
+                                                    style="background-color: #8F9C69;width:35%;font-size:11px; padding-top:11px;padding-bottom:11px;">
                                                     See this album
                                                 </a>
                                             </div>
@@ -76,7 +81,7 @@
                                 <div class="card border-0">
                                     <img src="{{ asset('placeholders/5.jpg') }}" class="rounded" alt="...">
                                     <div class="card-body" style="background-color: #FAFBFA">
-                                        <div class="row mb-4">
+                                        <div class="row mb-2">
                                             <div class="card-title text-center my-2">
                                                 <h6 class="mb-0 semi-bold text-secondary"
                                                     style="letter-spacing: -0.5px">
@@ -86,29 +91,33 @@
                                             </div>
                                         </div>
 
-                                        <div class="row justify-content-center mb-4 ">
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Outdoor</a>
+                                        <div class="row justify-content-center mb-4 px-4" style="">
+                                            <div class="col-md-3 text-center"
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div href="#" class=" text-bold atribute-perks" disabled>Outdoor</div>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Traditional</a>
+                                            <div class="col-md-3 text-center "
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div href=" #" class=" text-bold atribute-perks" disabled>Traditional
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Soft</a>
+                                            <div class="col-md-3 text-center"
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div class="text-bold atribute-perks" disabled>Soft</div>
                                             </div>
                                         </div>
 
-                                        <div class="row text-center px-4 mb-3">
+                                        <div class="row text-center px-4 mb-3" style="max-height: 70px">
                                             <p class="fs-7">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                ad minim veniam.
+                                                Yogyakarta is blessed with an abundance of historical places. With
+                                                plentiful of historical places, Yogyakarta has their own soul.
                                             </p>
                                         </div>
 
-                                        <div class="row text-center">
+                                        <div class="row py-1 text-center">
                                             <div class="col">
-                                                <a href="#" class="btn btn-sm btn-kalografi fs-7">
+                                                <a href="#" class="btn text-bold text-white btn-sm px-3"
+                                                    style="background-color: #8F9C69;width:35%;font-size:11px; padding-top:11px;padding-bottom:11px;">
                                                     See this album
                                                 </a>
                                             </div>
@@ -121,7 +130,7 @@
                                 <div class="card border-0">
                                     <img src="{{ asset('placeholders/2.jpg') }}" class="rounded" alt="...">
                                     <div class="card-body" style="background-color: #FAFBFA">
-                                        <div class="row mb-4">
+                                        <div class="row mb-2">
                                             <div class="card-title text-center my-2">
                                                 <h6 class="mb-0 semi-bold text-secondary"
                                                     style="letter-spacing: -0.5px">
@@ -130,31 +139,33 @@
                                                 </h6>
                                             </div>
                                         </div>
-
-                                        <div class="row justify-content-center mb-4 ">
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Outdoor</a>
+                                        <div class="row justify-content-center mb-4 px-4" style="">
+                                            <div class="col-md-3 text-center"
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div href="#" class=" text-bold atribute-perks" disabled>Outdoor</div>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Elegant</a>
+                                            <div class="col-md-3 text-center "
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div href=" #" class=" text-bold atribute-perks" disabled>Elegant
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 text-center">
-                                                <a href="#" class="btn btn-sm text-bold btn-tags">Warm</a>
+                                            <div class="col-md-3 text-center"
+                                                style="padding-right: 3px;padding-left:3px;">
+                                                <div class="text-bold atribute-perks" disabled>Warm</div>
                                             </div>
                                         </div>
 
-                                        <div class="row text-center px-4 mb-3">
+                                        <div class="row text-center px-4 mb-3" style="max-height: 70px">
                                             <p class="fs-7">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                ad minim veniam.
+                                                Bright and warm sunset in city of meubel, Jepara. The moments of Raka
+                                                and Balqis are truly beautiful and has a special place in their heart.
                                             </p>
                                         </div>
 
-                                        <div class="row text-center">
+                                        <div class="row py-1 text-center">
                                             <div class="col">
-                                                <a href="/portfolio/Pre-WeddingR&Bjepara"
-                                                    class="btn btn-sm btn-kalografi fs-7">
+                                                <a href="#" class="btn text-bold text-white btn-sm px-3"
+                                                    style="background-color: #8F9C69;width:35%;font-size:11px; padding-top:11px;padding-bottom:11px;">
                                                     See this album
                                                 </a>
                                             </div>
