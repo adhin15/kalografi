@@ -266,20 +266,17 @@ class OrderController extends Controller
     //URL: /payment-confirmation
     public function payment($id)
     {
-        if (session()->has('booking')) {
-            $booking = Booking::query()->findOrFail($id);
 
-            $additionals = null;
-            if ($booking->additionals !== null) {
-                $additionals = Additional::query()
-                    ->whereIn('id', json_decode($booking->additionals))
-                    ->get();
-            }
+        $booking = Booking::query()->findOrFail($id);
 
-            return view('pages.pricelist.order.payment', compact('booking', 'additionals'));
-        } else {
-            return redirect('/');
+        $additionals = null;
+        if ($booking->additionals !== null) {
+            $additionals = Additional::query()
+                ->whereIn('id', json_decode($booking->additionals))
+                ->get();
         }
+
+        return view('pages.pricelist.order.payment', compact('booking', 'additionals'));
     }
 
     public function postpaket()
