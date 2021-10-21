@@ -10,26 +10,27 @@
         </div>
 
         <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
-            <div class="col-sm-8">
-                <div class="card shadow-sm border-0 pe-3 py-2" style="border-radius: 10px">
+            <div class="col-sm-10">
+                <div class="card shadow-sm border-0 pe-3 py-2" style="border-radius: 15px">
                     <div class="card-body">
                         <form action="{{ route('post-custom') }}" method="post" id="total_form">
                             @csrf
-                            <div class="row form-group">
-                                <div class="col-md-5" style="margin: 20px">
+                            <div class="row form-group p-4 ">
+                                <div class="col-md-6 pe-5">
                                     <input type="hidden" id="idpaket" name="package_id" value="0">
                                     <input type="hidden" id="grand_total" name="total_price" value="0">
                                     <div class="row mb-4">
                                         <div class="col">
-                                            <label class="mb-1 text-secondary" for="book_date">Book Date</label>
-                                            <input type="date" class="form-control text-secondary " name="book_date"
-                                                id="book_date" style="height: 70%" required>
+                                            <label class="mb-1 text-secondary text-bold" for="book_date">Book Date</label>
+                                            <input type="date" id="date" class="form-control text-secondary "
+                                                name="book_date" id="book_date" style="height: 70%" required>
                                         </div>
                                     </div>
 
                                     <div class="row mb-4">
                                         <div class="col">
-                                            <label class="mb-1 text-secondary" for="photographer_id">Photographer</label>
+                                            <label class="mb-1 text-secondary text-bold"
+                                                for="photographer_id">Photographer</label>
                                             <select class="form-control text-secondary small" name="photographer_id"
                                                 id="photographer_id" style="height: 70%">
                                                 @foreach ($photographers as $item)
@@ -44,7 +45,8 @@
 
                                     <div class="row mb-4">
                                         <div class="col">
-                                            <label class="mb-1 text-secondary" for="videographer_id">Videographer</label>
+                                            <label class="mb-1 text-secondary text-bold"
+                                                for="videographer_id">Videographer</label>
                                             <select class="form-control text-secondary small" name="videographer_id"
                                                 id="videographer_id" style="height: 70%">
                                                 @foreach ($videographers as $item)
@@ -59,7 +61,8 @@
 
                                     <div class="row mb-4">
                                         <div class="col">
-                                            <label class="mb-1 text-secondary" for="workhour_id">Work Hours</label>
+                                            <label class="mb-1 text-secondary text-bold" for="workhour_id">Work
+                                                Hours</label>
                                             <select class="form-control text-secondary small" name="workhour_id"
                                                 id="workhour_id" style="height: 70%">
                                                 @foreach ($workhours as $item)
@@ -73,10 +76,11 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-5" style="margin: 40px">
-                                    <div class="row mb-4">
+                                <div class="col-md-6 ps-4">
+                                    <div class=" row mb-5">
                                         <div class="col">
-                                            <label class="mb-1 text-secondary" for="printedphoto_id">Printed Photo</label>
+                                            <label class="mb-1 text-secondary text-bold" for="printedphoto_id">Printed
+                                                Photo</label>
                                             <select class="form-control text-secondary small" name="printedphoto_id"
                                                 id="printedphoto_id" style="height: 70%">
                                                 @foreach ($printedphoto as $item)
@@ -88,16 +92,18 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-3 text-center">
-                                            <label for="print_quantity" class="mb-1 text-secondary small">Qty</label>
-                                            <input type="number" class="form-control" name="printedphoto_qty" min="1"
-                                                id="print_quantity" value="1" required style="height: 70%">
+                                        <div class="col-md-3 ">
+                                            <label for="print_quantity"
+                                                class="mb-1 text-secondary small text-bold">Quantity</label>
+                                            <input type="number" class="form-control text-center" name="printedphoto_qty"
+                                                min="1" id="print_quantity" value="1" required style="height: 70%">
                                         </div>
                                     </div>
 
-                                    <div class="row mb-4">
+                                    <div class="row mb-5">
                                         <div class="col">
-                                            <label class="mb-1 text-secondary" for="photobook_id">Photobook</label>
+                                            <label class="mb-1 text-secondary text-bold"
+                                                for="photobook_id">Photobook</label>
                                             <select class="form-control text-secondary small" name="photobook_id"
                                                 id="photobook_id" style="height: 70%">
                                                 @foreach ($photobook as $item)
@@ -109,20 +115,21 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-3 text-center">
-                                            <label for="photobook_quantity" class="mb-1 text-secondary small">Qty</label>
-                                            <input type="number" class="form-control" name="photobook_qty" min="1"
-                                                id="photobook_quantity" value="1" required style="height: 70%">
+                                        <div class="col-md-3">
+                                            <label for="photobook_quantity"
+                                                class="mb-1 text-secondary small text-bold">Quantity</label>
+                                            <input type="number" class="form-control text-center" name="photobook_qty"
+                                                min="1" id="photobook_quantity" value="1" required style="height: 70%">
                                         </div>
                                     </div>
 
                                     <div class="row mb-2">
-                                        <div class="col">
-                                            <p class="mb-1 text-secondary">Additional Service</p>
+                                        <div class="col ">
+                                            <p class="mb-1 text-secondary text-bold">Additional Service</p>
                                         </div>
                                     </div>
 
-                                    <div class="row text-secondary">
+                                    <div class="row mb-5 text-secondary">
                                         @foreach ($additionals as $additional)
                                             <div class="col-md-6">
                                                 <label class="container-checkbox">{{ $additional->name }}
@@ -137,11 +144,10 @@
                                 </div>
 
                                 <div class="row justify-content-center mb-4">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="row">
-                                            <button type="button" class="btn btn-kalografi btn-block" data-bs-toggle="modal"
-                                                data-bs-target="#total_modal" data-bs-url="{{ route('post-custom') }}"
-                                                onclick="calculate()">
+                                            <button type="button" class="btn btn-kalografi btn-block"
+                                                data-bs-url="{{ route('post-custom') }}" onclick="calculate()">
                                                 Calculate Now
                                             </button>
                                         </div>
@@ -155,11 +161,7 @@
         </div>
     </div>
 
-    <div class="container-fluid pb-5" style="background-color: #FAFBFA">
-        <div class="container">
 
-        </div>
-    </div>
 
     {{-- START CALCULATE MODAL --}}
     <div class="modal fade" id="total_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -217,33 +219,62 @@
         }
 
         function calculate() {
-            const photographerSelectedId = document.forms['total_form'].elements['photographer_id'].options[document.forms[
-                'total_form'].elements['photographer_id'].selectedIndex].getAttribute('data-bs-harga-photo');
-            const videographerSelectedId = document.forms['total_form'].elements['videographer_id'].options[document.forms[
-                'total_form'].elements['videographer_id'].selectedIndex].getAttribute('data-bs-harga-video');
-            const workHoursSelectedId = document.forms['total_form'].elements['workhour_id'].options[document.forms[
-                'total_form'].elements['workhour_id'].selectedIndex].getAttribute('data-bs-workhoursprice');
-            const printedPhotoSelectedId = document.forms['total_form'].elements['printedphoto_id'].options[document.forms[
-                'total_form'].elements['printedphoto_id'].selectedIndex].getAttribute('data-bs-harga-pp');
-            const printedPhotoQty = document.getElementById("print_quantity").value;
-            const photoBookSelectedId = document.forms['total_form'].elements['photobook_id'].options[document.forms[
-                'total_form'].elements['photobook_id'].selectedIndex].getAttribute('data-bs-harga-pb');
-            const photoBookQty = document.getElementById("photobook_quantity").value;
+            var date = document.getElementById("date").value;
 
-            const photographerPrice = parseInt(photographerSelectedId);
-            const videographerPrice = parseInt(videographerSelectedId);
-            const printedPhotoPrice = parseInt(printedPhotoSelectedId);
-            const photoBookPrice = parseInt(photoBookSelectedId);
-            const workHoursPrice = parseInt(workHoursSelectedId);
+            if (date != "") {
 
-            const printedPhotoTotal = printedPhotoPrice * printedPhotoQty;
-            const photoBookTotal = photoBookPrice * photoBookQty;
-            const packagePrice = photographerPrice + videographerPrice + workHoursPrice;
-            total_price = packagePrice + printedPhotoTotal + photoBookTotal + additionalPrice;
-            totalPriceInRupiah = numberToRupiah(total_price);
+                const photographerSelectedId = document.forms['total_form'].elements['photographer_id'].options[document
+                    .forms[
+                        'total_form'].elements['photographer_id'].selectedIndex].getAttribute('data-bs-harga-photo');
+                const videographerSelectedId = document.forms['total_form'].elements['videographer_id'].options[document
+                    .forms[
+                        'total_form'].elements['videographer_id'].selectedIndex].getAttribute('data-bs-harga-video');
+                const workHoursSelectedId = document.forms['total_form'].elements['workhour_id'].options[document.forms[
+                    'total_form'].elements['workhour_id'].selectedIndex].getAttribute('data-bs-workhoursprice');
+                const printedPhotoSelectedId = document.forms['total_form'].elements['printedphoto_id'].options[document
+                    .forms[
+                        'total_form'].elements['printedphoto_id'].selectedIndex].getAttribute('data-bs-harga-pp');
+                const printedPhotoQty = document.getElementById("print_quantity").value;
+                const photoBookSelectedId = document.forms['total_form'].elements['photobook_id'].options[document.forms[
+                    'total_form'].elements['photobook_id'].selectedIndex].getAttribute('data-bs-harga-pb');
+                const photoBookQty = document.getElementById("photobook_quantity").value;
 
-            document.getElementById('total_price_modal').innerHTML = "Rp. " + totalPriceInRupiah;
-            document.getElementById('grand_total').value = total_price;
+                const photographerPrice = parseInt(photographerSelectedId);
+                const videographerPrice = parseInt(videographerSelectedId);
+                const printedPhotoPrice = parseInt(printedPhotoSelectedId);
+                const photoBookPrice = parseInt(photoBookSelectedId);
+                const workHoursPrice = parseInt(workHoursSelectedId);
+
+                const printedPhotoTotal = printedPhotoPrice * printedPhotoQty;
+                const photoBookTotal = photoBookPrice * photoBookQty;
+                const packagePrice = photographerPrice + videographerPrice + workHoursPrice;
+                total_price = packagePrice + printedPhotoTotal + photoBookTotal + additionalPrice;
+                totalPriceInRupiah = numberToRupiah(total_price);
+
+                document.getElementById('total_price_modal').innerHTML = "Rp. " + totalPriceInRupiah;
+                document.getElementById('grand_total').value = total_price;
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Your Bill Is',
+                    text: "Rp. " + totalPriceInRupiah,
+                    showCancelButton: true,
+                    confirmButtonColor: "#8F9C69"
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('total_form').submit();
+                    }
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'You need to fill the bookdate',
+                    confirmButtonColor: "#8F9C69"
+
+                })
+            }
         }
 
         let numWeeks = 2;

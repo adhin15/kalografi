@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="col-md-5">
-                    <form action="{{ route('pricelist.post-order') }}" method="post">
+                    <form action="{{ route('pricelist.post-order') }}" method="post" id="total_form">
                         @csrf
                         <div class="card border-0 shadow-sm p-4" style="border-radius: 10px" data-aos="fade-left"
                             data-aos-delay="300" data-aos-duration="800">
@@ -66,24 +66,27 @@
                                 <input type="hidden" name="package_id" value="{{ $package->id }}">
                                 <div class="form-group row mb-3">
                                     <div class="col-md-12">
-                                        <label for="book_date" class="mb-1 text-secondary small">Book Date</label>
-                                        <input type="date" id="book_date" class="form-control text-secondary small "
+                                        <label for="book_date" class="mb-1 text-secondary small text-bold">Book Date</label>
+                                        <input type="date" id="date" class="form-control text-secondary small "
                                             name="book_date" required style="">
-                                        <small class="text-danger">*</small>
-                                        <small class="text-secondary">Book Date Must Be 2 Weeks Earlier From Photoshoot
+
+                                        <small class="" style="font-size:12px;color:grey">Book Date Must Be 2
+                                            Weeks
+                                            Earlier From Photoshoot
                                             Session
                                         </small>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-3">
                                     <div class="col-md-9">
-                                        <label for="printed_photo" class="mb-1 text-secondary small">Printed
+                                        <label for="printed_photo" class="mb-1 text-secondary small text-bold">Printed
                                             Photo</label>
                                         <select class="form-control text-secondary small" name="printedphoto_id"
-                                            id="printed_photo">
+                                            id="printedphoto_id">
 
                                             @foreach ($printedphoto as $item)
-                                                <option value="{{ $item->id }}">
+                                                <option value="{{ $item->id }} "
+                                                    data-bs-harga-pp="{{ $item->price }}">
                                                     {{ $item->name }}
                                                 </option>
                                             @endforeach
@@ -91,7 +94,8 @@
                                     </div>
 
                                     <div class="col-md-3 text-center form-group">
-                                        <label for="print_quantity" class="mb-1 text-secondary small">Qty</label>
+                                        <label for="print_quantity"
+                                            class="mb-1 text-secondary small text-bold">Quantity</label>
                                         <input type="number" class="form-control" name="printedphoto_qty" min="1"
                                             id="print_quantity" value="1" required>
                                     </div>
@@ -99,11 +103,12 @@
 
                                 <div class="form-group row mb-5">
                                     <div class="col-md-9">
-                                        <label for="photobook" class="mb-1 text-secondary small">Photobook</label>
+                                        <label for="photobook" class="mb-1 text-secondary small text-bold">Photobook</label>
                                         <select class="form-control text-secondary small" name="photobook_id"
-                                            id="photobook">
+                                            id="photobook_id">
                                             @foreach ($photobook as $item)
-                                                <option value="{{ $item->id }}">
+                                                <option value="{{ $item->id }}"
+                                                    data-bs-harga-pb="{{ $item->price }}">
                                                     {{ $item->name }}
                                                 </option>
                                             @endforeach
@@ -112,7 +117,8 @@
                                     </div>
 
                                     <div class="col-md-3 text-center">
-                                        <label for="photobook_quantity" class="mb-1 text-secondary small">Qty</label>
+                                        <label for="photobook_quantity"
+                                            class="mb-1 text-secondary small text-bold">Quantity</label>
                                         <input type="number" class="form-control" name="photobook_qty" min="1"
                                             id="photobook_quantity" value="1" required>
                                     </div>
@@ -120,7 +126,7 @@
 
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <p class="mb-1 text-secondary">Additional Service</p>
+                                        <p class="mb-1 text-secondary text-bold">Additional Service</p>
                                     </div>
                                 </div>
                                 <div class="form-group text-secondary row mb-5">
@@ -139,7 +145,7 @@
 
                                 <div class="form-group  row">
                                     <div class="col">
-                                        <button type="submit" class="btn text-white"
+                                        <button type="button" class="btn text-white" onclick="validate()"
                                             style="display: block; width: 100%; background-color: #8F9C69">Book Now
                                         </button>
                                     </div>
@@ -228,9 +234,78 @@
     <script>
         let numWeeks = 2;
         let now = new Date();
+        let total_price;
+        let totalPriceInRupiah;
+        let additionalPrice = 0;
+
         now.setDate(now.getDate() + numWeeks * 7);
         var today = now.toISOString().split('T')[0];
         document.getElementsByName("book_date")[0].setAttribute('min', today);
+
+        function numberToRupiah(number) {
+            const format = number.toString().split('').reverse().join('');
+            const convert = format.match(/\d{1,3}/g);
+            return convert.join(',').split('').reverse().join('');
+        }
+
+
+        const cbs = document.querySelectorAll('input[type=checkbox]');
+        for (let i = 0; i < cbs.length; i++) {
+            cbs[i].addEventListener('change', function() {
+                if (this.checked) {
+                    additionalPrice += parseInt(this.getAttribute('data-price'))
+                } else {
+                    additionalPrice -= parseInt(this.getAttribute('data-price'))
+                }
+            });
+        }
+
+
+
+        function validate() {
+            var date = document.getElementById("date").value;
+            if (date != "") {
+
+
+                const printedPhotoSelectedId = document.forms['total_form'].elements['printedphoto_id'].options[document
+                    .forms[
+                        'total_form'].elements['printedphoto_id'].selectedIndex].getAttribute('data-bs-harga-pp');
+                const printedPhotoQty = document.getElementById("print_quantity").value;
+                const photoBookSelectedId = document.forms['total_form'].elements['photobook_id'].options[document.forms[
+                    'total_form'].elements['photobook_id'].selectedIndex].getAttribute('data-bs-harga-pb');
+                const photoBookQty = document.getElementById("photobook_quantity").value;
+
+                const packagePrice = parseInt({{ $package->price }});
+                const printedPhotoPrice = parseInt(printedPhotoSelectedId);
+                const photoBookPrice = parseInt(photoBookSelectedId);
+
+                const printedPhotoTotal = printedPhotoPrice * printedPhotoQty;
+                const photoBookTotal = photoBookPrice * photoBookQty;
+                total_price = packagePrice + printedPhotoTotal + photoBookTotal + additionalPrice;
+                totalPriceInRupiah = numberToRupiah(total_price);
+
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Your Bill Is',
+                    text: "Rp. " + totalPriceInRupiah,
+                    showCancelButton: true,
+                    confirmButtonColor: "#8F9C69"
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('total_form').submit();
+                    }
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'You need to fill the bookdate',
+                    confirmButtonColor: "#8F9C69",
+                })
+            }
+        }
     </script>
     @include('layouts.partials.footer')
 
