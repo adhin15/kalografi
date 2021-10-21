@@ -143,6 +143,13 @@
             selectedId = document.forms['form_discount'].elements['discount_id'].options[document.forms[
                 'form_discount'].elements['discount_id'].selectedIndex].value;
 
+            var scroll_element = document.getElementById("additional_services");
+            scroll_element.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest"
+            });
+
             if (selectedValue !== null) {
                 document.getElementById('discountDiv').style.display = "";
                 document.getElementById('discountText').innerHTML = 'Discount ' + selectedValue + '%';

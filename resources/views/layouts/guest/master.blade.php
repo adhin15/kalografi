@@ -4,7 +4,9 @@
 <head>
     <title>{{ config('app.name') }}</title>
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="{{ url('css/logo.png') }}">
     @include('layouts.partials.head')
+
 </head>
 
 <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">

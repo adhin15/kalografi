@@ -61,7 +61,8 @@
 
             <hr style="border-top: 2px dashed black; background-color: #FFFFFF;">
 
-            <div class="row mt-2 text-center mb-4 justify-content-center" style="font-size: 14px">
+            <div id="additional_services" class="row mt-2 text-center mb-4 justify-content-center"
+                style="font-size: 14px">
                 <p class="semi-bold text-secondary fs-5">Order Details</p>
                 <div class="col-md-4">
                     <button id="previewvenue" class="btn btn-sm semi-bold fs-7 btn-outline-kalografi" disabled

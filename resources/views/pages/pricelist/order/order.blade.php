@@ -69,6 +69,10 @@
                                         <label for="book_date" class="mb-1 text-secondary small">Book Date</label>
                                         <input type="date" id="book_date" class="form-control text-secondary small "
                                             name="book_date" required style="">
+                                        <small class="text-danger">*</small>
+                                        <small class="text-secondary">Book Date Must Be 2 Weeks Earlier From Photoshoot
+                                            Session
+                                        </small>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-3">

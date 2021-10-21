@@ -75,10 +75,11 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="" class="btn text-white fs-7"
-                                style="display: block; height:130%; width: 45%; background-color: #8F9C69">Book for
-                                Prewedding Session
-                            </button>
+                            <input type="button" class="btn text-white fs-7"
+                                onclick="location.href='/pricelist/pre-wedding';"
+                                style=" display: block; height:130%; width: 45%; background-color: #8F9C69"
+                                value="Book for Prewedding Session" />
+
                         </div>
                     </div>
                 </div>

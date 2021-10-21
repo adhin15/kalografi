@@ -164,7 +164,8 @@
 
                                         <div class="row py-1 text-center">
                                             <div class="col">
-                                                <a href="#" class="btn text-bold text-white btn-sm px-3"
+                                                <a href="/portfolio/Pre-WeddingR&Bjepara"
+                                                    class="btn text-bold text-white btn-sm px-3"
                                                     style="background-color: #8F9C69;width:35%;font-size:11px; padding-top:11px;padding-bottom:11px;">
                                                     See this album
                                                 </a>
