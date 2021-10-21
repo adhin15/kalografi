@@ -232,6 +232,7 @@
     </div>
 
     <script>
+        // declaring variable
         let numWeeks = 2;
         let now = new Date();
         let total_price;
@@ -248,7 +249,7 @@
             return convert.join(',').split('').reverse().join('');
         }
 
-
+        //
         const cbs = document.querySelectorAll('input[type=checkbox]');
         for (let i = 0; i < cbs.length; i++) {
             cbs[i].addEventListener('change', function() {
