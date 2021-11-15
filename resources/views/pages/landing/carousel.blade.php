@@ -24,35 +24,31 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://dummyimage.com/1291x608/b5b5b5/ffffff.png" class="d-block w-100" alt="...">
+                        <img src="{{ asset('placeholders/punya_sugab.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption text-start pt-0 mb-3">
-                            <h3 class="text-bold fs-1">Second slide label</h3>
-                            <p class="text-light fs-5">Some representative placeholder content for the second
-                                slide.</p>
+                            <h3 class="text-bold fs-1">Discount up to IDR 2 Million*</h3>
+                            <p class="text-light fs-5">For Engagements and Weddings Package</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://dummyimage.com/1291x608/b5b5b5/ffffff.png" class="d-block w-100" alt="...">
+                        <img src="{{ asset('placeholders/punya_sugab.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption text-start pt-0 mb-3">
-                            <h3 class="text-bold fs-1">Third slide label</h3>
-                            <p class="text-light fs-5">Some representative placeholder content for the third
-                                slide.</p>
+                            <h3 class="text-bold fs-1">Discount up to IDR 2 Million*</h3>
+                            <p class="text-light fs-5">For Engagements and Weddings Package</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://dummyimage.com/1291x608/b5b5b5/ffffff.png" class="d-block w-100" alt="...">
+                        <img src="{{ asset('placeholders/punya_sugab.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption text-start pt-0 mb-3">
-                            <h3 class="text-bold fs-1">Fourth slide label</h3>
-                            <p class="text-light fs-5">Some representative placeholder content for the fourth
-                                slide.</p>
+                            <h3 class="text-bold fs-1">Discount up to IDR 2 Million*</h3>
+                            <p class="text-light fs-5">For Engagements and Weddings Package</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://dummyimage.com/1291x608/b5b5b5/ffffff.png" class="d-block w-100" alt="...">
+                        <img src="{{ asset('placeholders/punya_sugab.jpg') }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption text-start pt-0 mb-3">
-                            <h3 class="text-bold fs-1">Fifth slide label</h3>
-                            <p class="text-light fs-5">Some representative placeholder content for the fifth
-                                slide.</p>
+                            <h3 class="text-bold fs-1">Discount up to IDR 2 Million*</h3>
+                            <p class="text-light fs-5">For Engagements and Weddings Package</p>
                         </div>
                     </div>
                 </div>

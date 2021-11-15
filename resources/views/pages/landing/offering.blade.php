@@ -14,7 +14,7 @@
                         <h5>Get 20% off only for this month!</h5>
                     </div>
                     <a href="#" class="btn text-white btn-sm px-3" style="background-color: #8F9C69">
-                        Get Discount Code
+                        Book Now
                     </a>
                 </div>
             </div>
