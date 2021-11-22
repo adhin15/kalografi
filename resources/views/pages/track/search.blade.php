@@ -25,7 +25,7 @@
             </p>
         </div>
 
-        <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
+        <div class="row justify-content-center mb-5 px-5" data-aos="fade-up" data-aos-delay="100" data-aos-duration="500">
             <div class="col-md-5 mb-5">
                 <form action="{{ route('requestorder') }}" method="GET">
                     <div class="row mb-3">
@@ -33,16 +33,18 @@
                             autocomplete="off">
                     </div>
 
-                    <div class="row mb-5">
-                        <button type="submit" class="btn btn-kalografi semi-bold btn-block">
+                    <div class="row mb-5 ">
+                        <button type="submit" class="btn btn-kalografi semi-bold btn-block mb-5">
                             Check Now!
                         </button>
+
+
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <footer>
-        @include('layouts.partials.footer')
-    </footer>
+
+    @include('layouts.partials.footer')
+
 @endsection

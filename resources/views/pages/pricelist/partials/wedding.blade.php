@@ -5,11 +5,11 @@
                 <div class="card shadow-sm border-0 pe-3 py-2" style="border-radius: 10px">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-8">
-                                <img src="{{ asset('placeholders/placeholderprice.jpg') }}"
-                                    class="rounded d-flex mx-auto" alt="...">
+                            <div class="col-md-8 mt-4">
+                                <img src="{{ asset('placeholders/placeholderprice.jpg') }}" class="rounded  mx-auto"
+                                    style="max-width: 100%" alt="...">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-4">
                                 <p class="text-secondary semi-bold fs-2 lh-1" style="letter-spacing: -0.5px">
                                     Wedding <br>
                                     Documentation

@@ -61,20 +61,20 @@
 
             <div class="row mt-2 text-center mb-4 justify-content-center" style="font-size: 14px">
                 <p class="semi-bold text-secondary fs-5">Order Details</p>
-                <div class="col-md-4">
+                <div class="col-md-4 mt-2">
                     <button id="previewvenue" class="btn btn-sm semi-bold fs-7 btn-outline-kalografi" disabled
                         style="width: 100%">
                         {{ $booking->venue }}
                     </button>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 mt-2">
                     <button id="previewtone" class="btn btn-sm semi-bold fs-7 btn-outline-kalografi" disabled
                         style="width: 100%">
                         {{ $booking->tone }}
                     </button>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mt-2">
                     <button id="previewweddingstyle" disabled class="btn btn-sm semi-bold fs-7 btn-outline-kalografi"
                         style="width: 100%">
                         {{ $booking->wedding_style }}
@@ -83,7 +83,7 @@
             </div>
 
             <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
-                <div class="col-md-2">
+                <div class="col-md-2 px-0">
                     <input type="text" class="form-control form-control-sm text-center" name="package_qty"
                         id="package_qty" value="1" aria-label="package_qty" style="width: 40px;" disabled>
                 </div>
@@ -99,8 +99,8 @@
                         @endif
                     </p>
                 </div>
-                <div class="col-md-4">
-                    <p id="pricepackage" class="semi-bold text-secondary mb-0 text-end">
+                <div class="col-md-4 px-0">
+                    <p id="pricepackage" class="semi-bold text-secondary mb-0 text-start">
                         @if ($booking->package_id == 0)
                             Rp. {{ number_format($booking->custom->price) }}
                         @else
@@ -111,7 +111,7 @@
             </div>
 
             <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
-                <div class="col-md-2">
+                <div class="col-md-2 px-0">
                     <input type="text" class="form-control form-control-sm text-center" name="print_quantity"
                         id="print_quantity" value="{{ $booking->printedphoto_qty }}" aria-label="print_quantity"
                         style="width: 40px;" disabled>
@@ -123,15 +123,15 @@
                     </p>
                 </div>
 
-                <div class="col-md-4">
-                    <p id="priceprintedphoto" class="semi-bold text-secondary mb-0 text-end">
+                <div class="col-md-4 px-0">
+                    <p id="priceprintedphoto" class="semi-bold text-secondary mb-0 text-start">
                         Rp. {{ number_format($booking->printedphoto->price * $booking->printedphoto_qty) }}
                     </p>
                 </div>
             </div>
 
             <div class="row mb-4 justify-content-between align-items-center" style="font-size: 14px">
-                <div class="col-md-2">
+                <div class="col-md-2 px-0">
                     <input type="text" class="form-control form-control-sm text-center" name="photobook_quantity"
                         id="photobook_quantity" value="{{ $booking->photobook_qty }}" aria-label="photobook_quantity"
                         style="width: 40px;" disabled>
@@ -143,8 +143,8 @@
                     </p>
                 </div>
 
-                <div class="col-md-4">
-                    <p id="pricephotobook" class="semi-bold text-secondary mb-0 text-end">
+                <div class="col-md-4 px-0">
+                    <p id="pricephotobook" class="semi-bold text-secondary mb-0 text-start">
                         Rp. {{ number_format($booking->photobook->price * $booking->photobook_qty) }}
                     </p>
                 </div>
@@ -159,7 +159,7 @@
 
                 @foreach ($additionals as $item)
                     <div class="row mb-3 justify-content-between align-items-center" style="font-size: 14px">
-                        <div class="col-md-2">
+                        <div class="col-md-2 px-0">
                             <input type="text" class="form-control form-control-sm text-center"
                                 name="photobook_quantity" id="photobook_quantity" value="1"
                                 aria-label="photobook_quantity" style="width: 40px;" disabled>
@@ -171,8 +171,8 @@
                             </p>
                         </div>
 
-                        <div class="col-md-4">
-                            <p id="priceprintedphoto" class="semi-bold text-secondary mb-0 text-end">
+                        <div class="col-md-4 px-0">
+                            <p id="priceprintedphoto" class="semi-bold text-secondary mb-0 text-start">
                                 Rp. {{ number_format($item->price) }}
                             </p>
                         </div>
@@ -184,12 +184,12 @@
             @if ($booking->discount)
                 <div class="row mb-2 justify-content-between align-items-center" style="font-size: 14px;">
                     <div class="col-md-6 px-0">
-                        <p class="text-secondary mb-0 ps-3" id="discountText">
+                        <p class="text-secondary mb-0" id="discountText">
                             {{ 'Discount ' . $booking->discount->amount . ' %' }}
                         </p>
                     </div>
-                    <div class="col-md-4">
-                        <p class="semi-bold text-secondary mb-0 text-end" id="discountPrice">
+                    <div class="col-md-4 px-0">
+                        <p class="semi-bold text-secondary mb-0 text-start" id="discountPrice">
                             {{ '-Rp. ' . number_format(($booking->total_price * (100 / (100 - $booking->discount->amount)) * $booking->discount->amount) / 100) }}
                         </p>
                     </div>

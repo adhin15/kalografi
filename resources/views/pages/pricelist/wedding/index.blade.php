@@ -21,7 +21,7 @@
 
                                     <img src="{{ $item->image->image_one_secure_url }}"
                                         class="card-img-top image-skeleton-loader" alt="..."
-                                        style="border-radius: 15px; width: 100%; height: 15vw; object-fit: cover;">
+                                        style="border-radius: 15px; width: 100%; height: 300px; object-fit: cover;">
 
                                     <div class="card-body">
                                         <div class="row">

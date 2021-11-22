@@ -4,12 +4,12 @@
             <div class="col-sm-10">
                 <div class="card shadow-sm border-0 pe-3 py-2" style="border-radius: 10px">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <img src="{{ asset('placeholders/price2.jpg') }}" class="rounded d-flex mx-auto"
-                                    alt="...">
+                        <div class="row ">
+                            <div class="col-md-8 mt-4">
+                                <img src="{{ asset('placeholders/price2.jpg') }}" class="rounded mx-auto" alt="..."
+                                    style="max-width: 100%">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-4">
                                 <p class="text-secondary semi-bold fs-2 lh-1" style="letter-spacing: -0.5px">
                                     Pre-Wedding<br>
                                     Session

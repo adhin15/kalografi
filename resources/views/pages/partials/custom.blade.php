@@ -14,9 +14,8 @@
                             package.
                         </p>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col">
-
                             <a href="/custom" class="btn btn-kalografi btn-sm btn-kalografi-primary">
                                 Customize Your Package
                             </a>

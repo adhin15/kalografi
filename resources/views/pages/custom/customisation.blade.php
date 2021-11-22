@@ -76,9 +76,9 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6 ps-4">
-                                    <div class=" row mb-5">
-                                        <div class="col">
+                                <div class="col-md-6 pe-5">
+                                    <div class="row">
+                                        <div class="col-md-9 mb-4">
                                             <label class="mb-1 text-secondary text-bold" for="printedphoto_id">Printed
                                                 Photo</label>
                                             <select class="form-control text-secondary small" name="printedphoto_id"
@@ -92,7 +92,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-3 ">
+                                        <div class="col-md-3 mb-4">
                                             <label for="print_quantity"
                                                 class="mb-1 text-secondary small text-bold">Quantity</label>
                                             <input type="number" class="form-control text-center" name="printedphoto_qty"
@@ -100,8 +100,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row mb-5">
-                                        <div class="col">
+                                    <div class="row">
+                                        <div class="col-md-9 mb-4">
                                             <label class="mb-1 text-secondary text-bold"
                                                 for="photobook_id">Photobook</label>
                                             <select class="form-control text-secondary small" name="photobook_id"
@@ -115,7 +115,7 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mb-4">
                                             <label for="photobook_quantity"
                                                 class="mb-1 text-secondary small text-bold">Quantity</label>
                                             <input type="number" class="form-control text-center" name="photobook_qty"

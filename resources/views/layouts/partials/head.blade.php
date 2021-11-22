@@ -114,7 +114,8 @@ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="ano
 
     .btn-kalografi-primary {
         line-height: 35px;
-        width: 442.19px;
+        max-height: 400px;
+        width: 80%;
     }
 
 

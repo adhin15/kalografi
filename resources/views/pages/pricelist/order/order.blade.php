@@ -17,18 +17,19 @@
                         </div>
                         <div class="carousel-inner" style="border-radius: 20px">
                             <div class="carousel-item active">
-                                <img src="{{ $image->image_one_secure_url }}" class="d-block order-image-skeleton-loader"
-                                    alt="..." style=" ">
-                            </div>
-                            <div class="carousel-item">
+                                <img src="{{ $image->image_one_secure_url }}"
+                                    class="d-block w-100 order-image-skeleton-loader" alt="..."
+                                    style="min-width: 100%; height: 500px;"">
+                                        </div>
+                                            <div class="    carousel-item">
                                 <img src="{{ $image->image_two_secure_url }}"
                                     class="d-block w-100 order-image-skeleton-loader" alt="..."
-                                    style="width: 719px; height:632px; object-fit:cover">
+                                    style="min-width: 100%; height: 500px;">
                             </div>
                             <div class="carousel-item">
                                 <img src="{{ $image->image_three_secure_url }}"
                                     class="d-block w-100 order-image-skeleton-loader" alt="..."
-                                    style="width: 719px; height:632px; object-fit:cover">
+                                    style="min-width: 100%; height: 500px;">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#mahesaCarousel"
@@ -154,7 +155,6 @@
                         </div>
 
                         <div class="row  mt-5">
-
                         </div>
                     </form>
                 </div>
@@ -169,21 +169,21 @@
                     <div class="row mb-3" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
                         <h3 class="fw-bold fs-2 text-secondary">Terms and Conditions</h3>
                     </div>
-                    <div class="row px-5 mb-3" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                    <div class="row mb-3" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
                         <strong class="text-secondary fs-5">Reschedule Policy</strong>
                         <p class="text-secondary pe-3">
                             Free Reschedule is applicable if you submit the reschedule request
                             by at maximum 96 hours (4 days) before your initial photoshoot date.
                         </p>
                     </div>
-                    <div class="row px-5 mb-3" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
+                    <div class="row mb-3" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
                         <strong class="text-secondary fs-5">Cancellation Policy</strong>
                         <p class="text-secondary pe-3">
                             Free Cancellation is applicable if you submit the cancellation request
                             by at maximum 96 hours (4 days) before your initial photoshoot date.
                         </p>
                     </div>
-                    <div class="row px-5 mb-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                    <div class="row mb-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
                         <strong class="text-secondary fs-5">48 Hours Photo Delivery</strong>
                         <p class="text-secondary pe-3">
                             You can get all photo files via Google Drive in 48 Hours, then choose

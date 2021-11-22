@@ -5,7 +5,7 @@
 
         <div class="container">
             <div class="row justify-content-evenly">
-                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100" data-aos-duration="500">
+                <div class="col-md-6 mb-5" data-aos="fade-right" data-aos-delay="100" data-aos-duration="500">
                     <div id="mahawiraCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#mahawiraCarousel" data-bs-slide-to="0"
@@ -55,15 +55,15 @@
                         </h1>
                     </div>
 
-                    <div class="row mb-4" style="width: 60%">
-                        <div class="col">
-                            <div class="tags box-tag" style="margin-right:-10px">Outdoor</div>
+                    <div class="row mb-4" style="">
+                        <div class="col md-4">
+                            <div class="tags box-tag">Outdoor</div>
                         </div>
-                        <div class="col ">
-                            <div href="#" class="tags box-tag">Elegant</div>
+                        <div class="col md-4">
+                            <div class="tags box-tag">Elegant</div>
                         </div>
-                        <div class="col ">
-                            <div href="#" class="tags box-tag">Warm</div>
+                        <div class="col md-4">
+                            <div class="tags box-tag">Warm</div>
                         </div>
                     </div>
 
@@ -75,10 +75,11 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input type="button" class="btn text-white fs-7"
-                                onclick="location.href='/pricelist/pre-wedding';"
-                                style=" display: block; height:130%; width: 45%; background-color: #8F9C69"
-                                value="Book for Prewedding Session" />
+                            <button class="btn text-white fs-7" onclick="location.href='/pricelist/pre-wedding';"
+                                style=" height:130%; width: 45%; background-color: #8F9C69">
+                                Book for Prewedding Session
+                            </button>
+
 
                         </div>
                     </div>
