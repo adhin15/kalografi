@@ -4,7 +4,7 @@
             <h3 class="fs-1 my-5 semi-bold" style="color: #8F9C69; letter-spacing: -1px;">Our Products</h3>
         </div>
         <div class="row justify-content-center mb-5">
-            <div class="col md-4 mb-3 text-center">
+            <div class="col-md-4 mb-3 text-center">
                 <div class="row justify-content-center mb-5">
                     <img src="{{ asset('placeholders/wedding_documentation.jpg') }}" alt="wedding_documentation"
                         class="rounded-circle" style="width: 75%; height:auto;">
@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <div class="col md-4 mb-3 text-center">
+            <div class="col-md-4 mb-3 text-center">
                 <div class="row justify-content-center mb-5">
                     <img src="{{ asset('placeholders/pre-wedding_documentation.jpg') }}"
                         alt="pre_wedding_documentation" class="rounded-circle" style="width: 75%; height:auto;">
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="col md-4 mb-3 text-center">
+            <div class="col-md-4 mb-3 text-center">
                 <div class="row justify-content-center mb-5">
                     <img src="{{ asset('placeholders/engagement_documentation.jpg') }}" alt="engagement_documentation"
                         class="rounded-circle" style="width: 75%; height:auto;">
